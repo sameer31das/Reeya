@@ -1,0 +1,448 @@
+{
+	"statusCode": 200,
+	"message": "",
+	"result": 
+	[
+		{
+			"name": "Bangalore",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 12.9699,
+				"longitude": 77.598
+			},
+			"customerCodePrefix": "",
+			"id": 4,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Mysore",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 12.3086,
+				"longitude": 76.6531
+			},
+			"customerCodePrefix": "",
+			"id": 47,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Hubli",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 15.36,
+				"longitude": 75.125
+			},
+			"customerCodePrefix": "",
+			"id": 58,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Shimoga",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 13.9304,
+				"longitude": 75.56
+			},
+			"customerCodePrefix": "",
+			"id": 71,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Mangalore",
+			"state": {
+				"id": 19,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 12.8703,
+				"longitude": 74.8806
+			},
+			"customerCodePrefix": "",
+			"id": 75,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Davangere",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 14.4667,
+				"longitude": 75.9167
+			},
+			"customerCodePrefix": "",
+			"id": 92,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Belgaum",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 15.8667,
+				"longitude": 74.5
+			},
+			"customerCodePrefix": "",
+			"id": 94,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Gulbarga",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 17.3333,
+				"longitude": 76.8333
+			},
+			"customerCodePrefix": "",
+			"id": 95,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Bellary",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 15.15,
+				"longitude": 76.915
+			},
+			"customerCodePrefix": "",
+			"id": 102,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Tumkur",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 13.33,
+				"longitude": 77.1
+			},
+			"customerCodePrefix": "",
+			"id": 110,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Bijapur",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 16.8244,
+				"longitude": 75.7154
+			},
+			"customerCodePrefix": "",
+			"id": 132,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Bidar",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 17.9229,
+				"longitude": 77.5175
+			},
+			"customerCodePrefix": "",
+			"id": 141,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Hospet",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 15.2667,
+				"longitude": 76.4
+			},
+			"customerCodePrefix": "",
+			"id": 150,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Raichur",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 16.2104,
+				"longitude": 77.355
+			},
+			"customerCodePrefix": "",
+			"id": 160,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Udipi",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 13.3322,
+				"longitude": 74.7461
+			},
+			"customerCodePrefix": "",
+			"id": 220,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Kolar",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 13.1333,
+				"longitude": 78.1333
+			},
+			"customerCodePrefix": "",
+			"id": 246,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Mandya",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 12.5242,
+				"longitude": 76.8958
+			},
+			"customerCodePrefix": "",
+			"id": 251,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Hassan",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 13.005,
+				"longitude": 76.1028
+			},
+			"customerCodePrefix": "",
+			"id": 253,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Channarayapatna",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 12.9,
+				"longitude": 76.39
+			},
+			"customerCodePrefix": "",
+			"id": 374,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Shrirangapattana",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 12.4181,
+				"longitude": 76.6947
+			},
+			"customerCodePrefix": "",
+			"id": 385,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		},
+		{
+			"name": "Belur",
+			"state": {
+				"id": 18,
+				"name": "Karnataka",
+				"type": 0,
+				"code": "KA",
+				"zone": "S"
+			},
+			"pinCode": "",
+			"location": {
+				"latitude": 13.1642,
+				"longitude": 75.8647
+			},
+			"customerCodePrefix": "",
+			"id": 408,
+			"createdOn": "0001-01-01T00:00:00",
+			"modifiedOn": "0001-01-01T00:00:00",
+			"createdBy": "00000000-0000-0000-0000-000000000000",
+			"modifiedBy": "00000000-0000-0000-0000-000000000000"
+		}
+	]
+}

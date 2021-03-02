@@ -53,65 +53,67 @@
           </div>
 
       
-           <form>
-            <div class="form-group row">
-              <label for="inputcname" class="col-sm-2 col-form-label">Customer Name</label>
-              <div class="col-sm-8">
-                <input type="email" class="form-control" id="inputcname" placeholder="Tata Motors">
+            <div [formGroup]="generalForm">
+              <div class="form-group row">
+                <label for="inputcname" class="col-sm-2 col-form-label">Customer Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="customername" id="inputcname" placeholder="Tata Motors">
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputstate" class="col-sm-2 col-form-label">State</label>
-              <div class="col-sm-8">
-                <select id="inputstate" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
+              
+              <div   >
+                <div class="container tabs" >
+                  
+                  <ul class="nav nav-pills row"  >
+                  <li class="nav-item col"  [ngClass]=" {'nav-link active': tab==1 }"  (click)=" tab = 1 " >
+                    <a   aria-current="page" >Consigner</a>
+                  </li>
+                  <li class="nav-item col" [ngClass]=" {'nav-link active': tab==2 }"  (click)=" tab = 2" >
+                    <a   aria-current="page" >Consignment</a>
+                  </li>
+                  <li class="nav-item col" [ngClass]=" {'nav-link active': tab==3 }"  (click)=" tab = 3" >
+                    <a  aria-current="page" >Consignee</a>
+                  </li>
+                  </ul>
+                </div>
+                <div class="content">
+                <div class="tab-panel" id="tabPanel1" *ngIf="tab==1">
+                  <app-consigner
+                  [state]="this.state"
+                  (consignerDetails)="consignerDetails($event)"
+                  ></app-consigner>
+                </div>
+                <div class="tab-panel" id="tabPanel2" *ngIf="tab==2">
+                  <app-consignmentdetail
+                  (Detail)="Detail($event)"
+                  (Schedules)="Schedules($event)"
+                  ></app-consignmentdetail>
+                </div>
+                <div class="tab-panel" id="tabPanel3" *ngIf="tab==3">
+                  <app-consignee
+                  [state]="this.state"
+                  [tab]="this.tab"
+                  (consigneeDetails)="consigneeDetails($event)"
+                  ></app-consignee>
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputcity" class="col-sm-2 col-form-label">City</label>
-              <div class="col-sm-8">
-                <select id="inputcity" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
+              
+              <div class="next form-group row" *ngIf="tab <=2">
+                <div class="col-sm-10">
+                  <button (click)="next()" class="btn btn-primary">Next</button>
+                  </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputcname" class="col-sm-2 col-form-label">Name and Address</label>
-              <div class="col-sm-8">
-                <input class="form-control input-lg" id="inputlg" type="text">
+              
               </div>
+              
+            
+               
+              
             </div>
-            <div class="form-group row">
-              <label for="inputcname" class="col-sm-2 col-form-label">Pincode</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputcname" placeholder="Tata Motors">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputcname" class="col-sm-2 col-form-label">Email Address</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputcname" placeholder="Tata Motors">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputcname" class="col-sm-2 col-form-label">Pincode</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="inputcname" placeholder="Tata Motors">
-              </div>
-            </div>
-           
-           
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary"><Nav>Next</Nav></button>
-              </div>
-            </div>
-          </form>
         
         </main>
+
+
       </div>
     </div>
 

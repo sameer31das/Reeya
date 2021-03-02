@@ -18,8 +18,34 @@ body,
   height: 100vh;
 }
 
-img {
+/* img {
   &.d-block {
     height: 100vh;
   }
+} */
+
+
+.customername{
+  flex-direction: row;
 }
+.next{
+  padding-top: 51px;
+}
+.content{
+  position: relative;
+  top:50px;
+  margin-bottom: 50px;
+}
+.col{
+  padding-top: 10px;
+}
+.tabs{
+  margin-top: 20px;
+  border:1px solid grey;
+  }
+  .active-tab{
+    background-color: #007bff;
+      font: bold;
+  }
+
+

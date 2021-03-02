@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 import { ShareServices } from './app.services';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,13 @@ export class AppComponent implements OnInit {
     { image: 'https://gsr.dev/material2-carousel/assets/demo.png' },
     { image: 'https://gsr.dev/material2-carousel/assets/demo.png' }];
   employees = [];
+  // tslint:disable-next-line:variable-name
   constructor(private _sharedService: ShareServices) { }
+  // tslint:disable-next-line:typedef
   ngOnInit() {
     this._sharedService.getEmpl().subscribe(data => {
-      debugger;
-    console.log("sa" + data);
+    //   debugger;
+    // console.log("sa" + data);
 
       return this.employees = data;
 

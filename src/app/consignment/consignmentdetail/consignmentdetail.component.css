@@ -1,0 +1,11 @@
+.comp2{
+    border:2px solid black;
+    cursor: pointer;
+}
+.heading1{
+    border-bottom: 1px solid;
+    
+}
+.active-tab{
+    background-color: #007bff;
+}
