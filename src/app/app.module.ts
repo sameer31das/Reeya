@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShareServices } from './app.services';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
+import { ConsignmentComponent } from './consignment/consignment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ConsignmentComponent
   ],
   imports: [
     BrowserModule,
