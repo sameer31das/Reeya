@@ -1,0 +1,25 @@
+.attachments{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.textInput1{
+    color: purple;
+    margin-left: 10px;
+}
+input[type="file"] {
+    display: none;
+   
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-right: 40px;
+    width: 71.344px;
+    margin-top: 8px;
+}
