@@ -9,6 +9,7 @@ import { ShareServices } from './app.services';
 import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
 import { ConsignmentComponent } from './consignment/consignment.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import { ConsigneeComponent } from './consignment/consignee/consignee.component';
 import { ConsignerComponent } from './consignment/consigner/consigner.component';
 import { ConsignmentdetailComponent } from './consignment/consignmentdetail/consignmentdetail.component';
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ConsignmentdetailComponent,
     AttachmentsComponent,
     ScheduleComponent,
-    DetailsComponent
+    DetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
