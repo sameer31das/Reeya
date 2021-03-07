@@ -7,13 +7,11 @@ import { IEmployee,IState,ICity, IMode } from "./app.model";
 @Injectable()
 export class ShareServices {
     constructor(private http: HttpClient) { }
-    private _url: string = "/assets/employee.json"
-    private state_url: string = "/assets/state.json"
+    private hostUrl: string = "http://cargo-xpert.in"
+    private state_url: string = this.hostUrl+"/webapi/Territory/States"
     private city_url: string = "/assets/city.json"
-    private mode_url: string = "/assets/ConsignmentModes.json"
-    getEmpl(): Observable<IEmployee[]> {
-        return this.http.get<IEmployee[]>(this._url)
-    }
+    private mode_url: string = this.hostUrl+"/webapi/Consignment/Modes"
+   
     getState(): Observable<IState> {
         return this.http.get<IState>(this.state_url)
     }

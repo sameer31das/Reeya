@@ -18,7 +18,7 @@ export class ScheduleComponent implements OnInit, OnDestroy {
     this.generateForms();
 
     this.sharedService.getConsignmentMode().subscribe(data => {
-      this.Mode = data.result;
+      this.Mode = Object.keys(data.result).map((key) => [Number(key), data.result[key]]);;
    });
 }
 // tslint:disable-next-line:typedef
