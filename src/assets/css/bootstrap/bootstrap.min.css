@@ -1610,7 +1610,7 @@ select.form-control:focus::-ms-value {
   padding-top: calc(0.375rem + 1px);
   padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0;
-  font-size: inherit;
+  font-size: 13px;
   line-height: 1.5; }
 
 .col-form-label-lg {
@@ -3262,7 +3262,7 @@ input[type="button"].btn-block {
     border-top-right-radius: 0; }
 
 .nav-pills .nav-link {
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
@@ -3367,7 +3367,7 @@ input[type="button"].btn-block {
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 0.25rem; }
+  border-radius:0; }
   .navbar-toggler:hover, .navbar-toggler:focus {
     text-decoration: none; }
   .navbar-toggler:not(:disabled):not(.disabled) {
@@ -3647,7 +3647,7 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem; }
+  border-radius: 0; }
   .card > hr {
     margin-right: 0;
     margin-left: 0; }

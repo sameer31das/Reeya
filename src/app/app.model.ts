@@ -21,7 +21,11 @@ export interface ICity{
     statusCode: number;
     message: string;
     result: ICityDetail[];
-
+}
+export interface IMode{
+    statusCode: number;
+    message: string;
+    result: string[];
 }
 export interface ICityDetail{
     name: string;
@@ -38,6 +42,23 @@ export interface ICityDetail{
 export interface ILocationDetail{
     longitude: string;
     latitude: string;
+}
+export interface IConsignmentList{
+    statusCode: number;
+    message: string;
+    result: IConsignmentListDetail[];
+}
+export interface IConsignmentListDetail{
+    id: number;
+    trackingId: string;
+    pickupDate: string;
+    deliveryDate: string;
+    customerName: string;
+    fromCity: string;
+    toCity: string;
+    status: number;
+    photoUrl: string;
+    ewayBillUrl: string;
 }
 
 

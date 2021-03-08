@@ -9,25 +9,9 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'LogisticxNew';
-  slides = [
-    { image: 'https://gsr.dev/material2-carousel/assets/demo.png' },
-    { image: 'https://gsr.dev/material2-carousel/assets/demo.png' },
-    { image: 'https://gsr.dev/material2-carousel/assets/demo.png' },
-    { image: 'https://gsr.dev/material2-carousel/assets/demo.png' },
-    { image: 'https://gsr.dev/material2-carousel/assets/demo.png' }];
-  employees = [];
-  // tslint:disable-next-line:variable-name
-  constructor(private _sharedService: ShareServices) { }
+  constructor() { }
   // tslint:disable-next-line:typedef
   ngOnInit() {
-    this._sharedService.getEmpl().subscribe(data => {
-    //   debugger;
-    // console.log("sa" + data);
-
-      return this.employees = data;
-
-    });
 
   }
 }

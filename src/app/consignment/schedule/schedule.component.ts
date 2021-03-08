@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ShareServices } from '../../app.services';
 
 @Component({
   selector: 'app-schedule',
@@ -8,13 +9,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ScheduleComponent implements OnInit, OnDestroy {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   @Output() Schedule: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
-  Mode = ['ab', 'cd'];
+  Mode = [];
   generalForm: FormGroup;
   ngOnInit(): void {
     this.generateForms();
+
+    this.sharedService.getConsignmentMode().subscribe(data => {
+      this.Mode = Object.keys(data.result).map((key) => [Number(key), data.result[key]]);
+   });
 }
 // tslint:disable-next-line:typedef
   generateForms() {

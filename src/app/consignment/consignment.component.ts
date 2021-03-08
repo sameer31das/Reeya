@@ -8,6 +8,11 @@ import { ShareServices } from '../app.services';
 })
 export class ConsignmentComponent implements OnInit {
   state: any;
+  submitResponse: any;
+  newConsignment: any;
+  latitude: any;
+  longitude: any;
+
 
 
   constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
@@ -20,6 +25,13 @@ export class ConsignmentComponent implements OnInit {
        this.state = data.result;
 
     });
+    this.sharedService.getPosition().then(pos =>
+      { this.latitude = pos.lat;
+        this.longitude = pos.lng;
+
+        console.log(`Positon: ${pos.lng} ${pos.lat}`);
+      });
+
 
   }
   // tslint:disable-next-line:typedef
@@ -69,6 +81,62 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.consigneeemailadd.setValue(data.consigneeemailadd);
     this.generalForm.controls.consigneemobileno.setValue(data.consigneemobileno);
 
+
+    this.newConsignment = {
+      id: 0,
+      createdOn: '2021-03-06T17:53:12.949Z',
+      modifiedOn: '2021-03-06T17:53:12.949Z',
+      createdBy: 'chandresh.makwana@cargo-xpert.in',
+      modifiedBy: 'chandresh.makwana@cargo-xpert.in',
+      customerName: this.generalForm.controls.customername.value,
+      trackingId: '',
+      consigner: {
+        name: 'TKM Bidadi',
+        address: this.generalForm.controls.nameandadd.value,
+        pincode: this.generalForm.controls.pincode.value,
+        city: 'Bidadi',
+        email: this.generalForm.controls.emailadd.value,
+        phone: this.generalForm.controls.mobileno.value
+      },
+      consignee: {
+        name: 'TKM Pune',
+        address: this.generalForm.controls.consigneenameandadd.value,
+        pincode: this.generalForm.controls.consigneepincode.value,
+        city: 'Pune',
+        email: this.generalForm.controls.consigneeemailadd.value,
+        phone: this.generalForm.controls.consigneemobileno.value
+      },
+      status: {
+        latitude: this.latitude,
+        longitude: this.longitude,
+        status: 3,
+        reason: '',
+        ewayBillUrl: '69c3604241bb400abfd9ce5c1664bc4c.jpg',
+        carrier: 'KA50N2134'
+      },
+      schedule: {
+        pickupDate: this.generalForm.controls.pickup.value,
+        deliveryDate: this.generalForm.controls.delivery.value,
+        pickupOn: null,
+        deliveredOn: null,
+        mode: 4
+      },
+      billAmount: 0,
+      content: {
+        photoUrl: '1086bd2c7e854b1a85461a9f85431e4c.jpg',
+        invoiceUrl: '1086bd2c7e854b1a85461a9f85431e4c.jpg',
+        value: this.generalForm.controls.value.value,
+        itemsCount: 3,
+        declaredWeight: this.generalForm.controls.declaredweight.value,
+        actualWeight: 0,
+        declaredMaterial: this.generalForm.controls.declaredmaterial.value
+      }
+    };
+
+    this.sharedService.submitData(this.newConsignment).subscribe(submitData => {
+      this.submitResponse = submitData;
+    });
+
   }
   // tslint:disable-next-line:typedef
   Detail(data) {
@@ -92,6 +160,9 @@ export class ConsignmentComponent implements OnInit {
       this.tab = 1;
     }
   }
+
+
+
 
 }
 

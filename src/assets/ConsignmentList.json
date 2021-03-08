@@ -1,0 +1,30 @@
+{
+  "statusCode": 200,
+  "message": "",
+  "result": [
+    {
+      "id": 1,
+      "trackingId": "CXT002070321",
+      "pickupDate": "2021-03-09T17:53:12.95",
+      "deliveryDate": "2021-03-12T17:53:12.95",
+      "customerName": "Toyota Kirloskar Motors",
+      "fromCity": "Bidadi",
+      "toCity": "Pune",
+      "status": 3,
+      "photoUrl": "1086bd2c7e854b1a85461a9f85431e4c.jpg",
+      "ewayBillUrl": ""
+    },
+    {
+      "id": 2,
+      "trackingId": "CXT002070321",
+      "pickupDate": "2021-03-09T17:53:12.95",
+      "deliveryDate": "2021-03-12T17:53:12.95",
+      "customerName": "Maruti Suzuki",
+      "fromCity": "NewDelhi",
+      "toCity": "Pune",
+      "status": 3,
+      "photoUrl": "1086bd2c7e854b1a85461a9f85431e4c.jpg",
+      "ewayBillUrl": ""
+    }
+  ]
+}
