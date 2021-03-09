@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ICityDetail, IStateDetail } from '../app.model';
 import { ShareServices } from '../app.services';
 
 @Component({
@@ -7,7 +8,7 @@ import { ShareServices } from '../app.services';
   styleUrls: ['./consignment.component.css']
 })
 export class ConsignmentComponent implements OnInit {
-  state: any;
+  stateLists: IStateDetail[];
   submitResponse: any;
   newConsignment: any;
   latitude: any;
@@ -21,9 +22,7 @@ export class ConsignmentComponent implements OnInit {
   ngOnInit(): void {
     this.generateForms();
     this.sharedService.getState().subscribe(data => {
-
-       this.state = data.result;
-
+       this.stateLists = data.result;
     });
     this.sharedService.getPosition().then(pos =>
       { this.latitude = pos.lat;

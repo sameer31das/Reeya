@@ -10,7 +10,7 @@ export interface IState{
 
 }
 export interface IStateDetail{
-    Id: number;
+    id: number;
     name: string;
     type: string;
     code: number;
@@ -61,6 +61,13 @@ export interface IConsignmentListDetail{
     ewayBillUrl: string;
 }
 
-
+export class FileToUpload {
+    fileName: string = "";
+    fileSize: number = 0;
+    fileType: string = "";
+    lastModifiedTime: number = 0;
+    lastModifiedDate: Date = null;
+    fileAsBase64: string = "";
+}
 
 

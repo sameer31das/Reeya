@@ -2,9 +2,9 @@
     <div class="form-group row">
         <label for="inputstate" class="col-sm-2 col-form-label">State</label>
         <div class="col-sm-8">
-          <select id="inputstate" formControlName="consigneestate" (change)="stateChange($event)" class="form-control">
+          <select id="inputstate" formControlName="consigneestate" (change)="onStateChange($event)" class="form-control">
             <!-- <option selected>Choose...</option> -->
-            <option *ngFor="let state of state" [value]="state.Id" >{{ state.name }} </option>
+            <option *ngFor="let state of stateLists" [value]="state.id">{{ state.name }} </option>
           </select>
         </div>
     </div>
@@ -14,36 +14,36 @@
         <div class="col-sm-8">
           <select id="inputstate" formControlName="consigneecity" class="form-control">
             <!-- <option selected>Choose...</option> -->
-            <option *ngFor="let city of Cities" [value]="city" >{{ city }} </option>
+            <option *ngFor="let city of cities" [value]="city.name">{{ city.name }} </option>
           </select>
         </div>
     </div>
 
     
     <div class="form-group row">
-        <label for="inputcname" class="col-sm-2 col-form-label">Name and Address</label>
+        <label for="txtname" class="col-sm-2 col-form-label">Name and Address</label>
         <div class="col-sm-8">
-          <textarea type="email" class="form-control" formControlName="consigneenameandadd" id="inputcname" ></textarea>
+          <textarea type="email" class="form-control" formControlName="consigneenameandadd" id="txtname" ></textarea>
         </div>
     </div>
     
       
       <div class="form-group row">
-        <label for="inputcname" class="col-sm-2 col-form-label">Pin Code</label>
+        <label for="txtPincode" class="col-sm-2 col-form-label">Pin Code</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" formControlName="consigneepincode" id="inputcname" >
+          <input type="text" class="form-control" formControlName="consigneepincode" id="txtPincode" >
         </div>
       </div>
       <div class="form-group row">
-        <label for="inputcname" class="col-sm-2 col-form-label">Email Address</label>
+        <label for="txtEmail" class="col-sm-2 col-form-label">Email Address</label>
         <div class="col-sm-8">
-          <input type="email" class="form-control" formControlName="consigneeemailadd" id="inputcname" >
+          <input type="email" class="form-control" formControlName="consigneeemailadd" id="txtEmail" >
         </div>
       </div>
       <div class="form-group row">
-        <label for="inputcname" class="col-sm-2 col-form-label">Mobile Number</label>
+        <label for="txtMobile" class="col-sm-2 col-form-label">Mobile Number</label>
         <div class="col-sm-8">
-          <input type="email" class="form-control" formControlName="consigneemobileno" id="inputcname" >
+          <input type="number" class="form-control" formControlName="consigneemobileno" id="txtMobile" >
         </div>
       </div>
       

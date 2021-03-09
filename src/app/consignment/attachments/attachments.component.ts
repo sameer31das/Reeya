@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ShareServices } from '../../app.services';
 
 @Component({
   selector: 'app-attachments',
@@ -7,51 +8,51 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./attachments.component.scss']
 })
 export class AttachmentsComponent implements OnInit, OnDestroy {
-  fileData3: any;
-  fileData1: any;
-  fileData2: any;
-  label1 = 'No file chosen';
-  label2 = 'No file chosen';
-  label3 = 'No file chosen';
+  fileEway: any;
+  fileInvoice: any;
+  filePhoto: any;
+  lblPhoto = 'No file chosen';
+  lblInvoice = 'No file chosen';
+  lblEway = 'No file chosen';
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   @Output() Details: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
 
   generalForm: FormGroup;
   ngOnInit(): void {
     this.generateForms();
-}
-// tslint:disable-next-line:typedef
+  }
   generateForms() {
     const group = {
-      invoice:  [''],
-      photo:  [''],
+      invoice: [''],
+      photo: [''],
       bill: [''],
-
-
-
     };
     this.generalForm = this.fb.group(group);
-}
-// tslint:disable-next-line:typedef
-selectFile3(data) {
-  this.fileData3 = data.target.files[0];
-  this.label3 = this.fileData3.name;
-}
-// tslint:disable-next-line:typedef
-selectFile2(data) {
-  this.fileData2 = data.target.files[0];
-  this.label2 = this.fileData2.name;
-}
-// tslint:disable-next-line:typedef
-selectFile1(data) {
-  this.fileData1 = data.target.files[0];
-  this.label1 = this.fileData1.name;
-}
-// tslint:disable-next-line:typedef
-ngOnDestroy() {
-  this.Details.emit(this.generalForm.value);
-}
+  }
+  selectInvoice(file: FileList) {
+    this.fileInvoice = file["target"].files[0];
+    this.lblInvoice = this.fileInvoice["name"];
+    this.sharedService.uploadDocument(this.fileInvoice).subscribe(item => {
+    });
+  }
+
+  selectPhoto(file: FileList) {
+    this.filePhoto = file["target"].files[0];
+    this.lblPhoto = this.filePhoto["name"];
+    this.sharedService.uploadDocument(this.filePhoto).subscribe(item => {
+    });
+  }
+  selectEwayBill(file: FileList) {
+    this.fileEway = file["target"].files[0];
+    this.lblEway = this.fileEway["name"];
+    this.sharedService.uploadDocument(this.fileEway).subscribe(item => {
+    });
+  }
+
+  ngOnDestroy() {
+    this.Details.emit(this.generalForm.value);
+  }
 
 }

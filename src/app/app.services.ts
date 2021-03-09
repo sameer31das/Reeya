@@ -9,11 +9,12 @@ export class ShareServices {
     constructor(private http: HttpClient) { }
     private hostUrl = 'http://cargo-xpert.in';
     private stateUrl: string = this.hostUrl + '/webapi/Territory/States';
-    private cityUrl = '/assets/city.json';
+    private cityUrl =  this.hostUrl +'/webapi/territory/cities/all';
     private modeUrl: string = this.hostUrl + '/webapi/Consignment/Modes';
     private submitUrl: string = this.hostUrl + '/api/Consignment';
     private consignmentListUrl = '/assets/ConsignmentList.json';
     // private consignmentListUrl: string = this.hostUrl + '/webapi/Consignment/Modes';
+    private document_url: string = this.hostUrl + "/webapi/Consignment/Document"
 
     getState(): Observable<IState> {
         return this.http.get<IState>(this.stateUrl);
@@ -24,24 +25,28 @@ export class ShareServices {
     getConsignmentMode(): Observable<IMode> {
         return this.http.get<IMode>(this.modeUrl);
     }
-    submitData(item): Observable<any> {
+    submitData(item:any): Observable<any> {
         return this.http.post<any>(this.submitUrl, item);
     }
-    getConsignmentList(): Observable<IConsignmentList>{
+    getConsignmentList(): Observable<IConsignmentList> {
         return this.http.get<IConsignmentList>(this.consignmentListUrl);
     }
-    getPosition(): Promise<any>
-  {
-    return new Promise((resolve, reject) => {
-
-      navigator.geolocation.getCurrentPosition(resp => {
-
-          resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
-        },
-        err => {
-          reject(err);
-        });
-    });
-
-  }
+    uploadDocument(fileObject):Observable<any>{
+        const formData = new FormData();
+        formData.append('file', fileObject);
+        return this.http.post<any>(this.document_url,formData)
     }
+    getPosition(): Promise<any> {
+        return new Promise((resolve, reject) => {
+
+            navigator.geolocation.getCurrentPosition(resp => {
+
+                resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
+            },
+                err => {
+                    reject(err);
+                });
+        });
+
+    }
+}

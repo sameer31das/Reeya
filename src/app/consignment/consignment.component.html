@@ -41,7 +41,7 @@ h5.card-title {
     padding: 5px;
     background: #3b81b1;
 }
-    </style>
+ </style>
   </head>
 
   <body>
@@ -55,6 +55,7 @@ h5.card-title {
       </ul>
       <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#" style="font-size: 10px !important; color:#ccc; text-align: center;">Sign out</a>
     </nav>
+    
     <div class="container-fluid">
       <div class="row">
         
@@ -78,7 +79,7 @@ h5.card-title {
                
                     <label for="inputcname" class="col-sm-2 col-form-label" style="text-align: left;">Customer Name</label>
                     <div class="col-sm-8">
-                      <input type="text" class="form-control" formControlName="customername" id="inputcname" placeholder="Tata Motors">
+                      <input type="text" class="form-control" formControlName="customername" id="inputcname" placeholder="">
                     </div>
                   </div>
                   <ul class="nav nav-pills row "  style=" background: #ccc;
@@ -97,7 +98,7 @@ h5.card-title {
                   <div class="content " style="text-align: left; border: 1px solid #ccc; padding:10px; border-top: none; margin-top: -50px;">
                     <div class="tab-panel" id="tabPanel1" *ngIf="tab==1">
                       <app-consigner
-                      [state]="this.state"
+                      [stateLists]="this.stateLists"
                       (consignerDetails)="consignerDetails($event)"
                       ></app-consigner>
                     </div>
@@ -109,7 +110,7 @@ h5.card-title {
                     </div>
                     <div class="tab-panel" id="tabPanel3" *ngIf="tab==3">
                       <app-consignee
-                      [state]="this.state"
+                      [stateLists]="this.stateLists"
                       [tab]="this.tab"
                       (consigneeDetails)="consigneeDetails($event)"
                       ></app-consignee>

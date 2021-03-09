@@ -41,6 +41,11 @@ h5.card-title {
     padding: 5px;
     background: #3b81b1;
 }
+button.btn.btn-success {
+  letter-spacing: 0px;
+    text-transform: capitalize;
+}
+   
     </style>
   </head>
 
@@ -56,7 +61,15 @@ h5.card-title {
       </ul>
       <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#" style="font-size: 10px !important; color:#ccc; text-align: center;">Sign out</a>
     </nav>
-    <div class="container" style="width: 1200px; max-width: 0 auto;">
+    <nav class="navbar">
+      
+      <span style="font-size: 18px;
+      font-weight: bold;
+      color: #4d7aab;">Dashboard</span>
+      <span><button type="button" [routerLink]="['/consignment']" class="btn btn-success">Add New</button></span>
+      
+    </nav>
+    <div class="container-fluid" >
       <div class="row">
         <div class="col-md-3" *ngFor="let item of consignmentList" >
           <div class="card mb-4 shadow-sm">
@@ -95,9 +108,10 @@ h5.card-title {
                       Action
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="#">Track with Histroy</a>
+                      <a class="dropdown-item" href="#">View/Edit Eway Bill</a>
+                      <a class="dropdown-item" href="#">Reschedule Delivery</a>
+                      <a class="dropdown-item" href="#">Delivery</a>
                     </div>
                   </div>
       

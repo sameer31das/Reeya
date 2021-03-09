@@ -2,35 +2,35 @@
 <table class="attachments" [formGroup]="generalForm" >
     <tr>
     <td>
-        <label for="file-upload" class="custom-file-upload">
+        <label for="file-upload-Invoice" class="custom-file-upload">
             <i class="fa fa-cloud-upload"></i> Invoice
         </label>
-        <input id="file-upload" formControlName="invoice"  accept=".pdf" (change)="selectFile1($event)" type="file"/>
+        <input id="file-upload-Invoice" formControlName="invoice"   (change)="selectInvoice($event)" type="file"/>
         
     </td>
-    <td class="textInput1">{{this.label1}}</td>
+    <td class="textInput1">{{this.lblInvoice}}</td>
     </tr>
 
   
   <tr>
     <td>
-        <label for="file-upload" class="custom-file-upload">
+        <label for="file-upload-photo" class="custom-file-upload">
             <i class="fa fa-cloud-upload"></i> Photo
         </label>
-        <input id="file-upload" formControlName="photo"  accept=".jpeg" (change)="selectFile2($event)" type="file"/>
+        <input id="file-upload-photo" formControlName="photo"   (change)="selectPhoto($event)" type="file"/>
         
     </td>
-    <td class="textInput1">{{this.label2}}</td>
+    <td class="textInput1">{{this.lblPhoto}}</td>
   </tr>
   <tr>
     <td>
-        <label for="file-upload" class="custom-file-upload">
+        <label for="file-upload-eway" class="custom-file-upload">
             <i class="fa fa-cloud-upload"></i> E-way Bill
         </label>
-        <input id="file-upload" formControlName="bill"  accept=".jpeg" (change)="selectFile3($event)" type="file"/>
+        <input id="file-upload-eway" formControlName="bill"  (change)="selectEwayBill($event)" type="file"/>
         
     </td>
-    <td class="textInput1">{{this.label3}}</td>
+    <td class="textInput1">{{this.lblEway}}</td>
   </tr>
       
 
