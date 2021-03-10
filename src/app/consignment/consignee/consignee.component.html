@@ -1,8 +1,8 @@
 <form class="customername" [formGroup]="generalForm">
   <div class="form-group row">
-    <label for="inputstate" class="col-sm-2 col-form-label">State</label>
+    <label for="drpState" class="col-sm-2 col-form-label">State</label>
     <div class="col-sm-8">
-      <select id="inputstate" formControlName="consigneestate" (change)="onStateChange()" class="form-control">
+      <select id="drpState" formControlName="consigneestate" (change)="onStateChange()" class="form-control">
         <!-- <option selected>Choose...</option> -->
         <option *ngFor="let state of stateLists" [value]="state.id">{{ state.name }} </option>
       </select>
@@ -10,9 +10,9 @@
   </div>
 
   <div class="form-group row">
-    <label for="inputstate" class="col-sm-2 col-form-label">City</label>
+    <label for="drpCity" class="col-sm-2 col-form-label">City</label>
     <div class="col-sm-8">
-      <select id="inputstate" formControlName="consigneecity" class="form-control">
+      <select id="drpCity" formControlName="consigneecity" class="form-control">
         <!-- <option selected>Choose...</option> -->
         <option *ngFor="let city of cities" [value]="city.name">{{ city.name }} </option>
       </select>

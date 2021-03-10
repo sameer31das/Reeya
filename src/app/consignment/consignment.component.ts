@@ -1,3 +1,4 @@
+import { formatDate } from "@angular/common";
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ICityDetail, IStateDetail } from "../app.model";
@@ -15,7 +16,7 @@ export class ConsignmentComponent implements OnInit {
   longitude: any;
   date: Date = new Date();
 
-  constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
+  constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   tab = 1;
   generalForm: FormGroup;
   ngOnInit(): void {
@@ -88,8 +89,8 @@ export class ConsignmentComponent implements OnInit {
 
     this.newConsignment = {
       id: 0,
-      createdOn: this.date,
-      modifiedOn: "2021-03-06T17:53:12.949Z",
+      createdOn: formatDate(this.date, 'short','en-US'),
+      modifiedOn: formatDate(this.date, 'short','en-US'),
       createdBy: "chandresh.makwana@cargo-xpert.in",
       modifiedBy: "chandresh.makwana@cargo-xpert.in",
       customerName: this.generalForm.controls.customername.value,
@@ -115,31 +116,33 @@ export class ConsignmentComponent implements OnInit {
         longitude: this.longitude,
         status: 3,
         reason: "",
-        ewayBillUrl: this.generalForm.controls.bill.value,
+        ewayBillUrl: "de3002749a744bb98498d8bc07494485.jpg",
         carrier: this.generalForm.controls.vehicle.value,
       },
       schedule: {
-        pickupDate: this.generalForm.controls.pickup.value,
-        deliveryDate: this.generalForm.controls.delivery.value,
+        pickupDate:formatDate(this.generalForm.controls.pickup.value, 'short','en-US') ,
+        deliveryDate:formatDate(this.generalForm.controls.delivery.value, 'short','en-US'),
         pickupOn: null,
         deliveredOn: null,
         mode: 4,
       },
       billAmount: 0,
       content: {
-        photoUrl: this.generalForm.controls.photo.value,
-        invoiceUrl: this.generalForm.controls.invoice.value,
+        photoUrl: "de3002749a744bb98498d8bc07494485.jpg",
+        invoiceUrl: "de3002749a744bb98498d8bc07494485.jpg",
         value: this.generalForm.controls.value.value,
         itemsCount: 3,
         declaredWeight: this.generalForm.controls.declaredweight.value,
-        actualWeight: this.generalForm.controls.actualWeight.value,
+        actualWeight: this.generalForm.controls.actualWeight.value,//todo
         declaredMaterial: this.generalForm.controls.declaredmaterial.value,
       },
     };
 
+    console.log(this.newConsignment);
     this.sharedService
       .submitData(this.newConsignment)
       .subscribe((submitData) => {
+        console.log("submitData"+submitData);
         this.submitResponse = submitData;
       });
   }
@@ -149,7 +152,6 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.declaredmaterial.setValue(data.declaredmaterial);
     this.generalForm.controls.value.setValue(data.value);
     this.generalForm.controls.declaredweight.setValue(data.declaredweight);
-    this.generalForm.controls.actualWeight.setValue(data.actualWeight);
   }
   attachments(data) {
     this.generalForm.controls.bill.setValue(data.bill);

@@ -19,10 +19,11 @@
     <link href="/assets/dashboard/dashboard.css" rel="stylesheet">
     <style>
       label {
-  display: inline-block;
-  
-  text-align: left;
-  font-weight: bold;
+        display: inline-block;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 20px;
+    width: 35%;
 }​
 span{display: inline-block;}
 button#dropdownMenuButton {
@@ -30,7 +31,7 @@ button#dropdownMenuButton {
     text-transform: capitalize;
 }
 button#dropdownMenuButton {
-    float: right;
+    float: left;
     margin-bottom: 20px;
     background-color: #3b81b1;
 }
@@ -39,13 +40,37 @@ h5.card-title {
     /* border-left: 10px solid gray; */
     border: 1px solid #dacaca;
     padding: 5px;
-    background: #3b81b1;
+    background: #16a085;
 }
 button.btn.btn-success {
   letter-spacing: 0px;
     text-transform: capitalize;
 }
    
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0px !important;
+}
+.card_footer{
+  color: white;
+    border: 1px solid #dacaca;
+    padding: 5px 14px;
+    /* background: #43a592; */
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+.btnStyle{
+  letter-spacing: 0px;
+    padding: 5px;
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-right: 10px;
+    background: #16a085;
+    color: white;
+}
     </style>
   </head>
 
@@ -76,7 +101,7 @@ button.btn.btn-success {
          
             <div class="row g-0">
              
-              <div class="col-md-12">
+              <div class="col-md-12" style="margin-bottom: -8px;">
                 <div class="card-body">
                   <h5 class="card-title">{{item.customerName}}</h5>
                   <div>      
@@ -103,18 +128,19 @@ button.btn.btn-success {
                     <span>{{item.status}}</span>
                   </div> 
                     
-                  <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Action
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Track with Histroy</a>
-                      <a class="dropdown-item" href="#">View/Edit Eway Bill</a>
-                      <a class="dropdown-item" href="#">Reschedule Delivery</a>
-                      <a class="dropdown-item" href="#">Delivery</a>
-                    </div>
-                  </div>
-      
+                 
+                    <h5 _ngcontent-qda-c83="" class="card_footer"> 
+                      <button type="button" class="btn btn-elegant btnStyle" ><i class="icon-map-marker" style="margin-right: 5px;" aria-hidden="true"></i>Map</button>
+                      <button type="button" class="btn btn-elegant btnStyle"><i class="icon-image" style="margin-right: 5px;" aria-hidden="true"></i>Image</button>
+
+                      <button type="button" class="btn btn-elegant btnStyle" ><i class="icon-file-text-o" style="margin-right: 5px;" aria-hidden="true"></i>E-way Bill</button>
+
+                      <button type="button" class="btn btn-elegant btnStyle"><i class="icon-edit" style="margin-right: 5px;" aria-hidden="true"></i>Edit</button>
+                     
+                    
+                    
+                    </h5>
+                 
                 
                 </div>
               </div>

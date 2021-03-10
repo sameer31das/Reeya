@@ -22,7 +22,7 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
   lblInvoice = "No file chosen";
   lblEway = "No file chosen";
 
-  constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
+  constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   @Input() initialFormDetails: any;
   @Output() Attachments: EventEmitter<FormGroup> = new EventEmitter<
     FormGroup
@@ -43,24 +43,26 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
   selectInvoice(file: FileList) {
     this.fileInvoice = file["target"].files[0];
     this.lblInvoice = this.fileInvoice["name"];
-    //this.generalForm.controls.invoice.setValue(file);
-    this.sharedService.uploadDocument(this.fileInvoice).subscribe((item) => {});
-    this.generalForm.controls.invoice.setValue(this.lblInvoice);
+    this.sharedService.uploadDocument(this.fileInvoice).subscribe((invoice) => {
+      this.generalForm.controls.invoice.setValue(invoice.result);
+    });
   }
 
   selectPhoto(file: FileList) {
     this.filePhoto = file["target"].files[0];
     this.lblPhoto = this.filePhoto["name"];
-    this.sharedService.uploadDocument(this.filePhoto).subscribe((item) => {});
-    //this.generalForm.controls.invoice.setValue(this.lblPhoto);
+    this.sharedService.uploadDocument(this.filePhoto).subscribe((photoRes) => {
+      this.generalForm.controls.photo.setValue(photoRes.result);
+    });
+
   }
   selectEwayBill(file: FileList) {
     this.fileEway = file["target"].files[0];
     this.lblEway = this.fileEway["name"];
-    this.sharedService.uploadDocument(this.fileEway).subscribe((item) => {});
-    //this.generalForm.controls.invoice.setValue(this.lblEway);
+    this.sharedService.uploadDocument(this.fileEway).subscribe((eway) => {
+      this.generalForm.controls.bill.setValue(eway.result);
+    });
   }
-
   ngOnDestroy() {
     this.Attachments.emit(this.generalForm.value);
   }
