@@ -1,190 +1,196 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
+  <title>Dashboard Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/assets/dashboard/bootstrap.min.css" rel="stylesheet">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
-    <!-- Custom styles for this template -->
-    <link href="/assets/dashboard/dashboard.css" rel="stylesheet">
-    <style>
-      label {
-  display: inline-block;
-  
-  text-align: left;
-  font-weight: bold;
-}​
-span{display: inline-block;}
-button#dropdownMenuButton {
-    letter-spacing: 0px;
-    text-transform: capitalize;
-}
-button#dropdownMenuButton {
-    float: right;
-    margin-bottom: 20px;
-    background-color: #3b81b1;
-}
-h5.card-title {
-  color: white;
-    /* border-left: 10px solid gray; */
-    border: 1px solid #dacaca;
-    padding: 5px;
-    background: #3b81b1;
-}
- </style>
-  </head>
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/dashboard/bootstrap.min.css" rel="stylesheet">
 
-  <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      
-      
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#" style="color: white; font-size: 20px;">Reeya</a>
-        </li>
-      </ul>
-      <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#" style="font-size: 10px !important; color:#ccc; text-align: center;">Sign out</a>
-    </nav>
-    
-    <div class="container-fluid">
-      <div class="row">
-        
+  <!-- Custom styles for this template -->
+  <link href="/assets/dashboard/dashboard.css" rel="stylesheet">
+  <style>
+    label {
+      display: inline-block;
 
-        <main role="main" class="col-md-12 ">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Consignment</h1>
-            
-          
-          </div>
-          
+      text-align: left;
+      font-weight: bold;
+    }
 
-      
-            <div [formGroup]="generalForm">
-             
-              
-              <div>
-                
-                <div class="container tabs col-sm-7" style="margin: 0px; padding:0px;" >
-                  <div class="form-group row">
-               
-                    <label for="inputcname" class="col-sm-2 col-form-label" style="text-align: left;">Customer Name</label>
-                    <div class="col-sm-8">
-                      <input type="text" class="form-control" formControlName="customername" id="inputcname" placeholder="">
-                    </div>
-                  </div>
-                  <ul class="nav nav-pills row "  style=" background: #ccc;
-                  margin-left: 0px;
-                  width: 100%;" >
-                  <li class="nav-item col col-sm-2"  [ngClass]=" {'nav-link active': tab==1 }"  (click)=" tab = 1 " >
-                    <a   aria-current="page" >Consigner</a>
-                  </li>
-                  <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==2 }"  (click)=" tab = 2" >
-                    <a   aria-current="page" >Consignment</a>
-                  </li>
-                  <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==3 }"  (click)=" tab = 3" >
-                    <a  aria-current="page" >Consignee</a>
-                  </li>
-                  </ul>
-                  <div class="content " style="text-align: left; border: 1px solid #ccc; padding:10px; border-top: none; margin-top: -50px;">
-                    <div class="tab-panel" id="tabPanel1" *ngIf="tab==1">
-                      <app-consigner
-                      [stateLists]="this.stateLists"
-                      (consignerDetails)="consignerDetails($event)"
-                      ></app-consigner>
-                    </div>
-                    <div class="tab-panel" id="tabPanel2" *ngIf="tab==2">
-                      <app-consignmentdetail
-                      (Detail)="Detail($event)"
-                      (Schedules)="Schedules($event)"
-                      ></app-consignmentdetail>
-                    </div>
-                    <div class="tab-panel" id="tabPanel3" *ngIf="tab==3">
-                      <app-consignee
-                      [stateLists]="this.stateLists"
-                      [tab]="this.tab"
-                      (consigneeDetails)="consigneeDetails($event)"
-                      ></app-consignee>
-                    </div>
-                  </div>
-                  <div class="next form-group row" *ngIf="tab <=2" style="text-align: left;">
-                    <div class="col-sm-10">
-                      <button (click)="next()" class="btn btn-primary">Next</button>
-                      </div>
-                  </div>
+    ​ span {
+      display: inline-block;
+    }
+
+    button#dropdownMenuButton {
+      letter-spacing: 0px;
+      text-transform: capitalize;
+    }
+
+    button#dropdownMenuButton {
+      float: right;
+      margin-bottom: 20px;
+      background-color: #3b81b1;
+    }
+
+    h5.card-title {
+      color: white;
+      /* border-left: 10px solid gray; */
+      border: 1px solid #dacaca;
+      padding: 5px;
+      background: #3b81b1;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+
+
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#" style="color: white; font-size: 20px;">Reeya</a>
+      </li>
+    </ul>
+    <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#"
+      style="font-size: 10px !important; color:#ccc; text-align: center;">Sign out</a>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+
+
+      <main role="main" class="col-md-12 ">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">Consignment</h1>
+
+
+        </div>
+
+
+
+        <div [formGroup]="generalForm">
+
+
+          <div>
+
+            <div class="container tabs col-sm-7" style="margin: 0px; padding:0px;">
+              <div class="form-group row">
+
+                <label for="inputcname" class="col-sm-2 col-form-label" style="text-align: left;">Customer Name</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="customername" id="inputcname" placeholder="">
                 </div>
-               <div class="col-md-12 ">
-               
-               </div>
-              
-            
-              
               </div>
-              
-            
-               
-              
+              <ul class="nav nav-pills row " style=" background: #ccc;
+                  margin-left: 0px;
+                  width: 100%;">
+                <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==1 }" (click)=" tab = 1 ">
+                  <a aria-current="page">Consigner</a>
+                </li>
+                <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==2 }" (click)=" tab = 2">
+                  <a aria-current="page">Consignment</a>
+                </li>
+                <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==3 }" (click)=" tab = 3">
+                  <a aria-current="page">Consignee</a>
+                </li>
+              </ul>
+              <div class="content "
+                style="text-align: left; border: 1px solid #ccc; padding:10px; border-top: none; margin-top: -50px;">
+                <div class="tab-panel" id="tabPanel1" *ngIf="tab==1">
+                  <app-consigner [stateLists]="this.stateLists" (consignerDetails)="consignerDetails($event)">
+                  </app-consigner>
+                </div>
+                <div class="tab-panel" id="tabPanel2" *ngIf="tab==2">
+                  <app-consignmentdetail (Detail)="Detail($event)" (Schedules)="Schedules($event)"
+                    (Attachments)="attachments($event)"></app-consignmentdetail>
+                </div>
+                <div class="tab-panel" id="tabPanel3" *ngIf="tab==3">
+                  <app-consignee [stateLists]="this.stateLists" [tab]="this.tab"
+                    (consigneeDetails)="consigneeDetails($event)"></app-consignee>
+                </div>
+              </div>
+              <div class="next form-group row" *ngIf="tab <=2" style="text-align: left;">
+                <div class="col-sm-10">
+                  <button (click)="next()" class="btn btn-primary">Next</button>
+                </div>
+              </div>
             </div>
-        
-        </main>
+            <div class="col-md-12 ">
+
+            </div>
 
 
-      </div>
+
+          </div>
+
+
+
+
+        </div>
+
+      </main>
+
+
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="/assets/dashboard/popper.min.js"></script>
-    <script src="/assets/dashboard/bootstrap.min.js"></script>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="/assets/dashboard/popper.min.js"></script>
+  <script src="/assets/dashboard/bootstrap.min.js"></script>
 
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+  <script>
+    feather.replace()
+  </script>
 
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
+  <!-- Graphs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        datasets: [{
+          data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+          lineTension: 0,
+          backgroundColor: 'transparent',
+          borderColor: '#007bff',
+          borderWidth: 4,
+          pointBackgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: false
+            }
           }]
         },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
+        legend: {
+          display: false,
         }
-      });
-    </script>
-  </body>
+      }
+    });
+  </script>
+</body>
+
 </html>
