@@ -2,7 +2,7 @@
   <div class="form-group row">
     <label for="inputstate" class="col-sm-2 col-form-label">State</label>
     <div class="col-sm-8">
-      <select id="inputstate" formControlName="state" class="form-control"(change)="onStateChange($event)">
+      <select id="inputstate" formControlName="state" class="form-control" (change)="onStateChange()">
         <!-- <option selected>Choose...</option> -->
         <option *ngFor="let state of stateLists" [value]="state.id">{{ state.name }} </option>
       </select>

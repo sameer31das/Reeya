@@ -19,7 +19,7 @@ import { IEmployee, IStateDetail, ICity, ICityDetail } from "../../app.model";
 })
 export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
-
+  @Input() initialFormDetails: any;
   @Output() consignerDetails: EventEmitter<FormGroup> = new EventEmitter<
     FormGroup
   >();
@@ -33,13 +33,15 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   generalForm: FormGroup;
   ngOnInit(): void {
     this.generateForms();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
     this.sharedService.getCity().subscribe((item) => {
       this.cityAll = item.result;
+      this.onStateChange();
     });
   }
-  ngOnChanges(changes: SimpleChanges): void {}
   // tslint:disable-next-line:typedef
-  onStateChange(data) {
+  onStateChange() {
     this.stateId = this.generalForm.controls.state.value;
     this.cities = this.cityAll.filter(
       (d) => d.state["id"] === Number(this.stateId)
@@ -47,13 +49,16 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   }
   generateForms() {
     const group = {
-      state: [""],
-      city: [""],
-      nameandadd: [""],
-      pincode: [""],
-      emailadd: [""],
-      mobileno: [""],
+      state: [this.initialFormDetails.controls.state.value],
+      city: [this.initialFormDetails.controls.city.value],
+      nameandadd: [this.initialFormDetails.controls.nameandadd.value],
+      pincode: [this.initialFormDetails.controls.pincode.value],
+      emailadd: [this.initialFormDetails.controls.emailadd.value],
+      mobileno: [this.initialFormDetails.controls.mobileno.value],
     };
+    if (this.cityAll) {
+      this.onStateChange();
+    }
     this.generalForm = this.fb.group(group);
   }
   // tslint:disable-next-line:typedef

@@ -149,6 +149,7 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.declaredmaterial.setValue(data.declaredmaterial);
     this.generalForm.controls.value.setValue(data.value);
     this.generalForm.controls.declaredweight.setValue(data.declaredweight);
+    this.generalForm.controls.actualWeight.setValue(data.actualWeight);
   }
   attachments(data) {
     this.generalForm.controls.bill.setValue(data.bill);

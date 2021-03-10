@@ -105,15 +105,16 @@
               <div class="content "
                 style="text-align: left; border: 1px solid #ccc; padding:10px; border-top: none; margin-top: -50px;">
                 <div class="tab-panel" id="tabPanel1" *ngIf="tab==1">
-                  <app-consigner [stateLists]="this.stateLists" (consignerDetails)="consignerDetails($event)">
+                  <app-consigner [initialFormDetails]="this.generalForm" [stateLists]="this.stateLists"
+                    (consignerDetails)="consignerDetails($event)">
                   </app-consigner>
                 </div>
                 <div class="tab-panel" id="tabPanel2" *ngIf="tab==2">
-                  <app-consignmentdetail (Detail)="Detail($event)" (Schedules)="Schedules($event)"
-                    (Attachments)="attachments($event)"></app-consignmentdetail>
+                  <app-consignmentdetail [initialFormDetails]="this.generalForm" (Detail)="Detail($event)"
+                    (Schedules)="Schedules($event)" (Attachment)="attachments($event)"></app-consignmentdetail>
                 </div>
                 <div class="tab-panel" id="tabPanel3" *ngIf="tab==3">
-                  <app-consignee [stateLists]="this.stateLists" [tab]="this.tab"
+                  <app-consignee [initialFormDetails]="this.generalForm" [stateLists]="this.stateLists" [tab]="this.tab"
                     (consigneeDetails)="consigneeDetails($event)"></app-consignee>
                 </div>
               </div>

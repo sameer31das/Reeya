@@ -1,24 +1,22 @@
 <div class=comp2>
     <div class="heading1">
-        <section (click)="section===1?section=0:section=1" [ngClass]=" {'active-tab': section===1 }">Schedule</section>  
-        <div *ngIf="section==1">  
-            <app-schedule
-            (Schedule)=Schedule($event)
-            ></app-schedule>
-        </div>  
+        <section (click)="section===1?section=0:section=1" [ngClass]=" {'active-tab': section===1 }">Schedule</section>
+        <div *ngIf="section==1">
+            <app-schedule [initialFormDetail]="this.initialFormDetails" (Schedule)=Schedule($event)></app-schedule>
+        </div>
     </div>
     <div class="heading1">
-        <section (click)="section===2?section=0:section=2" [ngClass]=" {'active-tab': section===2 }">Details</section>  
-        <div *ngIf="section==2">  
-        <app-details 
-        (Details)=Details($event)
-        ></app-details>
-        </div>  
+        <section (click)="section===2?section=0:section=2" [ngClass]=" {'active-tab': section===2 }">Details</section>
+        <div *ngIf="section==2">
+            <app-details [initialFormDetail]="this.initialFormDetails" (Details)=Details($event)></app-details>
+        </div>
     </div>
     <div class="heading3">
-        <section (click)="section===3?section=0:section=3" [ngClass]=" {'active-tab': section===3 }">Attachments</section>  
-        <div *ngIf="section==3">  
-            <app-attachments></app-attachments>
-        </div>  
+        <section (click)="section===3?section=0:section=3" [ngClass]=" {'active-tab': section===3 }">Attachments
+        </section>
+        <div *ngIf="section==3">
+            <app-attachments [initialFormDetail]="this.initialFormDetails" (Attachments)=Attachments($event)>
+            </app-attachments>
+        </div>
     </div>
 </div>

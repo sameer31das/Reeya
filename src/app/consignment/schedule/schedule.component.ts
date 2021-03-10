@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
   ChangeDetectionStrategy,
+  Input,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ShareServices } from "../../app.services";
@@ -16,6 +17,7 @@ import { ShareServices } from "../../app.services";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScheduleComponent implements OnInit, OnDestroy {
+  @Input() initialFormDetail: any;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Output() Schedule: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
@@ -34,10 +36,10 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   generateForms() {
     const group = {
-      pickup: [""],
-      delivery: [""],
-      mode: [""],
-      vehicle: [""],
+      pickup: [this.initialFormDetail.controls.pickup.value],
+      delivery: [this.initialFormDetail.controls.delivery.value],
+      mode: [this.initialFormDetail.controls.mode.value],
+      vehicle: [this.initialFormDetail.controls.vehicle.value],
     };
     this.generalForm = this.fb.group(group);
   }

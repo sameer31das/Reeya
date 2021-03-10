@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  Input,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
@@ -14,6 +15,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class DetailsComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder) {}
+  @Input() initialFormDetail: any;
   @Output() Details: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   generalForm: FormGroup;
@@ -23,11 +25,13 @@ export class DetailsComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:typedef
   generateForms() {
     const group = {
-      totalprice: [""],
-      declaredmaterial: [""],
-      value: [""],
-      declaredweight: [""],
-      actualWeight: [""],
+      totalprice: [this.initialFormDetail.controls.totalprice.value],
+      declaredmaterial: [
+        this.initialFormDetail.controls.declaredmaterial.value,
+      ],
+      value: [this.initialFormDetail.controls.value.value],
+      declaredweight: [this.initialFormDetail.controls.declaredweight.value],
+      actualWeight: [this.initialFormDetail.controls.actualWeight.value],
     };
     this.generalForm = this.fb.group(group);
   }

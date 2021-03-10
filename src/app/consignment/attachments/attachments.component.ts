@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  Input,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ShareServices } from "../../app.services";
@@ -22,6 +23,7 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
   lblEway = "No file chosen";
 
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
+  @Input() initialFormDetails: any;
   @Output() Attachments: EventEmitter<FormGroup> = new EventEmitter<
     FormGroup
   >();
