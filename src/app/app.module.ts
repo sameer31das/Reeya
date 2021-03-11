@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./auth/token.interceptors";
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
+import {EditConsignmentComponent} from "./consignment/editconsignment/editconsignment.component"
 
 @NgModule({
   declarations: [
@@ -29,10 +30,9 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
     HomeComponent,
     ConsignmentComponent,
     ConsigneeComponent,
-
+    EditConsignmentComponent,
     ConsignerComponent,
     ConsignmentdetailComponent,
-
     AttachmentsComponent,
     ScheduleComponent,
     DetailsComponent,
