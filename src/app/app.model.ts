@@ -2,6 +2,36 @@ export interface IEmployee{
     id: number;
     name: string;
 }
+export interface IAssignEmployeeParams{
+    id: number;//consignmentId
+    assignedTo: string;//userPrincipalName
+}
+export interface IEmployees{
+    statusCode: number;
+    message?: string;
+    result:IEmployeeList
+}
+export interface IEmployeeList{
+    businessPhones?: string[];
+    displayName?: string;
+    givenName?: string;
+    jobTitle?: string;
+    mail?: string;
+    mobilePhone?: string;
+    officeLocation?: string;
+    preferredLanguage?: string;
+    surname?: string;
+    userPrincipalName?: string;
+    id?: string;
+}
+export interface IStatusParams{
+    latitude?: string;
+    longitude?: string;
+    status?: string;
+    reason?: string;
+    ewayBillUrl?: string;
+    carrier?: string;
+}
 
 export interface IState{
     code: number;

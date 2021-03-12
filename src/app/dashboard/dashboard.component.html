@@ -140,17 +140,17 @@
 
 
                 <h5 _ngcontent-qda-c83="" class="card_footer">
-                  <button type="button" class="btn btn-elegant btnStyle" data-toggle="modal"
-                    data-target="#exampleModalCenter"><i class="icon-map-marker" style="margin-right: 5px;"
+                  <button type="button" class="btn btn-elegant btnStyle"  mat-button (click)="openDialog()"
+                    ><i class="icon-map-marker" style="margin-right: 5px;"
                       aria-hidden="true"></i>Map</button>
-                  <button type="button" class="btn btn-elegant btnStyle"><i class="icon-image"
+                  <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
                       style="margin-right: 5px;" aria-hidden="true"></i>Image</button>
 
-                  <button type="button" class="btn btn-elegant btnStyle"><i class="icon-file-text-o"
-                      style="margin-right: 5px;" aria-hidden="true"></i>E-way Bill</button>
+                      <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
+                        style="margin-right: 5px;" aria-hidden="true"></i>E-way Bill</button>
 
-                  <button type="button" class="btn btn-elegant btnStyle"><i class="icon-edit" style="margin-right: 5px;"
-                      aria-hidden="true"></i>Edit</button>
+                        <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
+                          style="margin-right: 5px;" aria-hidden="true"></i>Edit</button>
 
 
 
@@ -186,11 +186,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-    <div class="col-md-6 ">
-    <app-editconsignment></app-editconsignment>
-    </div>
     </div>
   </div>
 

@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "http://cargo-xpert.in/webapi/",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  

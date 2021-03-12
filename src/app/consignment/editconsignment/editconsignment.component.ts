@@ -1,5 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, Input } from "@angular/core";
-import { FormGroup } from "@angular/forms";
+import { Component, EventEmitter, OnInit, Output, Input, Inject } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { IAssignEmployeeParams, IEmployees } from "src/app/app.model";
+import { ShareServices } from "../../app.services";
 
 @Component({
   selector: "app-editconsignment",
@@ -7,23 +10,38 @@ import { FormGroup } from "@angular/forms";
   styleUrls: ["./editconsignment.component.css"],
 })
 export class EditConsignmentComponent implements OnInit {
-  @Input() initialFormDetails: any;
-  @Output() Detail: EventEmitter<any> = new EventEmitter<any>();
-  @Output() Schedules: EventEmitter<any> = new EventEmitter<any>();
-  @Output() Attachment: EventEmitter<any> = new EventEmitter<any>();
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder,
+    private sharedService: ShareServices,
+    public dialogRef: MatDialogRef<EditConsignmentComponent>) { }
   section = 0;
-  // tslint:disable-next-line:typedef
-  ngOnInit() {}
-  // tslint:disable-next-line:typedef
-  Details(data) {
-    this.Detail.emit(data);
+  drpEmployee: any;
+  generalForm: FormGroup;
+  ngOnInit() {
+    this.generateForms();
+    this.sharedService.getEmployee().subscribe(data => {
+      this.drpEmployee = data.result;
+    });
   }
-  // tslint:disable-next-line:typedef
-  Schedule(data) {
-    this.Schedules.emit(data);
+  generateForms() {
+    const group = {
+      employeeList: [""],
+      photo: [""],
+      bill: [""],
+    };
+    this.generalForm = this.fb.group(group);
   }
-  Attachments(data) {
-    this.Attachment.emit(data);
+  onNoClick(): void {
+    this.dialogRef.close();
   }
+  assignEmployee(): void {
+    const empParam: IAssignEmployeeParams = {
+      id: 1,
+      assignedTo: ""
+    }
+    // this.sharedService.assignEmployee(empParam).subscribe(data => {
+    //   console.log("employee assign");
+    // });
+  }
+
+
 }

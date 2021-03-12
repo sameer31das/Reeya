@@ -11,6 +11,7 @@ import { LoginComponent } from "./login.component";
 import { HomeComponent } from "./home.component";
 import { ConsignmentComponent } from "./consignment/consignment.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { DialogPopupComponent } from "./dialogpopup/dialogpopup.component";
 import { ConsigneeComponent } from "./consignment/consignee/consignee.component";
 import { ConsignerComponent } from "./consignment/consigner/consigner.component";
 import { ConsignmentdetailComponent } from "./consignment/consignmentdetail/consignmentdetail.component";
@@ -22,7 +23,8 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./auth/token.interceptors";
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
 import {EditConsignmentComponent} from "./consignment/editconsignment/editconsignment.component"
-
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,7 @@ import {EditConsignmentComponent} from "./consignment/editconsignment/editconsig
     ScheduleComponent,
     DetailsComponent,
     DashboardComponent,
+    DialogPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import {EditConsignmentComponent} from "./consignment/editconsignment/editconsig
     FormsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    MatDialogModule
   ],
   providers: [
     ShareServices,
@@ -56,6 +60,7 @@ import {EditConsignmentComponent} from "./consignment/editconsignment/editconsig
       useClass: TokenInterceptor,
       multi: true,
     },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent],
 })
