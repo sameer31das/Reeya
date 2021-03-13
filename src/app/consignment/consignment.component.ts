@@ -16,7 +16,7 @@ export class ConsignmentComponent implements OnInit {
   longitude: any;
   date: Date = new Date();
 
-  constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
+  constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   tab = 1;
   generalForm: FormGroup;
   ngOnInit(): void {
@@ -37,13 +37,15 @@ export class ConsignmentComponent implements OnInit {
       customername: [""],
       state: [""],
       city: [""],
-      nameandadd: [""],
+      name: [""],
+      add: [""],
       pincode: [""],
       emailadd: [""],
       mobileno: [""],
       consigneestate: [""],
       consigneecity: [""],
-      consigneenameandadd: [""],
+      consigneename: [""],
+      consigneeadd: [""],
       consigneepincode: [""],
       consigneeemailadd: [""],
       consigneemobileno: [""],
@@ -66,7 +68,8 @@ export class ConsignmentComponent implements OnInit {
   consignerDetails(data) {
     this.generalForm.controls.state.setValue(data.state);
     this.generalForm.controls.city.setValue(data.city);
-    this.generalForm.controls.nameandadd.setValue(data.nameandadd);
+    this.generalForm.controls.name.setValue(data.name);
+    this.generalForm.controls.add.setValue(data.add);
     this.generalForm.controls.pincode.setValue(data.pincode);
     this.generalForm.controls.emailadd.setValue(data.emailadd);
     this.generalForm.controls.mobileno.setValue(data.mobileno);
@@ -75,9 +78,8 @@ export class ConsignmentComponent implements OnInit {
   consigneeDetails(data) {
     this.generalForm.controls.consigneestate.setValue(data.consigneestate);
     this.generalForm.controls.consigneecity.setValue(data.consigneecity);
-    this.generalForm.controls.consigneenameandadd.setValue(
-      data.consigneenameandadd
-    );
+    this.generalForm.controls.consigneename.setValue(data.consigneename);
+    this.generalForm.controls.consigneeadd.setValue(data.consigneeadd);
     this.generalForm.controls.consigneepincode.setValue(data.consigneepincode);
     this.generalForm.controls.consigneeemailadd.setValue(
       data.consigneeemailadd
@@ -89,23 +91,23 @@ export class ConsignmentComponent implements OnInit {
 
     this.newConsignment = {
       id: 0,
-      createdOn: formatDate(this.date, 'short','en-US'),
-      modifiedOn: formatDate(this.date, 'short','en-US'),
+      createdOn: formatDate(this.date, "short", "en-US"),
+      modifiedOn: formatDate(this.date, "short", "en-US"),
       createdBy: "chandresh.makwana@cargo-xpert.in",
       modifiedBy: "chandresh.makwana@cargo-xpert.in",
       customerName: this.generalForm.controls.customername.value,
       trackingId: "",
       consigner: {
-        name: "TKM Bidadi",
-        address: this.generalForm.controls.nameandadd.value,
+        name: this.generalForm.controls.name.value,
+        address: this.generalForm.controls.add.value,
         pincode: this.generalForm.controls.pincode.value,
         city: this.generalForm.controls.city.value,
         email: this.generalForm.controls.emailadd.value,
         phone: this.generalForm.controls.mobileno.value,
       },
       consignee: {
-        name: "TKM Pune",
-        address: this.generalForm.controls.consigneenameandadd.value,
+        name: this.generalForm.controls.consigneename.value,
+        address: this.generalForm.controls.consigneeadd.value,
         pincode: this.generalForm.controls.consigneepincode.value,
         city: this.generalForm.controls.consigneecity.value,
         email: this.generalForm.controls.consigneeemailadd.value,
@@ -120,8 +122,16 @@ export class ConsignmentComponent implements OnInit {
         carrier: this.generalForm.controls.vehicle.value,
       },
       schedule: {
-        pickupDate:formatDate(this.generalForm.controls.pickup.value, 'short','en-US') ,
-        deliveryDate:formatDate(this.generalForm.controls.delivery.value, 'short','en-US'),
+        pickupDate: formatDate(
+          this.generalForm.controls.pickup.value,
+          "short",
+          "en-US"
+        ),
+        deliveryDate: formatDate(
+          this.generalForm.controls.delivery.value,
+          "short",
+          "en-US"
+        ),
         pickupOn: null,
         deliveredOn: null,
         mode: 4,
@@ -133,7 +143,7 @@ export class ConsignmentComponent implements OnInit {
         value: this.generalForm.controls.value.value,
         itemsCount: 3,
         declaredWeight: this.generalForm.controls.declaredweight.value,
-        actualWeight: this.generalForm.controls.actualWeight.value,//todo
+        actualWeight: this.generalForm.controls.actualWeight.value, //todo
         declaredMaterial: this.generalForm.controls.declaredmaterial.value,
       },
     };
@@ -142,7 +152,7 @@ export class ConsignmentComponent implements OnInit {
     this.sharedService
       .submitData(this.newConsignment)
       .subscribe((submitData) => {
-        console.log("submitData"+submitData);
+        console.log("submitData" + submitData);
         this.submitResponse = submitData;
       });
   }

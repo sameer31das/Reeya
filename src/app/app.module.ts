@@ -22,9 +22,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./auth/token.interceptors";
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
-import {EditConsignmentComponent} from "./consignment/editconsignment/editconsignment.component"
-import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { EditConsignmentComponent } from "./consignment/editconsignment/editconsignment.component";
+import {
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from "@angular/material/dialog";
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
+import { AgmCoreModule } from "@agm/core";
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +43,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     ScheduleComponent,
     DetailsComponent,
     DashboardComponent,
-    DialogPopupComponent
+    DialogPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,10 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     FormsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    MatDialogModule
+    MatDialogModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCSIFuXPQXel1splGkx5ElXoU1bL60Jn-I",
+    }),
   ],
   providers: [
     ShareServices,
@@ -60,7 +67,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
       useClass: TokenInterceptor,
       multi: true,
     },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent],
 })

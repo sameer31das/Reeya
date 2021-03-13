@@ -1,7 +1,11 @@
 <h1 mat-dialog-title>{{data.id}}</h1>
 <div mat-dialog-content>
   <p>{{data.id}}</p>
-    <!-- <input matInput [(ngModel)]="data.animal"> -->
+  <!-- <input matInput [(ngModel)]="data.animal"> -->
+  <h1> Your current location is: </h1>
+  <agm-map [zoom]='19' [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
 </div>
 <div mat-dialog-actions>
   <button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>

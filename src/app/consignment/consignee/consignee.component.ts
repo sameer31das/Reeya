@@ -53,9 +53,8 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
     const group = {
       consigneestate: [this.initialFormDetails.controls.consigneestate.value],
       consigneecity: [this.initialFormDetails.controls.consigneecity.value],
-      consigneenameandadd: [
-        this.initialFormDetails.controls.consigneenameandadd.value,
-      ],
+      consigneename: [this.initialFormDetails.controls.consigneename.value],
+      consigneeadd: [this.initialFormDetails.controls.consigneeadd.value],
       consigneepincode: [
         this.initialFormDetails.controls.consigneepincode.value,
       ],

@@ -51,7 +51,8 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
     const group = {
       state: [this.initialFormDetails.controls.state.value],
       city: [this.initialFormDetails.controls.city.value],
-      nameandadd: [this.initialFormDetails.controls.nameandadd.value],
+      name: [this.initialFormDetails.controls.name.value],
+      add: [this.initialFormDetails.controls.add.value],
       pincode: [this.initialFormDetails.controls.pincode.value],
       emailadd: [this.initialFormDetails.controls.emailadd.value],
       mobileno: [this.initialFormDetails.controls.mobileno.value],
