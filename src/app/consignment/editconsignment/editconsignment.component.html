@@ -1,6 +1,8 @@
+
+        <h5>Edit Consignment</h5>
+
 <div class=comp2 [formGroup]="generalForm">
     <div class="heading1">
-        <h3>Edit Consignment</h3>
         <section (click)="section===1?section=0:section=1" [ngClass]=" {'active-tab': section===1 }">Update Status
         </section>
         <div *ngIf="section==1">
@@ -104,7 +106,9 @@
 
         </div>
     </div>
-    <div mat-dialog-actions>
-        <button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
-    </div>
+   
+</div>
+<div mat-dialog-actions>
+    <button type="button" class="btn btn-secondary" (click)="onNoClick()" style="letter-spacing: 0px;
+    text-transform: capitalize;">Close</button>
 </div>

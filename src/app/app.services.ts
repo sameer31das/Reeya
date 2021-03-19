@@ -15,13 +15,14 @@ import {
 @Injectable()
 export class ShareServices {
   constructor(private http: HttpClient) {}
-  private hostUrl = "http://cargo-xpert.in";
+  private hostUrl = "https://cargo-xpert.com";
+  //private hostUrl = "http://localhost:5000";
   private stateUrl: string = this.hostUrl + "/webapi/Territory/States";
   private cityUrl = this.hostUrl + "/webapi/territory/cities/all";
   private modeUrl: string = this.hostUrl + "/webapi/Consignment/Modes";
   private submitUrl: string = this.hostUrl + "/api/Consignment";
-  private consignmentListUrl = "/assets/ConsignmentList.json";
-  // private consignmentListUrl: string = this.hostUrl + '/webapi/Consignment/Modes';
+  //private consignmentListUrl = "/assets/ConsignmentList.json";
+  private consignmentListUrl: string = this.hostUrl + '/webapi/Consignment/Modes';
   private document_url: string = this.hostUrl + "/webapi/Consignment/Document";
   private track_url: string = this.hostUrl + "/webapi/Consignment/";
   private employeeList_url: string =
