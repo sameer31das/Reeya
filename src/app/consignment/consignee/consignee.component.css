@@ -1,3 +1,8 @@
-.next{
+.next {
     padding-top: 51px;
+}
+
+.error {
+    font-size: smaller;
+    color: red;
 }

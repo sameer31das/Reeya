@@ -7,7 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EventEmitter } from "@angular/core";
 import { ShareServices } from "src/app/app.services";
 import { IEmployee, IStateDetail, ICity, ICityDetail } from "../../app.model";
@@ -18,6 +18,9 @@ import { IEmployee, IStateDetail, ICity, ICityDetail } from "../../app.model";
   styleUrls: ["./consigner.component.scss"],
 })
 export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
+  emailError: boolean;
+  pincodeError: boolean;
+  noError: boolean;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Input() initialFormDetails: any;
   @Output() consignerDetails: EventEmitter<FormGroup> = new EventEmitter<
@@ -53,14 +56,44 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
       city: [this.initialFormDetails.controls.city.value],
       name: [this.initialFormDetails.controls.name.value],
       add: [this.initialFormDetails.controls.add.value],
-      pincode: [this.initialFormDetails.controls.pincode.value],
-      emailadd: [this.initialFormDetails.controls.emailadd.value],
-      mobileno: [this.initialFormDetails.controls.mobileno.value],
+      pincode: [
+        this.initialFormDetails.controls.pincode.value,
+        Validators.pattern("[0-9 ]*"),
+      ],
+      emailadd: [
+        this.initialFormDetails.controls.emailadd.value,
+        Validators.email,
+      ],
+      mobileno: [
+        this.initialFormDetails.controls.mobileno.value,
+        Validators.pattern("[0-9 ]*"),
+      ],
     };
     if (this.cityAll) {
       this.onStateChange();
     }
     this.generalForm = this.fb.group(group);
+  }
+  checkEmail() {
+    if (this.generalForm.controls.emailadd.valid) {
+      this.emailError = false;
+    } else {
+      this.emailError = true;
+    }
+  }
+  checkPincode() {
+    if (this.generalForm.controls.pincode.valid) {
+      this.pincodeError = false;
+    } else {
+      this.pincodeError = true;
+    }
+  }
+  checkNo() {
+    if (this.generalForm.controls.mobileno.valid) {
+      this.noError = false;
+    } else {
+      this.noError = true;
+    }
   }
   // tslint:disable-next-line:typedef
   ngOnDestroy() {

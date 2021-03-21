@@ -7,7 +7,12 @@ import {
   SimpleChanges,
   OnDestroy,
 } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 import { EventEmitter } from "@angular/core";
 import { ICityDetail, IStateDetail } from "../../app.model";
 import { ShareServices } from "../../app.services";
@@ -18,6 +23,9 @@ import { ShareServices } from "../../app.services";
   styleUrls: ["./consignee.component.scss"],
 })
 export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
+  emailError: boolean;
+  pincodeError: boolean;
+  noError: boolean;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Input() initialFormDetails: any;
   @Output() consigneeDetails: EventEmitter<FormGroup> = new EventEmitter<
@@ -51,18 +59,31 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
   // tslint:disable-next-line:typedef
   generateForms() {
     const group = {
-      consigneestate: [this.initialFormDetails.controls.consigneestate.value],
+      consigneestate: [
+        this.initialFormDetails.controls.consigneestate.value,
+        Validators.required,
+      ],
       consigneecity: [this.initialFormDetails.controls.consigneecity.value],
-      consigneename: [this.initialFormDetails.controls.consigneename.value],
-      consigneeadd: [this.initialFormDetails.controls.consigneeadd.value],
+      consigneename: [
+        this.initialFormDetails.controls.consigneename.value,
+        Validators.required,
+      ],
+      consigneeadd: [
+        this.initialFormDetails.controls.consigneeadd.value,
+        Validators.required,
+      ],
       consigneepincode: [
         this.initialFormDetails.controls.consigneepincode.value,
+        Validators.pattern("[0-9 ]*"),
       ],
       consigneeemailadd: [
         this.initialFormDetails.controls.consigneeemailadd.value,
+        Validators.email,
       ],
+
       consigneemobileno: [
         this.initialFormDetails.controls.consigneemobileno.value,
+        Validators.pattern("[0-9 ]*"),
       ],
     };
     if (this.cityAll) {
@@ -73,6 +94,27 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
   // tslint:disable-next-line:typedef
   submit() {
     this.consigneeDetails.emit(this.generalForm.value);
+  }
+  checkEmail() {
+    if (this.generalForm.controls.consigneeemailadd.valid) {
+      this.emailError = false;
+    } else {
+      this.emailError = true;
+    }
+  }
+  checkPincode() {
+    if (this.generalForm.controls.consigneepincode.valid) {
+      this.pincodeError = false;
+    } else {
+      this.pincodeError = true;
+    }
+  }
+  checkNo() {
+    if (this.generalForm.controls.consigneemobileno.valid) {
+      this.noError = false;
+    } else {
+      this.noError = true;
+    }
   }
   ngOnDestroy(): void {
     this.consigneeDetails.emit(this.generalForm.value);

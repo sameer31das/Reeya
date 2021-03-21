@@ -4,3 +4,8 @@
     margin-left: 20px;
     margin-right: 20px;
 }
+
+.error {
+    font-size: smaller;
+    color: red;
+}

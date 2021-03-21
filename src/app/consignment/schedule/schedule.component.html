@@ -4,7 +4,7 @@
     <label for="datePickUp" class="col-sm-2 col-form-label">Pick Up:</label>
     <div class="col-sm-8">
       <input placeholder="Date Time:" class="form-control" formControlName="pickup" [owlDateTime]="dt"
-        [owlDateTimeTrigger]="dt" id="datePickUp"> <i class="fa fa-envelope icon"></i>
+        [owlDateTimeTrigger]="dt" id="datePickUp" (blur)="checkDate()"> <i class="fa fa-envelope icon"></i>
       <owl-date-time #dt></owl-date-time>
     </div>
   </div>
@@ -12,8 +12,9 @@
     <label for="dateDelivery" class="col-sm-2 col-form-label">Delivery:</label>
     <div class="col-sm-8">
       <input placeholder="Date Time:" class="form-control" formControlName="delivery" [owlDateTime]="dt1"
-        [owlDateTimeTrigger]="dt1" id="dateDelivery">
+        [owlDateTimeTrigger]="dt1" id="dateDelivery" (blur)="checkDate()">
       <owl-date-time #dt1></owl-date-time>
+      <div class="error" *ngIf="dateError">Delivery date must be after pick-up date </div>
     </div>
   </div>
 

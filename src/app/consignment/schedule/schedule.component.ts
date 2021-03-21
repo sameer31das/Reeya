@@ -18,6 +18,7 @@ import { ShareServices } from "../../app.services";
 })
 export class ScheduleComponent implements OnInit, OnDestroy {
   @Input() initialFormDetail: any;
+  dateError: boolean;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Output() Schedule: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
@@ -42,6 +43,16 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       vehicle: [this.initialFormDetail.controls.vehicle.value],
     };
     this.generalForm = this.fb.group(group);
+  }
+  checkDate() {
+    if (
+      this.generalForm.controls.pickup.value >
+      this.generalForm.controls.delivery.value
+    ) {
+      this.dateError = true;
+    } else {
+      this.dateError = false;
+    }
   }
   // tslint:disable-next-line:typedef
   ngOnDestroy() {
