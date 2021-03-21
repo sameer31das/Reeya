@@ -22,7 +22,7 @@ export class ShareServices {
   private modeUrl: string = this.hostUrl + "/webapi/Consignment/Modes";
   private submitUrl: string = this.hostUrl + "/api/Consignment";
   //private consignmentListUrl = "/assets/ConsignmentList.json";
-  private consignmentListUrl: string = this.hostUrl + '/webapi/Consignment/Modes';
+  private consignmentListUrl: string = this.hostUrl + '/webapi/Consignment';
   private document_url: string = this.hostUrl + "/webapi/Consignment/Document";
   private track_url: string = this.hostUrl + "/webapi/Consignment/";
   private employeeList_url: string =

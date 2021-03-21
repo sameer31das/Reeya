@@ -7,6 +7,7 @@ import {
   Input,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Subscription } from "rxjs";
 import { ShareServices } from "../../app.services";
 
 @Component({
@@ -24,6 +25,9 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   @Input() initialFormDetails: any;
+  photoSubscription:Subscription;
+  eWaySubscription:Subscription;
+  invoiceSubscription:Subscription;
   @Output() Attachments: EventEmitter<FormGroup> = new EventEmitter<
     FormGroup
   >();
@@ -43,7 +47,7 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
   selectInvoice(file: FileList) {
     this.fileInvoice = file["target"].files[0];
     this.lblInvoice = this.fileInvoice["name"];
-    this.sharedService.uploadDocument(this.fileInvoice).subscribe((invoice) => {
+   this.invoiceSubscription= this.sharedService.uploadDocument(this.fileInvoice).subscribe((invoice) => {
       this.generalForm.controls.invoice.setValue(invoice.result);
     });
   }
@@ -51,7 +55,7 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
   selectPhoto(file: FileList) {
     this.filePhoto = file["target"].files[0];
     this.lblPhoto = this.filePhoto["name"];
-    this.sharedService.uploadDocument(this.filePhoto).subscribe((photoRes) => {
+    this.photoSubscription=this.sharedService.uploadDocument(this.filePhoto).subscribe((photoRes) => {
       this.generalForm.controls.photo.setValue(photoRes.result);
     });
 
@@ -59,11 +63,20 @@ export class AttachmentsComponent implements OnInit, OnDestroy {
   selectEwayBill(file: FileList) {
     this.fileEway = file["target"].files[0];
     this.lblEway = this.fileEway["name"];
-    this.sharedService.uploadDocument(this.fileEway).subscribe((eway) => {
+    this.eWaySubscription=this.sharedService.uploadDocument(this.fileEway).subscribe((eway) => {
       this.generalForm.controls.bill.setValue(eway.result);
     });
   }
   ngOnDestroy() {
     this.Attachments.emit(this.generalForm.value);
+    if(this.invoiceSubscription){
+      this.invoiceSubscription.unsubscribe();
+    }
+    if(this.photoSubscription){
+      this.photoSubscription.unsubscribe();
+    }
+    if(this.eWaySubscription){
+      this.eWaySubscription.unsubscribe();
+    }
   }
 }
