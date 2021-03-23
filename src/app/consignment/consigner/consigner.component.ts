@@ -46,7 +46,7 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   // tslint:disable-next-line:typedef
   onStateChange() {
     this.stateId = this.generalForm.controls.state.value;
-    this.cities = this.cityAll.filter(
+    this.cities = this.cityAll?.filter(
       (d) => d.state["id"] === Number(this.stateId)
     );
   }

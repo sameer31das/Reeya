@@ -113,7 +113,7 @@
 
             <div class="col-md-12" style="margin-bottom: -8px;">
               <div class="card-body">
-                <h5 class="card-title">{{item.customerName}}</h5>
+                <h5 class="card-title">{{item.customerName}}-{{item.trackingId}}</h5>
                 <div>
                   <label>PickUp On:</label>
                   <span> {{item.pickupDate}}</span>
@@ -144,7 +144,7 @@
                     ><i class="icon-map-marker" style="margin-right: 5px;"
                       aria-hidden="true"></i>Map</button>
                   <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
-                      style="margin-right: 5px;" aria-hidden="true"></i>Image</button>
+                      style="margin-right: 5px;" aria-hidden="true"></i>photo</button>
 
                       <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
                         style="margin-right: 5px;" aria-hidden="true"></i>E-way Bill</button>

@@ -16,7 +16,7 @@
             <label for="file-upload-photo" class="custom-file-upload">
                 <i class="fa fa-cloud-upload"></i> Photo
             </label>
-            <input id="file-upload-photo" formControlName="photo" (change)="selectPhoto($event)" type="file" />
+            <input id="file-upload-photo"  (change)="selectPhoto($event)" type="file" />
 
         </td>
         <td class="textInput1">{{this.lblPhoto}}</td>
@@ -26,7 +26,7 @@
             <label for="file-upload-eway" class="custom-file-upload">
                 <i class="fa fa-cloud-upload"></i> E-way Bill
             </label>
-            <input id="file-upload-eway" formControlName="bill" (change)="selectEwayBill($event)" type="file" />
+            <input id="file-upload-eway" (change)="selectEwayBill($event)" type="file" />
 
         </td>
         <td class="textInput1">{{this.lblEway}}</td>

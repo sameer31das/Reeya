@@ -87,12 +87,11 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.consigneemobileno.setValue(
       data.consigneemobileno
     );
-    this.generalForm.controls.actualWeight.setValue(data.actualWeight);
 
     this.newConsignment = {
       id: 0,
-      createdOn: formatDate(this.date, "short", "en-US"),
-      modifiedOn: formatDate(this.date, "short", "en-US"),
+      createdOn: new Date(this.date).toISOString(),
+      modifiedOn: new Date(this.date).toISOString(),
       createdBy: "chandresh.makwana@cargo-xpert.in",
       modifiedBy: "chandresh.makwana@cargo-xpert.in",
       customerName: this.generalForm.controls.customername.value,
@@ -118,32 +117,24 @@ export class ConsignmentComponent implements OnInit {
         longitude: this.longitude,
         status: 3,
         reason: "",
-        ewayBillUrl: "de3002749a744bb98498d8bc07494485.jpg",
+        ewayBillUrl: this.generalForm.controls.bill.value,
         carrier: this.generalForm.controls.vehicle.value,
       },
       schedule: {
-        pickupDate: formatDate(
-          this.generalForm.controls.pickup.value,
-          "short",
-          "en-US"
-        ),
-        deliveryDate: formatDate(
-          this.generalForm.controls.delivery.value,
-          "short",
-          "en-US"
-        ),
-        pickupOn: null,
+        pickupDate: new Date(this.generalForm.controls.pickup.value).toISOString(),
+        deliveryDate: new Date(this.generalForm.controls.delivery.value).toISOString(),
+        pickupOn: new Date(this.generalForm.controls.pickup.value).toISOString(),
         deliveredOn: null,
         mode: 4,
       },
       billAmount: 0,
       content: {
-        photoUrl: "de3002749a744bb98498d8bc07494485.jpg",
-        invoiceUrl: "de3002749a744bb98498d8bc07494485.jpg",
+        photoUrl: this.generalForm.controls.photo.value,
+        invoiceUrl: this.generalForm.controls.invoice.value,
         value: this.generalForm.controls.value.value,
         itemsCount: 3,
         declaredWeight: this.generalForm.controls.declaredweight.value,
-        actualWeight: this.generalForm.controls.actualWeight.value, //todo
+        actualWeight: this.generalForm.controls.actualWeight.value, 
         declaredMaterial: this.generalForm.controls.declaredmaterial.value,
       },
     };
@@ -156,26 +147,24 @@ export class ConsignmentComponent implements OnInit {
         this.submitResponse = submitData;
       });
   }
-  // tslint:disable-next-line:typedef
   Detail(data) {
     this.generalForm.controls.totalprice.setValue(data.totalprice);
     this.generalForm.controls.declaredmaterial.setValue(data.declaredmaterial);
     this.generalForm.controls.value.setValue(data.value);
     this.generalForm.controls.declaredweight.setValue(data.declaredweight);
+    this.generalForm.controls.actualWeight.setValue(data.actualWeight);
   }
   attachments(data) {
     this.generalForm.controls.bill.setValue(data.bill);
     this.generalForm.controls.invoice.setValue(data.invoice);
     this.generalForm.controls.photo.setValue(data.photo);
   }
-  // tslint:disable-next-line:typedef
   Schedules(data) {
     this.generalForm.controls.pickup.setValue(data.pickup);
     this.generalForm.controls.delivery.setValue(data.delivery);
     this.generalForm.controls.mode.setValue(data.mode);
     this.generalForm.controls.vehicle.setValue(data.vehicle);
   }
-  // tslint:disable-next-line:typedef
   next() {
     if (this.tab < 3) {
       this.tab = this.tab + 1;
