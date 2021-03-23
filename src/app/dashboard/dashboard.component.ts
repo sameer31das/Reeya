@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit {
       width: "50%",
       height: "70%",
       data: { id: id },
+      disableClose:true,
+      hasBackdrop:true
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -33,6 +35,8 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(EditConsignmentComponent, {
       width: "80%",
       data: { id: id },
+      disableClose:true,
+      hasBackdrop:true
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);

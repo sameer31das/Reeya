@@ -5,25 +5,28 @@ import {
   Output,
   Input,
   Inject,
+  OnDestroy,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { IAssignEmployeeParams, IEmployees } from "src/app/app.model";
 import { ShareServices } from "../../app.services";
 import { formatDate } from "@angular/common";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-editconsignment",
   templateUrl: "./editconsignment.component.html",
   styleUrls: ["./editconsignment.component.css"],
 })
-export class EditConsignmentComponent implements OnInit {
+export class EditConsignmentComponent implements OnInit, OnDestroy {
   fileEway: any;
   lblEway: any;
   lng: any;
   lat: any;
   updateStatusResponse: any;
   rescheduleStatusResponse: any;
+  eWaySubscription:Subscription;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
@@ -94,11 +97,7 @@ export class EditConsignmentComponent implements OnInit {
       };
     }
 
-    this.rescheduleData.deliveryDate = formatDate(
-      this.generalForm.controls.txtRescheduledDate.value,
-      "short",
-      "en-US"
-    );
+    this.rescheduleData.deliveryDate =new Date(this.generalForm.controls.txtRescheduledDate.value).toISOString();
 
     this.sharedService
       .rescheduledDate(1, this.rescheduleData)
@@ -125,5 +124,10 @@ export class EditConsignmentComponent implements OnInit {
     this.sharedService.assignEmployee(empParam).subscribe((data) => {
       console.log("employee assign");
     });
+  }
+  ngOnDestroy() {
+    if(this.eWaySubscription){
+      this.eWaySubscription.unsubscribe();
+    }
   }
 }

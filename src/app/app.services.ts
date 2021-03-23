@@ -72,19 +72,19 @@ export class ShareServices {
     const formData = new FormData();
     formData.append("file", fileObject);
     return this.http.post<any>(
-      this.hostUrl + "/webapi/Consignment/" + id + "Document",
+      this.hostUrl + "/webapi/Consignment/" + id + "/Document",
       formData
     );
   }
   updateStatus(id: number, payloadStatus: IStatusParams): Observable<any> {
     return this.http.post<any>(
-      this.hostUrl + "/webapi/Consignment/" + id + "Status",
+      this.hostUrl + "/webapi/Consignment/" + id + "/Status",
       payloadStatus
     );
   }
   rescheduledDate(id: number, payloadReschedule: any) {
     return this.http.patch<any>(
-      this.hostUrl + "/webapi/Consignment/" + id + "Reschedule",
+      this.hostUrl + "/webapi/Consignment/" + id + "/Reschedule",
       payloadReschedule
     );
   }
