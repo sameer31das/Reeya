@@ -65,5 +65,80 @@ button.btn.btn-primary {
 -moz-border-radius: 0  !important;
 border-radius: 0 !important;
   }
+  label {
+    display: inline-block;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 20px;
+    width: 35%;
+  }
+
+  ​ span {
+    display: inline-block;
+  }
+
+  button#dropdownMenuButton {
+    letter-spacing: 0px;
+    text-transform: capitalize;
+  }
+
+  button#dropdownMenuButton {
+    float: left;
+    margin-bottom: 20px;
+    background-color: #3b81b1;
+  }
+
+  h5.card-title {
+    color: white;
+    /* border-left: 10px solid gray; */
+    border: 1px solid #dacaca;
+    padding: 5px;
+    background: #16a085;
+  }
+
+  button.btn.btn-success {
+    letter-spacing: 0px;
+    text-transform: capitalize;
+  }
+
+  .card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0px !important;
+  }
+
+  .card_footer {
+    color: white;
+    border: 1px solid #dacaca;
+    padding: 5px 14px;
+    /* background: #43a592; */
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .btnStyle {
+    letter-spacing: 0px;
+    padding: 5px;
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-right: 8px;
+    background: #16a085;
+    color: white;
+  }
+  .logoPadding{padding: 5px}
+  .signoutAlign{font-size: 10px !important; color:#ccc; text-align: center;}
+  .addNewBtn{font-size: 18px;
+    font-weight: bold;
+    color: #4d7aab;}
+    
+    .cardTitle{text-align: center;font-weight:normal; font-size:18px;
+      background: #16a085;
+      padding: 5px;
+      font-weight: 500;
+      color: white;
+    }
+    .btnaddMargin{margin-right: 5px;}
 
 

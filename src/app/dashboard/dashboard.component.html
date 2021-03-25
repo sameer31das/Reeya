@@ -18,68 +18,8 @@
   <!-- Custom styles for this template -->
   <link href="/assets/dashboard/dashboard.css" rel="stylesheet">
   <style>
-    label {
-      display: inline-block;
-      text-align: left;
-      font-weight: bold;
-      margin-left: 20px;
-      width: 35%;
-    }
+body{margin-top:20px;}
 
-    ​ span {
-      display: inline-block;
-    }
-
-    button#dropdownMenuButton {
-      letter-spacing: 0px;
-      text-transform: capitalize;
-    }
-
-    button#dropdownMenuButton {
-      float: left;
-      margin-bottom: 20px;
-      background-color: #3b81b1;
-    }
-
-    h5.card-title {
-      color: white;
-      /* border-left: 10px solid gray; */
-      border: 1px solid #dacaca;
-      padding: 5px;
-      background: #16a085;
-    }
-
-    button.btn.btn-success {
-      letter-spacing: 0px;
-      text-transform: capitalize;
-    }
-
-    .card-body {
-      -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-      padding: 0px !important;
-    }
-
-    .card_footer {
-      color: white;
-      border: 1px solid #dacaca;
-      padding: 5px 14px;
-      /* background: #43a592; */
-      border-bottom: none;
-      border-left: none;
-      border-right: none;
-    }
-
-    .btnStyle {
-      letter-spacing: 0px;
-      padding: 5px;
-      font-size: 12px;
-      text-transform: capitalize;
-      margin-right: 8px;
-      background: #16a085;
-      color: white;
-    }
   </style>
 </head>
 
@@ -87,20 +27,19 @@
 
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
 
-
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" style="color: white; font-size: 20px;">Reeya</a>
-      </li>
-    </ul>
+ 
+    <div class="col-11 col-xl-2 site-logo" class="logoPadding"> 
+      <div class="logo">
+        <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+        </div>
+    </div>
+    
     <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#"
-      style="font-size: 10px !important; color:#ccc; text-align: center;">Sign out</a>
+      class="signoutAlign">Sign out</a>
   </nav>
   <nav class="navbar">
 
-    <span style="font-size: 18px;
-      font-weight: bold;
-      color: #4d7aab;">Dashboard</span>
+    <span class="addNewBtn">Dashboard</span>
     <span><button type="button" [routerLink]="['/consignment']" class="btn btn-success">Add New</button></span>
 
   </nav>
@@ -113,7 +52,7 @@
 
             <div class="col-md-12" style="margin-bottom: -8px;">
               <div class="card-body">
-                <h5 class="card-title">{{item.customerName}}-{{item.trackingId}}</h5>
+                <h5 class="card-title" class="cardTitle">{{item.customerName}} - {{item.trackingId}}</h5>
                 <div>
                   <label>PickUp On:</label>
                   <span> {{item.pickupDate}}</span>
@@ -141,16 +80,19 @@
 
                 <h5 _ngcontent-qda-c83="" class="card_footer">
                   <button type="button" class="btn btn-elegant btnStyle"  mat-button (click)="openDialog()"
-                    ><i class="icon-map-marker" style="margin-right: 5px;"
+                    ><i class="icon-map-marker" class="btnaddMargin"
                       aria-hidden="true"></i>Map</button>
-                  <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
-                      style="margin-right: 5px;" aria-hidden="true"></i>photo</button>
+                  <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)">
+                    <i class="icon-image btnaddMargin"
+                       aria-hidden="true"></i>photo</button>
 
-                      <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
-                        style="margin-right: 5px;" aria-hidden="true"></i>E-way Bill</button>
+                      <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)">
+                        <i class="icon-image btnaddMargin"
+                         aria-hidden="true"></i>E-way Bill</button>
 
-                        <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)"><i class="icon-image"
-                          style="margin-right: 5px;" aria-hidden="true"></i>Edit</button>
+                        <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)">
+                          <i class="icon-image btnaddMargin"
+                          aria-hidden="true"></i>Edit</button>
 
 
 
