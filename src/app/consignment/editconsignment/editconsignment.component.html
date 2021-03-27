@@ -1,5 +1,4 @@
-
-        <h5>Edit Consignment</h5>
+<h5>Edit Consignment</h5>
 
 <div class=comp2 [formGroup]="generalForm">
     <div class="heading1">
@@ -34,9 +33,10 @@
                 <div class="form-group row">
                     <label for="txtname" class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-9">
-                        <select id="drpCityConsigner" formControlName="status" class="form-control">
+                        <select id="drpCityConsigner" (change)="onSelectionChange($event.target.value)"
+                            formControlName="statusLabel" class="form-control">
                             <!-- <option selected>Choose...</option> -->
-                            <option *ngFor="let status of statuses" [value]="status.id">{{ status.name }} </option>
+                            <option *ngFor="let status of statusData" [value]="status">{{ status }} </option>
                         </select>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
 
         </div>
     </div>
-   
+
 </div>
 <div mat-dialog-actions>
     <button type="button" class="btn btn-secondary" (click)="onNoClick()" style="letter-spacing: 0px;

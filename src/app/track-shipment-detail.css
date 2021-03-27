@@ -23,10 +23,12 @@ img {
     height: 100vh;
   }
 }
-.btn-primary{
+
+.btn-primary {
   text-transform: capitalize;
   letter-spacing: 0px;
 }
+
 .steps {
   border: 1px solid #e7e7e7
 }
@@ -64,7 +66,7 @@ img {
 }
 
 .step-indicator {
-  display: block;
+  display: none;
   position: absolute;
   top: .75rem;
   left: .75rem;
@@ -149,34 +151,40 @@ img {
 
 @media (max-width: 575.98px) {
   .steps-header {
-      display: none
+    display: none
   }
+
   .steps-body,
   .step {
-      display: block
+    display: block
   }
+
   .step {
-      border-right: 0;
-      border-bottom: 1px dashed #e7e7e7
+    border-right: 0;
+    border-bottom: 1px dashed #e7e7e7
   }
+
   .step:last-child {
-      border-bottom: 0
+    border-bottom: 0
   }
+
   .has-indicator {
-      padding: 1rem .75rem
+    padding: 1rem .75rem
   }
+
   .has-indicator .step-indicator {
-      display: inline-block;
-      position: static;
-      margin: 0;
-      margin-right: 0.75rem
+    display: inline-block;
+    position: static;
+    margin: 0;
+    margin-right: 0.75rem
   }
 }
 
 .bg-secondary {
-background-color: #e67c21 !important;
+  background-color: #e67c21 !important;
   color: white !important;
 }
+
 .progress-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -193,6 +201,7 @@ background-color: #e67c21 !important;
   background-color: #16a085;
   transition: width .6s ease;
 }
+
 .btn-primary {
   color: #fff;
   background-color: #e67c21;
@@ -200,8 +209,8 @@ background-color: #e67c21 !important;
   letter-spacing: 0px;
   text-transform: capitalize;
 }
-.step:hover{
+
+.step:hover {
   border: 1px solid #f19c53;
   cursor: pointer;
 }
-

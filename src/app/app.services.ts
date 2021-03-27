@@ -10,6 +10,8 @@ import {
   IEmployees,
   IAssignEmployeeParams,
   IStatusParams,
+  IStatus,
+  ITracking,
 } from "./app.model";
 
 @Injectable()
@@ -21,8 +23,11 @@ export class ShareServices {
   private cityUrl = this.hostUrl + "/webapi/territory/cities/all";
   private modeUrl: string = this.hostUrl + "/webapi/Consignment/Modes";
   private submitUrl: string = this.hostUrl + "/webapi/Consignment";
+  private statusURL: string = this.hostUrl + "/webapi/Consignment/StatusList";
   //private consignmentListUrl = "/assets/ConsignmentList.json";
-  private consignmentListUrl: string = this.hostUrl + '/webapi/Consignment';
+  private trackingListUrl: string =
+    this.hostUrl + "/webapi/Consignment/CXT004210321/track/latest";
+  private consignmentListUrl: string = this.hostUrl + "/webapi/Consignment";
   private document_url: string = this.hostUrl + "/webapi/Consignment/Document";
   private track_url: string = this.hostUrl + "/webapi/Consignment/";
   private employeeList_url: string =
@@ -39,12 +44,21 @@ export class ShareServices {
   getConsignmentMode(): Observable<IMode> {
     return this.http.get<IMode>(this.modeUrl);
   }
+  getConsignmentStatus(): Observable<IStatus> {
+    return this.http.get<IStatus>(this.statusURL);
+  }
   submitData(item: any): Observable<any> {
     return this.http.post<any>(this.submitUrl, item);
   }
   getConsignmentList(): Observable<IConsignmentList> {
     return this.http.get<IConsignmentList>(this.consignmentListUrl);
   }
+  getTrackingList(trackingId): Observable<ITracking> {
+    return this.http.get<ITracking>(
+      this.hostUrl + "/webapi/Consignment/" + trackingId + "/track/latest"
+    );
+  }
+
   uploadDocument(fileObject): Observable<any> {
     const formData = new FormData();
     formData.append("file", fileObject);

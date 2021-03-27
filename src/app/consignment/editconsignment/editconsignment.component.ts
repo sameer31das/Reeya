@@ -26,7 +26,8 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
   lat: any;
   updateStatusResponse: any;
   rescheduleStatusResponse: any;
-  eWaySubscription:Subscription;
+  eWaySubscription: Subscription;
+  statusData: any[];
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
@@ -36,7 +37,8 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
   section = 0;
   drpEmployee: any;
   generalForm: FormGroup;
-  statuses = [{ name: "delivered", id: 3 }];
+  // statuses = [{ name: "delivered", id: 3 }];
+  statuses = [];
   newUpdateData: any;
   rescheduleData = { status: this.newUpdateData, deliveryDate: "" };
   ngOnInit() {
@@ -50,18 +52,29 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
     this.sharedService.getEmployee().subscribe((data) => {
       this.drpEmployee = data.result;
     });
+    this.sharedService.getConsignmentStatus().subscribe((data) => {
+      this.statuses = data.result;
+      this.statusData = Object.values(this.statuses);
+    });
   }
   generateForms() {
     const group = {
       employeeList: [""],
       photo: [""],
       bill: [""],
+      statusLabel: [""],
       status: [""],
       carrier: [""],
       txtRescheduledDate: [""],
       reason: [""],
     };
     this.generalForm = this.fb.group(group);
+  }
+  onSelectionChange(status) {
+    let _key = Object.keys(this.statuses).find(
+      (key) => this.statuses[key] === status
+    );
+    this.generalForm.controls.status.setValue(_key);
   }
   submitUpdateSection() {
     this.newUpdateData = {
@@ -97,7 +110,9 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
       };
     }
 
-    this.rescheduleData.deliveryDate =new Date(this.generalForm.controls.txtRescheduledDate.value).toISOString();
+    this.rescheduleData.deliveryDate = new Date(
+      this.generalForm.controls.txtRescheduledDate.value
+    ).toISOString();
 
     this.sharedService
       .rescheduledDate(1, this.rescheduleData)
@@ -126,7 +141,7 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    if(this.eWaySubscription){
+    if (this.eWaySubscription) {
       this.eWaySubscription.unsubscribe();
     }
   }

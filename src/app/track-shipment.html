@@ -1,10 +1,10 @@
 <app-header></app-header>
 
-  <div class="container" >
-    <div class="track" style="padding-top: 200px; display:block">
+<div class="container">
+  <div class="track" style="padding-top: 200px; display:block">
     <div class="row mb-5">
 
-  
+
       <div class="col-md-5 ml-auto mb-5 order-md-2" data-aos="fade-up" data-aos-delay="100">
         <img src="assets/images/img_4.jpg" alt="Image" class="img-fluid rounded">
       </div>
@@ -12,30 +12,30 @@
         <div class="text-left pb-1 border-primary mb-4">
           <h2 class="text-primary">Track Your Shipment </h2>
         </div>
-  
+
         <form action="#" class=" bg-white" style="margin-top: 50px;">
-  
+
           <div class="row form-group">
-  
+
             <div class="col-md-12">
-  
-              <input type="text" id="lname" class="form-control" placeholder="Your Tracking ID">
+
+              <input type="text" id="lname" [formControl]="trackingId" (blur)="onTrackingidChange()"
+                class="form-control" placeholder="Your Tracking ID">
             </div>
           </div>
           <input class="form-control d-none" data-recaptcha="true" required="" data-error="Please complete the Captcha">
           <div class="help-block with-errors"></div>
-          <button class="btn btn-primary text-white" [routerLink]="['/track', 'CXT008230321']" type="button" id="button-addon2" style="margin-top: 100px;">Track &
+          <button class="btn btn-primary text-white" [routerLink]="['/track', urlId]" type="button" id="button-addon2"
+            style="margin-top: 100px;">Track &
             Trace</button>
-  
+
         </form>
-  
-  
-  
+
+
+
       </div>
-  
+
     </div>
   </div>
-  
+
 </div>
-
-
