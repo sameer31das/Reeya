@@ -49,7 +49,7 @@ img {
 }
 
 .step {
-  display: table-cell;
+
   position: relative;
   padding: 1rem .75rem;
   -webkit-transition: all 0.25s ease-in-out;
@@ -213,4 +213,10 @@ img {
 .step:hover {
   border: 1px solid #f19c53;
   cursor: pointer;
+}
+
+.step-div {
+  cursor: pointer;
+  display: table-cell;
+  border-right: 1px dashed #dfdfdf;
 }

@@ -14,7 +14,10 @@ export class DialogPopupComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private sharedService: ShareServices
-  ) {}
+  ) {
+    this.lat = data.lat;
+    this.lng = data.lang;
+  }
   ngOnInit(): void {
     if (navigator && navigator.geolocation) {
       const position = (pos) => {
