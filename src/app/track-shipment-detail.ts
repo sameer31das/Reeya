@@ -144,40 +144,12 @@ export class TrackShipmentDetailComponent implements OnInit {
       }
     });
   }
-  openPickupActive(id) {
-    if (this.pcikupcss === this.stepActive) {
-      this.openDialog(id);
-    }
-  }
-  openDispatchedActive(id) {
-    if (this.dispatchedcss === this.stepActive) {
-      this.openDialog(id);
-    }
-  }
-  openinTransitActive(id) {
-    if (this.inTransit === this.stepActive) {
-      this.openDialog(id);
-    }
-  }
-  openoutForDeliverydActive(id) {
-    if (this.outForDelivery === this.stepActive) {
-      this.openDialog(id);
-    }
-  }
-  openproductDeliveredActive(id) {
-    if (this.productDelivered === this.stepActive) {
-      this.openDialog(id);
-    }
-  }
+
   openDialog(id: number) {
     const dialogRef = this.dialog.open(DialogPopupComponent, {
       width: "50%",
       height: "70%",
-      data: {
-        id: id,
-        lat: this.trackingLists.status.latitude,
-        lang: this.trackingLists.status.longitude,
-      },
+      data: { id: id },
       disableClose: true,
       hasBackdrop: true,
     });

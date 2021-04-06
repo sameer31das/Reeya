@@ -1,6 +1,7 @@
 import { formatDate } from "@angular/common";
 import { Component, Input, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ICityDetail, IStateDetail } from "../app.model";
 import { ShareServices } from "../app.services";
 
@@ -16,7 +17,7 @@ export class ConsignmentComponent implements OnInit {
   longitude: any;
   date: Date = new Date();
 
-  constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
+  constructor(private fb: FormBuilder, private sharedService: ShareServices, private router: Router) {}
   tab = 1;
   generalForm: FormGroup;
   ngOnInit(): void {
@@ -87,7 +88,7 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.consigneemobileno.setValue(
       data.consigneemobileno
     );
-
+    
     this.newConsignment = {
       id: 0,
       createdOn: new Date(this.date).toISOString(),
@@ -138,13 +139,14 @@ export class ConsignmentComponent implements OnInit {
         declaredMaterial: this.generalForm.controls.declaredmaterial.value,
       },
     };
-
+    
     console.log(this.newConsignment);
     this.sharedService
       .submitData(this.newConsignment)
       .subscribe((submitData) => {
         console.log("submitData" + submitData);
         this.submitResponse = submitData;
+        this.router.navigateByUrl('/dashboard');
       });
   }
   Detail(data) {

@@ -51,25 +51,14 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-
-
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#" style="color: white; font-size: 20px;">Reeya</a>
-      </li>
-    </ul>
-    <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#"
-      style="font-size: 10px !important; color:#ccc; text-align: center;">Sign out</a>
-  </nav>
-
+   <app-dashboard-header></app-dashboard-header>
   <div class="container-fluid">
     <div class="row">
 
 
       <main role="main" class="col-md-12 ">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Consignment</h1>
+          <span class="addNewBtn">Add Consignment</span>
 
 
         </div>
@@ -93,7 +82,7 @@
                   margin-left: 0px;
                   width: 100%;">
                 <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==1 }" (click)=" tab = 1 ">
-                  <a aria-current="page">Consigner</a>
+                  <a aria-current="page">Consignor</a>
                 </li>
                 <li class="nav-item col col-sm-2" [ngClass]=" {'nav-link active': tab==2 }" (click)=" tab = 2">
                   <a aria-current="page">Consignment</a>

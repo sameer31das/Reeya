@@ -10,6 +10,7 @@ import { ShareServices } from "../app.services";
 export class DialogPopupComponent implements OnInit {
   lat: any;
   lng: any;
+  imagebyte: any;
   constructor(
     public dialogRef: MatDialogRef<DialogPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -19,23 +20,31 @@ export class DialogPopupComponent implements OnInit {
     this.lng = data.lang;
   }
   ngOnInit(): void {
-    if (navigator && navigator.geolocation) {
-      const position = (pos) => {
-        this.lng = pos.coords.longitude;
-        this.lat = pos.coords.latitude;
-      };
+    if (this.data.id == 1) {
+      if (navigator && navigator.geolocation) {
+        const position = (pos) => {
+          this.lng = pos.coords.longitude;
+          this.lat = pos.coords.latitude;
+        };
 
-      const error = (error) => {
-        alert(JSON.stringify(error));
-      };
+        const error = (error) => {
+         // alert(JSON.stringify(error));
+        };
 
-      navigator.geolocation.watchPosition(position, error);
+        navigator.geolocation.watchPosition(position, error);
+      }
+
+      
     }
-    this.sharedService
-      .getDocument("de3002749a744bb98498d8bc07494485.jpg")
+    else {
+      this.sharedService
+      .getDocument(this.data.id)
       .subscribe((data) => {
-        console.log(data.result);
+        //console.log(data.result);
+        this.imagebyte = "data:image/jpeg;base64," + data.result;
       });
+    }
+
   }
 
   onNoClick(): void {

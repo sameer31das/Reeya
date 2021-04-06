@@ -13,12 +13,12 @@ import {
   IStatus,
   ITracking,
 } from "./app.model";
-
+import * as auth from './auth-config.json';
 @Injectable()
 export class ShareServices {
   constructor(private http: HttpClient) {}
-  private hostUrl = "https://cargo-xpert.com";
-  //private hostUrl = "http://localhost:5000";
+  //private hostUrl = "https://cargo-xpert.com";
+  private hostUrl = auth.resources.todoListApi.resourceUri;;
   private stateUrl: string = this.hostUrl + "/webapi/Territory/States";
   private cityUrl = this.hostUrl + "/webapi/territory/cities/all";
   private modeUrl: string = this.hostUrl + "/webapi/Consignment/Modes";
@@ -106,6 +106,6 @@ export class ShareServices {
     return this.http.get<IEmployees>(this.employeeList_url);
   }
   assignEmployee(jsonItem: IAssignEmployeeParams) {
-    return this.http.post<any>(this.employeeAssign_url, jsonItem);
+    return this.http.patch<any>(this.employeeAssign_url, jsonItem);
   }
 }

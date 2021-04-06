@@ -23,3 +23,14 @@ img {
     height: 100vh;
   }
 }
+.text-center .btn-primary {
+  color: #fff ;
+  background: none ;
+  border: 2px solid #fff ;
+}
+.site-blocks-cover .btn:hover {
+  
+  color: #fff !important;
+  background-color: #f16821 ;
+  border-color: #f16821 ;
+}

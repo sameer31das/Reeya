@@ -28,6 +28,10 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
   rescheduleStatusResponse: any;
   eWaySubscription: Subscription;
   statusData: any[];
+  ewayBill:string;
+  lblStatus:string;
+  lblStatusAssign:string;
+  lblReschedule:string;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
@@ -80,18 +84,18 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
     this.newUpdateData = {
       latitude: this.lat,
       longitude: this.lng,
-      status: this.generalForm.controls.status.value,
+      status: Number(this.generalForm.controls.status.value),
       reason: this.generalForm.controls.reason.value,
 
-      ewayBillUrl: this.generalForm.controls.bill.value,
+      ewayBillUrl: this.ewayBill,
       carrier: this.generalForm.controls.carrier.value,
     };
 
     this.sharedService
-      .updateStatus(2, this.newUpdateData)
+      .updateStatus(Number(this.data?.id), this.newUpdateData)
       .subscribe((submitData) => {
-        console.log("submitData" + submitData);
         this.updateStatusResponse = submitData;
+        this.lblStatus=submitData["message"]
       });
   }
 
@@ -102,11 +106,11 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
       this.rescheduleData.status = {
         latitude: this.lat,
         longitude: this.lng,
-        status: this.generalForm.controls.status.value,
+        status: 7,// rescheduled
         reason: this.generalForm.controls.reason.value,
 
-        ewayBillUrl: this.generalForm.controls.bill.value,
-        carrier: this.generalForm.controls.carrier.value,
+        ewayBillUrl: "",
+        carrier: "",
       };
     }
 
@@ -115,10 +119,10 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
     ).toISOString();
 
     this.sharedService
-      .rescheduledDate(1, this.rescheduleData)
+      .rescheduledDate(this.data?.id, this.rescheduleData)
       .subscribe((submitData) => {
-        console.log("submitData" + submitData);
         this.rescheduleStatusResponse = submitData;
+        this.lblReschedule=submitData["message"];
       });
   }
   onNoClick(): void {
@@ -128,16 +132,16 @@ export class EditConsignmentComponent implements OnInit, OnDestroy {
     this.fileEway = file["target"].files[0];
     this.lblEway = this.fileEway["name"];
     this.sharedService.uploadDocument(this.fileEway).subscribe((eway) => {
-      this.generalForm.controls.bill.setValue(eway.result);
+      this.ewayBill=eway.result;
     });
   }
   assignEmployee(): void {
     const empParam: IAssignEmployeeParams = {
-      id: 1,
+      id: this.data?.id,
       assignedTo: this.generalForm.controls.employeeList.value,
     };
     this.sharedService.assignEmployee(empParam).subscribe((data) => {
-      console.log("employee assign");
+      this.lblStatusAssign=data["message"];
     });
   }
   ngOnDestroy() {

@@ -1,4 +1,4 @@
-<h5>Edit Consignment</h5>
+<h5>Edit Consignment-{{data.consignmentId}}</h5>
 
 <div class=comp2 [formGroup]="generalForm">
     <div class="heading1">
@@ -14,7 +14,7 @@
                             <label for="file-upload-eway" class="col-sm-2 col-form-label custom-file-upload">
                                 <i class="fa fa-cloud-upload"></i> E-way Bill
                             </label>
-                            <input id="file-upload-eway" formControlName="bill" (change)="selectEwayBill($event)"
+                            <input id="file-upload-eway" (change)="selectEwayBill($event)"
                                 type="file" />
 
                             <div class="col-sm-8 textInput1">
@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="txtcarrier" class="col-sm-3 col-form-label">Carrier</label>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control" id="txtcarrier">
+                                <input type="email" class="form-control" id="txtcarrier" formControlName="carrier">
                             </div>
                         </div>
 
@@ -46,6 +46,10 @@
                         <button type="button" (click)="submitUpdateSection()" class="btn btn-elegant btnStyle"><i
                                 aria-hidden="true" class="icon-angle-double-right"
                                 style="margin-right: 5px;"></i>Submit</button>
+
+                                <div>
+                                    <label id="lblStatus" class="" >{{lblStatus}}</label>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -77,6 +81,9 @@
                     <button type="button" (click)="submitRescheduleSection()" class="btn btn-elegant btnStyle"><i
                             aria-hidden="true" class="icon-angle-double-right"
                             style="margin-right: 5px;"></i>Submit</button>
+                            <span>
+                                <label id="lblStatusRes" class="" >{{lblReschedule}}</label>
+                            </span>
                 </div>
             </div>
         </div>
@@ -101,6 +108,9 @@
                     <button type="button" class="btn btn-elegant btnStyle" (click)="assignEmployee()"><i
                             aria-hidden="true" class="icon-angle-double-right"
                             style="margin-right: 5px;"></i>Submit</button>
+                            <span>
+                                <label id="lblStatusAssign" class="" >{{lblStatusAssign}}</label>
+                            </span>
                 </div>
             </div>
 

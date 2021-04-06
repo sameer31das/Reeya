@@ -9,6 +9,11 @@ body,
   height: 100vh;
 }
 
+.addNewBtn {
+  font-size: 18px;
+  font-weight: bold;
+  color: #315c85;
+}
 .carousel .carousel-inner {
   height: 100vh;
 }

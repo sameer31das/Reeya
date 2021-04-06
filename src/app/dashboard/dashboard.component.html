@@ -17,30 +17,17 @@
 
   <!-- Custom styles for this template -->
   <link href="/assets/dashboard/dashboard.css" rel="stylesheet">
-  <style>
-body{margin-top:20px;}
-
-  </style>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-
- 
-    <div class="col-11 col-xl-2 site-logo" class="logoPadding"> 
-      <div class="logo">
-        <a href="index.html"><img src="assets/images/logo.png" alt=""></a>
-        </div>
-    </div>
-    
-    <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#"
-      class="signoutAlign">Sign out</a>
-  </nav>
+  <app-dashboard-header></app-dashboard-header>
   <nav class="navbar">
 
-    <span class="addNewBtn">Dashboard</span>
-    <span><button type="button" [routerLink]="['/consignment']" class="btn btn-success">Add New</button></span>
+    <span class="addNewBtn">Consignment Dashboard</span>
+    <span><button type="button" [routerLink]="['/consignment']" class="btn btn-success" style="background-color: #315c85 !important;
+    border: 1px solid #4ea4c5;
+    color: white !important;">Create New</button></span>
 
   </nav>
   <div class="container-fluid">
@@ -52,10 +39,10 @@ body{margin-top:20px;}
 
             <div class="col-md-12" style="margin-bottom: -8px;">
               <div class="card-body">
-                <h5 class="card-title" class="cardTitle">{{item.customerName}} - {{item.trackingId}}</h5>
+                <h5 class="card-title" class="cardTitle">{{item.trackingId}}</h5>
                 <div>
                   <label>PickUp On:</label>
-                  <span> {{item.pickupDate}}</span>
+                  <span>{{item.pickupDate}}</span>
                 </div>
                 <div>
                   <label>Delivery On:</label>
@@ -69,7 +56,7 @@ body{margin-top:20px;}
 
                 <div>
                   <label>To:</label>
-                  <span> {{item.toCity}}</span>
+                  <span>{{item.toCity}}</span>
                 </div>
 
                 <div>
@@ -79,20 +66,20 @@ body{margin-top:20px;}
 
 
                 <h5 _ngcontent-qda-c83="" class="card_footer">
-                  <button type="button" class="btn btn-elegant btnStyle"  mat-button (click)="openDialog()"
+                  <button type="button" class="btn btn-elegant btnStyle"  mat-button (click)="openDialog(1)"
                     ><i class="icon-map-marker" class="btnaddMargin"
                       aria-hidden="true"></i>Map</button>
-                  <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)">
+                  <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openDialog(item.photoUrl)">
                     <i class="icon-image btnaddMargin"
-                       aria-hidden="true"></i>photo</button>
+                       aria-hidden="true"></i>Snap</button>
 
-                      <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)">
+                      <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openDialog(item.ewayBillUrl)">
                         <i class="icon-image btnaddMargin"
-                         aria-hidden="true"></i>E-way Bill</button>
+                         aria-hidden="true"></i>EWay Bill</button>
 
-                        <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id)">
+                        <button type="button" class="btn btn-elegant btnStyle" mat-button (click)="openEditDialog(item.id,item.trackingId)">
                           <i class="icon-image btnaddMargin"
-                          aria-hidden="true"></i>Edit</button>
+                          aria-hidden="true"></i>Actions</button>
 
 
 
