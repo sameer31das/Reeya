@@ -11,6 +11,9 @@ export class ConsignmentdetailComponent implements OnInit {
   @Output() Detail: EventEmitter<any> = new EventEmitter<any>();
   @Output() Schedules: EventEmitter<any> = new EventEmitter<any>();
   @Output() Attachment: EventEmitter<any> = new EventEmitter<any>();
+  @Output() Remarks: EventEmitter<any> = new EventEmitter<any>();
+  @Output() Invoices: EventEmitter<any> = new EventEmitter<any>();
+  @Output() Items: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}
   section = 0;
   // tslint:disable-next-line:typedef
@@ -18,6 +21,15 @@ export class ConsignmentdetailComponent implements OnInit {
   // tslint:disable-next-line:typedef
   Details(data) {
     this.Detail.emit(data);
+  }
+  remarks(data) {
+    this.Remarks.emit(data);
+  }
+  invoices(data) {
+    this.Invoices.emit(data);
+  }
+  items(data) {
+    this.Items.emit(data);
   }
   // tslint:disable-next-line:typedef
   Schedule(data) {

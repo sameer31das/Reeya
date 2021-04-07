@@ -1,24 +1,24 @@
 <form class="details" [formGroup]="generalForm">
 
   <div class="form-group row">
-    <label for="txtTotPrice" class="col-sm-2 col-form-label">Total Price:</label>
+    <label for="txtTotPrice" class="col-sm-2 col-form-label">Total Parcels:</label>
     <div class="col-sm-8">
-      <input type="email" class="form-control" formControlName="totalprice" id="txtTotPrice">
+      <input type="text" class="form-control" formControlName="totalprice" id="txtTotPrice">
     </div>
   </div>
 
 
   <div class="form-group row">
-    <label for="txtDeclaredMaterial" class="col-sm-2 col-form-label">Declared Material:</label>
+    <label for="txtDeclaredMaterial" class="col-sm-2 col-form-label">Category:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" formControlName="declaredmaterial" id="txtDeclaredMaterial">
     </div>
   </div>
   <div class="form-group row">
-    <label for="txtEmail" class="col-sm-2 col-form-label">Invoice Value:</label>
+    <label for="txtEmail" class="col-sm-2 col-form-label">Consignment Note:</label>
     <div class="col-sm-8">
-      <input type="email" (blur)="checkValue()" class="form-control" formControlName="value" id="txtEmail">
-      <div class="error" *ngIf="valueError">value should be a number </div>
+      <input type="text" class="form-control" formControlName="value" id="txtEmail">
+
     </div>
   </div>
   <div class="form-group row">
@@ -30,13 +30,27 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="txtActualWeight" class="col-sm-2 col-form-label">Actual Weight:</label>
+    <label for="txtActualWeight" class="col-sm-2 col-form-label">Chargeable Weight:</label>
     <div class="col-sm-8">
       <input type="text" (blur)="checkActual()" class="form-control" formControlName="actualWeight"
         id="txtActualWeight">
-      <div class="error" *ngIf="actualWeightError">Actual Weight should be a number </div>
+      <div class="error" *ngIf="actualWeightError">Chargeable Weight should be a number </div>
     </div>
   </div>
+  <table class="form-group row">
+    <tr>
+      <td>
+        <label for="file-upload-eway" class="col-sm-6 custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> Photo
+        </label>
+        <input id="file-upload-eway" (change)="selectPhoto($event)" type="file" />
+
+      </td>
+      <td class="col-sm-6 textInput1">{{this.lblPhoto}}</td>
+    </tr>
+
+
+  </table>
 
 
 

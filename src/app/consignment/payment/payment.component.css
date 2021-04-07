@@ -1,0 +1,25 @@
+.mat-radio-button {
+    margin-right: 40px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.radioset {
+    margin-top: 40px;
+    margin-left: 30%;
+}
+
+.comments {
+    margin-top: 20px;
+    margin-left: 30%;
+}
+
+.next {
+    margin-left: 30%;
+    padding-top: 51px;
+}

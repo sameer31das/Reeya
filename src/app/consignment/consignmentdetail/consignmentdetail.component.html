@@ -11,12 +11,30 @@
             <app-details [initialFormDetail]="this.initialFormDetails" (Details)=Details($event)></app-details>
         </div>
     </div>
+    <div class="heading1">
+        <section (click)="section===3?section=0:section=3" [ngClass]=" {'active-tab': section===3}">Invoices</section>
+        <div *ngIf="section==3">
+            <app-invoices [initialFormDetail]="this.initialFormDetails" (Invoices)=invoices($event)></app-invoices>
+        </div>
+    </div>
+    <div class="heading1">
+        <section (click)="section===4?section=0:section=4" [ngClass]=" {'active-tab': section===4 }">Items</section>
+        <div *ngIf="section==4">
+            <app-items [initialFormDetail]="this.initialFormDetails" (Items)=items($event)></app-items>
+        </div>
+    </div>
     <div class="heading3">
+        <section (click)="section===5?section=0:section=5" [ngClass]=" {'active-tab': section===5 }">Remarks</section>
+        <div *ngIf="section==5">
+            <app-remarks [initialFormDetail]="this.initialFormDetails" (Remarks)=remarks($event)></app-remarks>
+        </div>
+    </div>
+    <!-- <div class="heading3">
         <section (click)="section===3?section=0:section=3" [ngClass]=" {'active-tab': section===3 }">Attachments
         </section>
         <div *ngIf="section==3">
             <app-attachments [initialFormDetail]="this.initialFormDetails" (Attachments)=Attachments($event)>
             </app-attachments>
         </div>
-    </div>
+    </div> -->
 </div>

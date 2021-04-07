@@ -17,7 +17,11 @@ export class ConsignmentComponent implements OnInit {
   longitude: any;
   date: Date = new Date();
 
-  constructor(private fb: FormBuilder, private sharedService: ShareServices, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private sharedService: ShareServices,
+    private router: Router
+  ) {}
   tab = 1;
   generalForm: FormGroup;
   ngOnInit(): void {
@@ -58,10 +62,15 @@ export class ConsignmentComponent implements OnInit {
       delivery: [""],
       mode: [""],
       vehicle: [""],
+      billno: [""],
       actualWeight: [""],
       invoice: [""],
       photo: [""],
       bill: [""],
+      remarks: [""],
+      radioset1: [""],
+      radioset2: [""],
+      comments: [""],
     };
     this.generalForm = this.fb.group(group);
   }
@@ -74,6 +83,11 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.pincode.setValue(data.pincode);
     this.generalForm.controls.emailadd.setValue(data.emailadd);
     this.generalForm.controls.mobileno.setValue(data.mobileno);
+  }
+  Payments(data) {
+    this.generalForm.controls.radioset1.setValue(data.radioset1);
+    this.generalForm.controls.radioset2.setValue(data.radioset2);
+    this.generalForm.controls.comments.setValue(data.comments);
   }
   // tslint:disable-next-line:typedef
   consigneeDetails(data) {
@@ -88,7 +102,7 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.consigneemobileno.setValue(
       data.consigneemobileno
     );
-    
+
     this.newConsignment = {
       id: 0,
       createdOn: new Date(this.date).toISOString(),
@@ -122,9 +136,15 @@ export class ConsignmentComponent implements OnInit {
         carrier: this.generalForm.controls.vehicle.value,
       },
       schedule: {
-        pickupDate: new Date(this.generalForm.controls.pickup.value).toISOString(),
-        deliveryDate: new Date(this.generalForm.controls.delivery.value).toISOString(),
-        pickupOn: new Date(this.generalForm.controls.pickup.value).toISOString(),
+        pickupDate: new Date(
+          this.generalForm.controls.pickup.value
+        ).toISOString(),
+        deliveryDate: new Date(
+          this.generalForm.controls.delivery.value
+        ).toISOString(),
+        pickupOn: new Date(
+          this.generalForm.controls.pickup.value
+        ).toISOString(),
         deliveredOn: null,
         mode: 4,
       },
@@ -135,18 +155,18 @@ export class ConsignmentComponent implements OnInit {
         value: this.generalForm.controls.value.value,
         itemsCount: 3,
         declaredWeight: this.generalForm.controls.declaredweight.value,
-        actualWeight: this.generalForm.controls.actualWeight.value, 
+        actualWeight: this.generalForm.controls.actualWeight.value,
         declaredMaterial: this.generalForm.controls.declaredmaterial.value,
       },
     };
-    
+
     console.log(this.newConsignment);
     this.sharedService
       .submitData(this.newConsignment)
       .subscribe((submitData) => {
         console.log("submitData" + submitData);
         this.submitResponse = submitData;
-        this.router.navigateByUrl('/dashboard');
+        this.router.navigateByUrl("/dashboard");
       });
   }
   Detail(data) {
@@ -155,6 +175,7 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.value.setValue(data.value);
     this.generalForm.controls.declaredweight.setValue(data.declaredweight);
     this.generalForm.controls.actualWeight.setValue(data.actualWeight);
+    this.generalForm.controls.photo.setValue(data.photo);
   }
   attachments(data) {
     this.generalForm.controls.bill.setValue(data.bill);
@@ -166,9 +187,20 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.delivery.setValue(data.delivery);
     this.generalForm.controls.mode.setValue(data.mode);
     this.generalForm.controls.vehicle.setValue(data.vehicle);
+    this.generalForm.controls.billno.setValue(data.billno);
+    this.generalForm.controls.bill.setValue(data.bill);
+  }
+  remarks(data) {
+    this.generalForm.controls.remarks.setValue(data.remarks);
+  }
+  invoices(data) {
+    this.generalForm.controls.remarks.setValue(data.remarks);
+  }
+  items(data) {
+    this.generalForm.controls.remarks.setValue(data.remarks);
   }
   next() {
-    if (this.tab < 3) {
+    if (this.tab < 4) {
       this.tab = this.tab + 1;
     } else {
       this.tab = 1;

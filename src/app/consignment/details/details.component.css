@@ -9,3 +9,38 @@
     font-size: smaller;
     color: red;
 }
+
+table>tr {
+    margin-left: 15%
+}
+
+
+
+input[type="file"] {
+    display: none;
+
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc !important;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-right: 40px;
+    width: 108px;
+    margin-top: 8px;
+    position: relative;
+    /* left: 70px; */
+
+}
+
+.textInput1 {
+    left: -7px;
+    color: purple;
+    margin-left: 10px;
+    padding-left: 12px;
+    padding-bottom: 7px;
+
+}

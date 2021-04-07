@@ -1,0 +1,22 @@
+<form [formGroup]="generalForm">
+    <mat-radio-group (change)="onChange($event)">
+        <mat-radio-button value="Paid">Paid</mat-radio-button>
+        <mat-radio-button value="Pay">To Pay</mat-radio-button>
+        <mat-radio-button value="To be Billed">To be Billed</mat-radio-button>
+    </mat-radio-group>
+    <div *ngIf="this.showSeconRadioset" class="radioset">
+        <mat-radio-group class="radio-group" (change)="onChangeSet2($event)">
+            <mat-radio-button value="Consigner">Consigner</mat-radio-button>
+            <mat-radio-button value="Consignee">Consignee</mat-radio-button>
+            <mat-radio-button value="Third Party">Third Party:</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="comments" *ngIf="this.showRemark">
+        <textarea formControlName="comments"></textarea>
+    </div>
+</form>
+<div class="next form-group row" *ngIf="tab==4">
+    <div class="col-sm-10">
+        <button (click)="submit()" class="btn btn-primary">Submit</button>
+    </div>
+</div>

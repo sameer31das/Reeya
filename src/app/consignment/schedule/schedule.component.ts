@@ -9,6 +9,7 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ShareServices } from "../../app.services";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-schedule",
@@ -21,6 +22,9 @@ export class ScheduleComponent implements OnInit, OnDestroy {
   dateError: boolean;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Output() Schedule: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  lblEway = "No file chosen";
+  fileEway: any;
+  eWaySubscription: Subscription;
 
   Mode = [];
   generalForm: FormGroup;
@@ -41,8 +45,19 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       delivery: [this.initialFormDetail.controls.delivery.value],
       mode: [this.initialFormDetail.controls.mode.value],
       vehicle: [this.initialFormDetail.controls.vehicle.value],
+      billno: [this.initialFormDetail.controls.billno.value],
+      bill: [""],
     };
     this.generalForm = this.fb.group(group);
+  }
+  selectEwayBill(file: FileList) {
+    this.fileEway = file["target"].files[0];
+    this.lblEway = this.fileEway["name"];
+    this.eWaySubscription = this.sharedService
+      .uploadDocument(this.fileEway)
+      .subscribe((eway) => {
+        this.generalForm.controls.bill.setValue(eway.result);
+      });
   }
   checkDate() {
     if (
