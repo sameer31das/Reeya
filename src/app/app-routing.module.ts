@@ -17,18 +17,16 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'consignment', component: ConsignmentComponent},
+    path: 'consignment', component: ConsignmentComponent
+  },
   { path: 'track', component: TrackShipmentComponent },
   { path: 'track/:id', component: TrackShipmentDetailComponent }
 ];
 const isIframe = window !== window.parent && !window.opener;
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    useHash: false,
-    // Don't perform initial navigation in iframes
-    initialNavigation: !isIframe ? 'enabled' : 'disabled'
-  })],
+  imports: [RouterModule.forRoot(routes,{useHash: false})],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

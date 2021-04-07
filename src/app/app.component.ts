@@ -1,76 +1,61 @@
-import { Component, OnInit, Inject, OnDestroy, Injectable } from '@angular/core';
-import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import { AuthenticationResult, EventMessage, EventType, InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
-import { Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { BroadcastService, MsalService } from '@azure/msal-angular';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 11 - MSAL v2 Quickstart Sample';
+export class AppComponent  {
+  title = 'azure-ad-client';
   isIframe = false;
-  loginDisplay = false;
-  private readonly _destroying$ = new Subject<void>();
 
+  public subscription: Subscription;
+  public isLoggedIn = false;
+
+  // In app.component.ts
   constructor(
-    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
-    private msalBroadcastService: MsalBroadcastService
-  ) {}
+    private broadcastService: BroadcastService
+  ) {
+  }
 
-  ngOnInit(): void {
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnInit() {
+
     this.isIframe = window !== window.parent && !window.opener;
 
-    this.msalBroadcastService.inProgress$
-      .pipe(
-        filter((status: InteractionStatus) => status === InteractionStatus.None),
-        takeUntil(this._destroying$)
-      )
-      .subscribe(() => {
-        this.setLoginDisplay();
-      });
+    this.checkAccount();
+
+    this.subscription = this.broadcastService.subscribe('msal:loginSuccess', () => {
+      this.getAccount();
+    });
   }
 
-  setLoginDisplay() {
-    this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
-  }
-
-  login() {
-    if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
-      if (this.msalGuardConfig.authRequest){
-        this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
-          .subscribe((response: AuthenticationResult) => {
-            debugger;
-            console.log("sameer token get"+response.accessToken);
-            this.authService.instance.setActiveAccount(response.account);
-          });
-        } else {
-          this.authService.loginPopup()
-            .subscribe((response: AuthenticationResult) => {
-              debugger;
-              console.log("else"+response.accessToken);
-              this.authService.instance.setActiveAccount(response.account);
-            });
-      }
-    } else {
-      if (this.msalGuardConfig.authRequest){
-        this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
-      } else {
-        this.authService.loginRedirect();
-      }
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy() {
+    this.broadcastService.getMSALSubject().next(1);
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 
-  logout() {
-    this.authService.logout();
+  checkAccount() {
+    this.isLoggedIn = !!this.authService.getAccount();
   }
 
-  ngOnDestroy(): void {
-    this._destroying$.next(undefined);
-    this._destroying$.complete();
+  getAccount() {
+    return this.authService.getAccount();
   }
+
+  login() {
+    const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
+
+    if (isIE) {
+      this.authService.loginRedirect({ extraScopesToConsent: ['user.read', 'openid', 'profile'] });
+    } else {
+      this.authService.loginPopup({ extraScopesToConsent: ['user.read', 'openid', 'profile'] });
+    }
+  }
+
 }
-
-

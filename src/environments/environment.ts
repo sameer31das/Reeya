@@ -3,9 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  clientId: 'e9d85866-3c3d-4ccd-a9f6-949f6342b959',
+  authority: 'https://login.microsoftonline.com/daa699e4-3bf5-41ba-8a97-26108106911f/',
+  redirectUrl: 'http://localhost:4200/dashboard',
+  postLogoutRedirectUri: 'http://localhost:4200/dashboard',
+  apiEndpoint: 'http://localhost:63402/api/'
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import {
@@ -53,6 +53,7 @@ export class ShareServices {
   getConsignmentList(): Observable<IConsignmentList> {
     return this.http.get<IConsignmentList>(this.consignmentListUrl);
   }
+
   getTrackingList(trackingId): Observable<ITracking> {
     return this.http.get<ITracking>(
       this.hostUrl + "/webapi/Consignment/" + trackingId + "/track/latest"
@@ -109,3 +110,7 @@ export class ShareServices {
     return this.http.patch<any>(this.employeeAssign_url, jsonItem);
   }
 }
+function retry(arg0: number): import("rxjs").OperatorFunction<IConsignmentList, IConsignmentList> {
+  throw new Error("Function not implemented.");
+}
+
