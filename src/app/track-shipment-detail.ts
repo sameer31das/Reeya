@@ -144,6 +144,31 @@ export class TrackShipmentDetailComponent implements OnInit {
       }
     });
   }
+  pickupcssDialog(id) {
+    if (this.pcikupcss == this.stepActive) {
+      this.openDialog(id);
+    }
+  }
+  dispatchedcssDialog(id) {
+    if (this.dispatchedcss == this.stepActive) {
+      this.openDialog(id);
+    }
+  }
+  inTransitDialog(id) {
+    if (this.inTransit == this.stepActive) {
+      this.openDialog(id);
+    }
+  }
+  outForDeliveryDialog(id) {
+    if (this.outForDelivery == this.stepActive) {
+      this.openDialog(id);
+    }
+  }
+  productDeliveredDialog(id) {
+    if (this.productDelivered == this.stepActive) {
+      this.openDialog(id);
+    }
+  }
 
   openDialog(id: number) {
     const dialogRef = this.dialog.open(DialogPopupComponent, {

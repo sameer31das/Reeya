@@ -3,42 +3,52 @@
     <div class="col-lg-12 card-margin">
       <div class="card search-form">
         <div class="card-body p-0">
-          <form id="search-form">
-          
-              <div class="col-12">
-                <div class="row no-gutters">
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                    <input type="text" placeholder="Invoice No" class="form-control" id="search" name="search">
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    <input type="text" placeholder="Invoice Date" class="form-control" id="search" name="search">
-                   
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    <input type="text" placeholder="Total Value" class="form-control" id="search" name="search">
-                   
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                   
-                    <input type="text" placeholder="Descreption" class="form-control" id="search" name="search">
-                   
-                  </div>
-                  
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    <input type="text" placeholder="Quantity" class="form-control" id="search" name="search">
-                   
-                  </div>
-                  <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                    <button type="button" class="btn btn-dark"  style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Add</button>
-                  </div>
+          <form id="search-form" [formGroup]="generalForm">
+
+            <div class="col-12">
+              <div class="row no-gutters">
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                  <input type="text" placeholder="Invoice No" formControlName="invoiceNo" class="form-control"
+                    id="search" name="search">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  <input type="text" placeholder="Invoice Date" formControlName="invoiceData" class="form-control"
+                    id="search" name="search">
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  <input type="text" placeholder="Total Value" formControlName="totalValue" class="form-control"
+                    id="search" name="search">
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+
+                  <input type="text" placeholder="Descreption" formControlName="description" class="form-control"
+                    id="search" name="search">
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  <input type="text" placeholder="Quantity" formControlName="quantity" class="form-control" id="search"
+                    name="search">
+
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                  <label for="file-upload-Invoice" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Add
+                  </label>
+                  <input id="file-upload-Invoice" (change)="selectInvoice($event)" type="file" />
+                  <div class="textInput1"> {{this.lblInvoice}}</div>
+
                 </div>
               </div>
+            </div>
 
-              
-           
+
+
           </form>
         </div>
       </div>
@@ -50,136 +60,146 @@
       <div class="card search-form">
         <div class="card-body p-0">
           <form id="search-form">
-          
-              <div class="col-12" style="background-color: #343a40; color: white; padding: 5px;">
-                <div class="row no-gutters" >
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  Invoice Number
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    Invoice Date
-                   
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   Total Value 
-                   
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                   
-                    Description
-                   
-                  </div>
-                  
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    Quantity
-                   
-                  </div>
-                  <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                   
-                  </div>
-                </div>
-              </div>
-              <div class="col-12" style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-                <div class="row no-gutters" >
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  RT19233839
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   13-5-2020
-                   
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   4
-                   
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    Work in progress 
-                   
-                  </div>
-                  
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    20
-                   
-                  </div>
-                  <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                    <button type="button" class="btn btn-danger"  style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12" style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-                <div class="row no-gutters" >
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  RT19233839
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   13-5-2020
-                   
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   4
-                   
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    Work in progress 
-                   
-                  </div>
-                  
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    20
-                   
-                  </div>
-                  <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                    <button type="button" class="btn btn-danger"  style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12" style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-                <div class="row no-gutters" >
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  RT19233839
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   13-5-2020
-                   
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                   4
-                   
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                    Work in progress 
-                   
-                  </div>
-                  
-                  <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                   
-                    20
-                   
-                  </div>
-                  <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                    <button type="button" class="btn btn-danger"  style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
-                  </div>
-                </div>
-              </div>
-              
 
-              
-           
+            <div class="col-12" style="background-color: #343a40; color: white; padding: 5px;">
+              <div class="row no-gutters">
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                  Invoice Number
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  Invoice Date
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  Total Value
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+
+                  Description
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  Quantity
+
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-12" *ngFor="let item of invoiceArray;let i = index"
+              style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
+              <div class="row no-gutters">
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                  {{item.invoices}}
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  {{item.invoiceData}}
+
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  {{item.totalValue}}
+
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                  {{item.description}}
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  {{item.quantity}}
+
+
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                  <button type="button" class="btn btn-danger" (click)="delete(i)"
+                    style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-12"
+              style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
+              <div class="row no-gutters">
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                  RT19233839
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  13-5-2020
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  4
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                  Work in progress
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  20
+
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                  <button type="button" class="btn btn-danger"
+                    style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="col-12"
+              style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
+              <div class="row no-gutters">
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                  RT19233839
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  13-5-2020
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  4
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                  Work in progress
+
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                  20
+
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                  <button type="button" class="btn btn-danger"
+                    style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
+                </div>
+              </div>
+            </div> -->
+
+
+
+
           </form>
         </div>
       </div>
     </div>
   </div>
- 
+
 </div>
