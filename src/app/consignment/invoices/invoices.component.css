@@ -122,7 +122,7 @@ body{
 
 
 .search-form {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 1rem;
 }
@@ -253,6 +253,5 @@ body{
     border-radius: 8px;
 }
 .widget-26 tr:first-child td {
-    background: #007bff;
-    color: white;
+    vertical-align: top;
 }

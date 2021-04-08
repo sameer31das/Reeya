@@ -47,7 +47,13 @@ body,
 
 .col {
   padding-top: 10px;
-  padding-left: 10px;
+  text-align: center;
+  padding-left: 5px;
+  
+}
+.nav-link {
+  display: block;
+  padding: .5rem 0rem !important;
 }
 
 .tabs {
@@ -61,6 +67,7 @@ body,
 li.nav-item.col.col-sm-2.nav-link.active {
   border-radius: 0px !important;
   background-color: #4d7aab !important;
+  padding: 0 0px;
 }
 
 button.btn.btn-primary {
