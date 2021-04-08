@@ -16,9 +16,9 @@ export class ConsignmentdetailComponent implements OnInit {
   @Output() Items: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}
   section = 0;
-  // tslint:disable-next-line:typedef
+
   ngOnInit() {}
-  // tslint:disable-next-line:typedef
+
   Details(data) {
     this.Detail.emit(data);
   }
@@ -31,7 +31,6 @@ export class ConsignmentdetailComponent implements OnInit {
   items(data) {
     this.Items.emit(data);
   }
-  // tslint:disable-next-line:typedef
   Schedule(data) {
     this.Schedules.emit(data);
   }

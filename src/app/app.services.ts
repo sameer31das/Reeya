@@ -110,8 +110,3 @@ export class ShareServices {
     return this.http.patch<any>(this.employeeAssign_url, jsonItem);
   }
 }
-function retry(
-  arg0: number
-): import("rxjs").OperatorFunction<IConsignmentList, IConsignmentList> {
-  throw new Error("Function not implemented.");
-}

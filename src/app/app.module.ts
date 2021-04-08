@@ -92,8 +92,6 @@ const isIE =
         },
       },
       {
-        popUp: !isIE,
-        consentScopes: ["user.read", "openid", "profile"],
         protectedResourceMap: [
           ["https://graph.microsoft.com/v1.0/me", ["user.read"]],
         ],
