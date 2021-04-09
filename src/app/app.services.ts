@@ -34,7 +34,7 @@ export class ShareServices {
     this.hostUrl + "/webapi/Consignment/Employees";
   private employeeAssign_url: string =
     this.hostUrl + "/webapi/Consignment/Assign";
-
+private Inquiry_url:string=this.hostUrl + "/webapi/Inquiry";
   getState(): Observable<IState> {
     return this.http.get<IState>(this.stateUrl);
   }
@@ -108,5 +108,8 @@ export class ShareServices {
   }
   assignEmployee(jsonItem: IAssignEmployeeParams) {
     return this.http.patch<any>(this.employeeAssign_url, jsonItem);
+  }
+  submitInquiry(item: any): Observable<any> {
+    return this.http.post<any>(this.Inquiry_url, item);
   }
 }

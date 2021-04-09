@@ -42,8 +42,8 @@ export class TrackShipmentDetailComponent implements OnInit {
     });
     this._sharedService.getTrackingList(this.trackingId).subscribe((data) => {
       this.trackingLists = data.result;
-      this.pickUp = this.trackingLists.actualPickup.split("T")[0];
-      this.delivery = this.trackingLists.scheduledDelivery.split("T")[0];
+      this.pickUp = (this.trackingLists.actualPickup).replace(/T/, ' ').replace(/\..+/, '');
+      this.delivery = (this.trackingLists.scheduledDelivery).replace(/T/, ' ').replace(/\..+/, '');
 
       switch (this.trackingLists.status.status) {
         case 1:

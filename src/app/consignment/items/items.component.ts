@@ -20,31 +20,22 @@ export class ItemsComponent implements OnInit {
   }
   generateForms() {
     const group = {
-      invoice: [""],
-      length: [""],
-      width: [""],
-      height: [""],
+      lengthInch: [""],
+      widthInch: [""],
+      heightInch: [""],
     };
     this.generalForm = this.fb.group(group);
   }
   invoiceArray = [];
 
   selectInvoice(file: FileList) {
-    this.fileInvoice = file["target"].files[0];
 
-    this.invoiceSubscription = this.sharedService
-      .uploadDocument(this.fileInvoice)
-      .subscribe((invoice) => {
-        this.generalForm.controls.invoice.setValue(invoice.result);
-
-        const newData = {
-          length: this.generalForm.controls.length.value,
-          width: this.generalForm.controls.width.value,
-          height: this.generalForm.controls.height.value,
-          description: this.generalForm.controls.invoice.value,
-        };
-        this.invoiceArray.push(newData);
-      });
+    const newData = {
+      lengthInch: this.generalForm.controls.lengthInch.value,
+      widthInch: this.generalForm.controls.widthInch.value,
+      heightInch: this.generalForm.controls.heightInch.value,
+    };
+    this.invoiceArray.push(newData);
   }
   delete(item) {
     this.invoiceArray.splice(item, 1);

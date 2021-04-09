@@ -9,7 +9,7 @@ import { ShareServices } from "../../app.services";
   styleUrls: ["./invoices.component.css"],
 })
 export class InvoicesComponent implements OnInit {
-  constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
+  constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   fileInvoice: any;
   invoiceSubscription: Subscription;
   @Output() Invoices: EventEmitter<any> = new EventEmitter<any>();
@@ -22,7 +22,7 @@ export class InvoicesComponent implements OnInit {
     const group = {
       invoice: [""],
       invoiceNo: [""],
-      invoiceData: [""],
+      invoiceDate: [""],
       totalValue: [""],
       description: [""],
       quantity: [""],
@@ -30,6 +30,7 @@ export class InvoicesComponent implements OnInit {
     this.generalForm = this.fb.group(group);
   }
   invoiceArray = [];
+  invoiceArrayForDisplay = [];
 
   selectInvoice(file: FileList) {
     this.fileInvoice = file["target"].files[0];
@@ -42,16 +43,28 @@ export class InvoicesComponent implements OnInit {
 
         const newData = {
           invoices: this.generalForm.controls.invoiceNo.value,
-          invoiceData: this.generalForm.controls.invoiceData.value,
+          invoiceDate: new Date(this.generalForm.controls.invoiceDate.value).toDateString(),
           totalValue: this.generalForm.controls.totalValue.value,
-          description: this.generalForm.controls.invoice.value,
+          description: this.generalForm.controls.description.value,
           quantity: this.generalForm.controls.quantity.value,
         };
-        this.invoiceArray.push(newData);
+
+        // for submit data
+        const invoiceData = {
+          invoiceUrl: this.generalForm.controls.invoice.value,
+          invoiceNumber: this.generalForm.controls.invoiceNo.value,
+          invoiceDate: new Date(this.generalForm.controls.invoiceDate.value).toISOString(),
+          invoiceValue: this.generalForm.controls.totalValue.value,
+          itemDescription: this.generalForm.controls.description.value,
+          quantity: this.generalForm.controls.quantity.value,
+        };
+        this.invoiceArray.push(invoiceData);
+        this.invoiceArrayForDisplay.push(newData);
       });
   }
   delete(item) {
     this.invoiceArray.splice(item, 1);
+    this.invoiceArrayForDisplay.splice(item, 1);
   }
   ngOnDestroy() {
     this.Invoices.emit(this.invoiceArray);

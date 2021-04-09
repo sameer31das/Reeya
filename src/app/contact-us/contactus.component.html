@@ -16,45 +16,45 @@
         </div>
       </div>
       <div class="col-md-7 mb-5">
-        <form action="#" class="p-5 bg-white">
+        <form id="search-form" [formGroup]="generalForm" class="p-5 bg-white">
           <div class="row form-group">
             <div class="col-md-12">
-              <label class="text-black" for="fName">Full Name</label>
-              <input type="text" id="fname" class="form-control">
+              <label class="text-black" for="fName" >Full Name</label>
+              <input type="text" id="fname" formControlName="fullName" class="form-control">
             </div>
           </div>
           <div class="row form-group">
             <div class="col-md-12">
             <label class="text-black" for="mobile">Contact No.</label>
-            <input type="text" id="mobile" class="form-control">
+            <input type="text" id="mobile" formControlName="contactNumber" class="form-control">
+            <span class="whtsapp">
+              <input type="checkbox" formControlName="isWhatsAppEnabled" id="whtsapp" name="whtsapp" value="whtsapp">&nbsp;
+  <label for="whtsapp"> Let's connect on WhatsApp</label>
+              </span>
             </div>
             </div>
           <div class="row form-group">
             <div class="col-md-12">
               <label class="text-black" for="email">Email</label>
-              <input type="email" id="email" class="form-control">
+              <input type="email" id="email" formControlName="emailAddress" class="form-control">
             </div>
           </div>
           <div class="row form-group">
             <div class="col-md-12">
               <label class="text-black" for="subject">Inquiry type</label>
-              <select class="form-control" id="subject">
-                <option selected>Choose</option>
-                <option value="1">Normal</option>
-                <option value="2">Payment</option>
+              <select class="form-control" id="subject" formControlName="inquiryType">
+                <option selected>Choose Type</option>
+                <option value="1">Customer</option>
+                <option value="2">Franchisee</option>
+                <option value="3">Employment</option>
               </select>
               
             </div>
           </div>
+         
           <div class="row form-group">
             <div class="col-md-12">
-              <label class="text-black" for="message">Message</label>
-              <textarea name="message" id="message" cols="30" rows="7" class="form-control"></textarea>
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-md-12">
-              <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+              <input type="submit" value="Send Message" (click)="onSubmit()" class="btn btn-primary py-2 px-4 text-white">
             </div>
           </div>
         </form>
@@ -63,19 +63,20 @@
         
         <div class="p-4 mb-3 bg-white">
           <p class="mb-0 font-weight-bold">Address</p>
-          <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+          <p class="mb-4">Reeya Safe Logistics Private Limited,
+            KH No. 634/2 - Ground Floor, Block A, Rangpuri, Vasant Kunj, South West Dehli, Delhi - 110037.</p>
           <p class="mb-0 font-weight-bold">Phone</p>
-          <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+          <p class="mb-4"><a href="#">+91 8618112571</a></p>
           <p class="mb-0 font-weight-bold">Email Address</p>
-          <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+          <p class="mb-0"><a href="#">sushil@reeyasafelogistics.com</a></p>
         </div>
-        <div class="p-4 mb-3 bg-white">
+        <!-- <div class="p-4 mb-3 bg-white">
           <h3 class="h5 text-black mb-3">More Info</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic
             consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed
             nulla.</p>
           <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
-        </div>
+        </div> -->
       </div>
     </div>
   

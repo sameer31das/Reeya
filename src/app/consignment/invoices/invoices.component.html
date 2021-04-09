@@ -9,24 +9,26 @@
               <div class="row no-gutters">
                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
                   <input type="text" placeholder="Invoice No" formControlName="invoiceNo" class="form-control"
-                    id="search" name="search">
+                    id="txtInvoiceNo" name="search">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
 
-                  <input type="text" placeholder="Invoice Date" formControlName="invoiceData" class="form-control"
-                    id="search" name="search">
+                  <input type="text" [owlDateTime]="dtInv" [owlDateTimeTrigger]="dtInv"
+                   placeholder="Invoice Date" formControlName="invoiceDate" class="form-control"
+                    id="txtinvoicedate" name="search">
+                    <owl-date-time #dtInv></owl-date-time>
 
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
 
                   <input type="text" placeholder="Total Value" formControlName="totalValue" class="form-control"
-                    id="search" name="search">
+                    id="txttotalvalue" >
 
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
 
-                  <input type="text" placeholder="Descreption" formControlName="description" class="form-control"
-                    id="search" name="search">
+                  <input type="text" placeholder="Description" formControlName="description" class="form-control"
+                    id="txtdescription" >
 
                 </div>
 
@@ -38,10 +40,10 @@
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-12 p-0">
                   <label for="file-upload-Invoice" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> Add
+                    <i class="fa fa-cloud-upload"></i> Add with document
                   </label>
                   <input id="file-upload-Invoice" (change)="selectInvoice($event)" type="file" />
-                  <div class="textInput1"> {{this.lblInvoice}}</div>
+                  <!-- <div class="textInput1"> sss</div> -->
 
                 </div>
               </div>
@@ -59,7 +61,7 @@
     <div class="col-lg-12 card-margin">
       <div class="card search-form">
         <div class="card-body p-0">
-          <form id="search-form">
+          <form id="search-form-details">
 
             <div class="col-12" style="background-color: #343a40; color: white; padding: 5px;">
               <div class="row no-gutters">
@@ -92,7 +94,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12" *ngFor="let item of invoiceArray;let i = index"
+            <div class="col-12" *ngFor="let item of invoiceArrayForDisplay;let i = index"
               style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
               <div class="row no-gutters">
                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: "app-dashboard-header",
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardHeaderComponent implements OnInit {
   
-  constructor() { }
+  constructor( private authService: MsalService) { }
   ngOnInit() {
  
 
   }
   logout() {
-    console.log("logout")
+    this.authService.logout();
   }
 }

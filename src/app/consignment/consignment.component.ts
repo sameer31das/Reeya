@@ -90,6 +90,7 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.radioset1.setValue(data.radioset1);
     this.generalForm.controls.radioset2.setValue(data.radioset2);
     this.generalForm.controls.comments.setValue(data.comments);
+    this.submitData();
   }
   // tslint:disable-next-line:typedef
   consigneeDetails(data) {
@@ -104,7 +105,49 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.consigneemobileno.setValue(
       data.consigneemobileno
     );
+  }
+  Detail(data) {
+    this.generalForm.controls.totalprice.setValue(data.totalprice);
+    this.generalForm.controls.declaredmaterial.setValue(data.declaredmaterial);
+    this.generalForm.controls.value.setValue(data.value);
+    this.generalForm.controls.declaredweight.setValue(data.declaredweight);
+    this.generalForm.controls.actualWeight.setValue(data.actualWeight);
+    this.generalForm.controls.photo.setValue(data.photo);
+  }
+  attachments(data) {
+    this.generalForm.controls.bill.setValue(data.bill);
+    this.generalForm.controls.invoice.setValue(data.invoice);
+    this.generalForm.controls.photo.setValue(data.photo);
+  }
+  Schedules(data) {
+    this.generalForm.controls.pickup.setValue(data.pickup);
+    this.generalForm.controls.delivery.setValue(data.delivery);
+    this.generalForm.controls.mode.setValue(data.mode);
+    this.generalForm.controls.vehicle.setValue(data.vehicle);
+    this.generalForm.controls.billno.setValue(data.billno);
+    this.generalForm.controls.bill.setValue(data.bill);
+  }
+  remarks(data) {
+    this.generalForm.controls.remarks.setValue(data.remarks);
+  }
+  invoices(data) {
+    this.invoiceList = data;
+    this.generalForm.controls.remarks.setValue(data.remarks);
+  }
+  items(data) {
+    this.itemsList = data;
+    this.generalForm.controls.remarks.setValue(data.remarks);
+  }
+  next() {
+    if (this.tab < 4) {
+      this.tab = this.tab + 1;
+    } else {
+      this.tab = 1;
+    }
+  }
 
+  submitData(){
+    
     this.newConsignment = {
       id: 0,
       createdOn: new Date(this.date).toISOString(),
@@ -162,6 +205,11 @@ export class ConsignmentComponent implements OnInit {
       },
       invoices: this.invoiceList,
       items: this.itemsList,
+      payment:{
+        paymentMode:Number(this.generalForm.controls.radioset1.value),
+        billingParty:this.generalForm.controls.comments.value
+      },
+      remarks:this.generalForm.controls.remarks.value
     };
 
     console.log(this.newConsignment);
@@ -172,44 +220,6 @@ export class ConsignmentComponent implements OnInit {
         this.submitResponse = submitData;
         this.router.navigateByUrl("/dashboard");
       });
-  }
-  Detail(data) {
-    this.generalForm.controls.totalprice.setValue(data.totalprice);
-    this.generalForm.controls.declaredmaterial.setValue(data.declaredmaterial);
-    this.generalForm.controls.value.setValue(data.value);
-    this.generalForm.controls.declaredweight.setValue(data.declaredweight);
-    this.generalForm.controls.actualWeight.setValue(data.actualWeight);
-    this.generalForm.controls.photo.setValue(data.photo);
-  }
-  attachments(data) {
-    this.generalForm.controls.bill.setValue(data.bill);
-    this.generalForm.controls.invoice.setValue(data.invoice);
-    this.generalForm.controls.photo.setValue(data.photo);
-  }
-  Schedules(data) {
-    this.generalForm.controls.pickup.setValue(data.pickup);
-    this.generalForm.controls.delivery.setValue(data.delivery);
-    this.generalForm.controls.mode.setValue(data.mode);
-    this.generalForm.controls.vehicle.setValue(data.vehicle);
-    this.generalForm.controls.billno.setValue(data.billno);
-    this.generalForm.controls.bill.setValue(data.bill);
-  }
-  remarks(data) {
-    this.generalForm.controls.remarks.setValue(data.remarks);
-  }
-  invoices(data) {
-    this.invoiceList = data;
-    this.generalForm.controls.remarks.setValue(data.remarks);
-  }
-  items(data) {
-    this.itemsList = data;
-    this.generalForm.controls.remarks.setValue(data.remarks);
-  }
-  next() {
-    if (this.tab < 4) {
-      this.tab = this.tab + 1;
-    } else {
-      this.tab = 1;
-    }
+
   }
 }
