@@ -25,6 +25,7 @@ export class ConsignmentComponent implements OnInit {
   tab = 1;
   generalForm: FormGroup;
   invoiceList = [];
+  itemsList = [];
   ngOnInit(): void {
     this.generateForms();
     this.sharedService.getState().subscribe((data) => {
@@ -160,6 +161,7 @@ export class ConsignmentComponent implements OnInit {
         declaredMaterial: this.generalForm.controls.declaredmaterial.value,
       },
       invoices: this.invoiceList,
+      items: this.itemsList,
     };
 
     console.log(this.newConsignment);
@@ -200,6 +202,7 @@ export class ConsignmentComponent implements OnInit {
     this.generalForm.controls.remarks.setValue(data.remarks);
   }
   items(data) {
+    this.itemsList = data;
     this.generalForm.controls.remarks.setValue(data.remarks);
   }
   next() {

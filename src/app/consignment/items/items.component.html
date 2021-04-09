@@ -1,1 +1,128 @@
-<p>items works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 card-margin">
+            <div class="card search-form">
+                <div class="card-body p-0">
+                    <form id="search-form" [formGroup]="generalForm">
+
+                        <div class="col-12">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                                    <input type="text" placeholder="length" formControlName="length"
+                                        class="form-control" id="search" name="search">
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                                    <input type="text" placeholder="width" formControlName="width" class="form-control"
+                                        id="search" name="search">
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                                    <input type="text" placeholder="height" formControlName="height"
+                                        class="form-control" id="search" name="search">
+
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+
+                                    <input type="text" placeholder="Descreption" formControlName="invoice"
+                                        class="form-control" id="search" name="search">
+
+                                </div>
+
+
+                                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                                    <label for="file-upload-Invoice" class="custom-file-upload">
+                                        <i class="fa fa-cloud-upload"></i> Add
+                                    </label>
+                                    <input id="file-upload-Invoice" (change)="selectInvoice($event)" type="file" />
+                                    <div class="textInput1"> {{this.lblInvoice}}</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 card-margin">
+            <div class="card search-form">
+                <div class="card-body p-0">
+                    <form id="search-form">
+
+                        <div class="col-12" style="background-color: #343a40; color: white; padding: 5px;">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                                    length
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                                    width
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                                    height
+
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+
+                                    Description
+
+                                </div>
+
+
+                                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12" *ngFor="let item of invoiceArray;let i = index"
+                            style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
+                            <div class="row no-gutters">
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                                    {{item.length}}
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                                    {{item.width}}
+
+
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+
+                                    {{item.height}}
+
+
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                    {{item.description}}
+
+                                </div>
+
+
+                                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
+                                    <button type="button" class="btn btn-danger" (click)="delete(i)"
+                                        style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
