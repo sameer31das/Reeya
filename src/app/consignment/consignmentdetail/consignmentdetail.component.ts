@@ -14,10 +14,14 @@ export class ConsignmentdetailComponent implements OnInit {
   @Output() Remarks: EventEmitter<any> = new EventEmitter<any>();
   @Output() Invoices: EventEmitter<any> = new EventEmitter<any>();
   @Output() Items: EventEmitter<any> = new EventEmitter<any>();
+  @Output() disableNext: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}
   section = 0;
 
   ngOnInit() {}
+  disableNexts(event) {
+    this.disableNext.emit(event);
+  }
 
   Details(data) {
     this.Detail.emit(data);

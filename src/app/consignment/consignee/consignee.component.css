@@ -6,3 +6,7 @@
     font-size: smaller;
     color: red;
 }
+
+.errorBox {
+    border: 1px solid red;
+}

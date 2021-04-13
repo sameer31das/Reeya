@@ -26,6 +26,9 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
   emailError: boolean;
   pincodeError: boolean;
   noError: boolean;
+  nameError: boolean;
+  addError: boolean;
+  cityError: boolean;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Input() initialFormDetails: any;
   @Output() consigneeDetails: EventEmitter<FormGroup> = new EventEmitter<
@@ -35,6 +38,7 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
     IStateDetail
   >();
   @Input() tab = 1;
+  @Output() disableNext: EventEmitter<any> = new EventEmitter<any>();
   cityAll: ICityDetail[];
   stateId: any;
   cities: any;
@@ -42,6 +46,11 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
   generalForm: FormGroup;
   ngOnInit(): void {
     this.generateForms();
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.sharedService.getCity().subscribe((item) => {
@@ -57,34 +66,57 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
     );
   }
   // tslint:disable-next-line:typedef
+
   generateForms() {
     const group = {
-      consigneestate: [
-        this.initialFormDetails.controls.consigneestate.value,
-        Validators.required,
-      ],
-      consigneecity: [this.initialFormDetails.controls.consigneecity.value],
-      consigneename: [
-        this.initialFormDetails.controls.consigneename.value,
-        Validators.required,
-      ],
-      consigneeadd: [
-        this.initialFormDetails.controls.consigneeadd.value,
-        Validators.required,
-      ],
-      consigneepincode: [
-        this.initialFormDetails.controls.consigneepincode.value,
-        Validators.pattern("[0-9 ]*"),
-      ],
-      consigneeemailadd: [
-        this.initialFormDetails.controls.consigneeemailadd.value,
-        Validators.email,
-      ],
+      consigneestate: [this.initialFormDetails.controls.consigneestate.value],
 
-      consigneemobileno: [
+      consigneecity: new FormControl(
+        this.initialFormDetails.controls.consigneecity.value,
+        [
+          //Validators.required,
+          Validators.pattern("[a-zA-Z ]+$"),
+          Validators.maxLength(64),
+        ]
+      ),
+
+      consigneename: new FormControl(
+        this.initialFormDetails.controls.consigneename.value,
+        [
+          Validators.required,
+          Validators.pattern("^[a-zA-Z ]+$"),
+          Validators.maxLength(68),
+        ]
+      ),
+      consigneeadd: new FormControl(
+        this.initialFormDetails.controls.consigneeadd.value,
+        [
+          Validators.required,
+          Validators.pattern("^[#.0-9a-zA-Zs,-]+$"),
+          Validators.maxLength(256),
+        ]
+      ),
+
+      consigneepincode: new FormControl(
+        this.initialFormDetails.controls.consigneepincode.value,
+        [
+          Validators.required,
+          Validators.pattern("^[1-9]{1}[0-9]{5}$"),
+          Validators.maxLength(6),
+        ]
+      ),
+      consigneeemailadd: new FormControl(
+        this.initialFormDetails.controls.consigneeemailadd.value,
+        [Validators.required, Validators.email, Validators.maxLength(128)]
+      ),
+      consigneemobileno: new FormControl(
         this.initialFormDetails.controls.consigneemobileno.value,
-        Validators.pattern("[0-9 ]*"),
-      ],
+        [
+          Validators.required,
+          Validators.pattern("[0-9 ]*"),
+          Validators.maxLength(16),
+        ]
+      ),
     };
     if (this.cityAll) {
       this.onStateChange();
@@ -101,6 +133,11 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.emailError = true;
     }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
   }
   checkPincode() {
     if (this.generalForm.controls.consigneepincode.valid) {
@@ -108,12 +145,58 @@ export class ConsigneeComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.pincodeError = true;
     }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
   }
   checkNo() {
     if (this.generalForm.controls.consigneemobileno.valid) {
       this.noError = false;
     } else {
       this.noError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
+  }
+  checkName() {
+    if (this.generalForm.controls.consigneename.valid) {
+      this.nameError = false;
+    } else {
+      this.nameError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
+  }
+  checkCity() {
+    if (this.generalForm.controls.consigneecity.valid) {
+      this.cityError = false;
+    } else {
+      this.cityError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
+  }
+  checkAdd() {
+    if (this.generalForm.controls.consigneeadd.valid) {
+      this.addError = false;
+    } else {
+      this.addError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
     }
   }
   ngOnDestroy(): void {

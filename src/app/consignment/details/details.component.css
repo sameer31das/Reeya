@@ -10,6 +10,10 @@
     color: red;
 }
 
+.errorBox {
+    border: 1px solid red;
+}
+
 table>tr {
     margin-left: 15%
 }

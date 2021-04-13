@@ -12,39 +12,51 @@
   <div class="form-group row">
     <label for="drpCity" class="col-sm-2 col-form-label">City</label>
     <div class="col-sm-8">
-      <select id="drpCity" formControlName="consigneecity" class="form-control">
+      <select id="drpCity" [class.errorBox]="this.cityError" (blur)="checkCity()" formControlName="consigneecity"
+        class="form-control">
         <!-- <option selected>Choose...</option> -->
         <option *ngFor="let city of cities" [value]="city.name">{{ city.name }} </option>
       </select>
+      <div class="error" *ngIf="cityError">The property 'fromCity' is not valid.
+      </div>
     </div>
   </div>
 
   <div class="form-group row">
     <label for="txtconsigneename" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" formControlName="consigneename" id="txtconsigneename" />
+      <input type="text" [class.errorBox]="this.nameError" (blur)="checkName()" class="form-control"
+        formControlName="consigneename" id="txtconsigneename" />
+      <div class="error" *ngIf="nameError">The property 'consigneeName' should contain only alphabetic characters.
+      </div>
     </div>
   </div>
   <div class="form-group row">
     <label for="txtconsigneeadd" class="col-sm-2 col-form-label">Address</label>
     <div class="col-sm-8">
-      <textarea type="text" class="form-control" formControlName="consigneeadd" id="txtconsigneeadd"></textarea>
+      <textarea (blur)="checkAdd()" [class.errorBox]="addError" type="text" class="form-control"
+        formControlName="consigneeadd" id="txtconsigneeadd"></textarea>
+      <div [class.error]="addError" *ngIf="addError">The property 'fromAddress' is not
+        valid.
+      </div>
     </div>
+
   </div>
 
 
   <div class="form-group row">
     <label for="txtPincode" class="col-sm-2 col-form-label">Pin Code</label>
     <div class="col-sm-8">
-      <input type="text" (blur)="checkPincode()" class="form-control" formControlName="consigneepincode"
-        id="txtPincode">
-      <div class="error" *ngIf="pincodeError">pincode should be a number </div>
+      <input type="text" (blur)="checkPincode()" [class.errorBox]="pincodeError" class="form-control"
+        formControlName="consigneepincode" id="txtPincode">
+      <div class="error" *ngIf="pincodeError">The property 'fromPincode' is not valid. </div>
     </div>
   </div>
   <div class="form-group row">
     <label for="txtEmail" class="col-sm-2 col-form-label">Email Address</label>
     <div class="col-sm-8">
-      <input type="email" (blur)="checkEmail()" class="form-control" formControlName="consigneeemailadd" id="txtEmail">
+      <input type="email" (blur)="checkEmail()" [class.errorBox]="emailError" class="form-control"
+        formControlName="consigneeemailadd" id="txtEmail">
       <div class="error" *ngIf="emailError">Email must be a valid </div>
     </div>
 
@@ -52,8 +64,9 @@
   <div class="form-group row">
     <label for="txtMobile" class="col-sm-2 col-form-label">Mobile Number</label>
     <div class="col-sm-8">
-      <input type="text" (blur)="checkNo()" class="form-control" formControlName="consigneemobileno" id="txtMobile">
-      <div class="error" *ngIf="noError">Mobile No should be a numeric value</div>
+      <input type="text" (blur)="checkNo()" [class.errorBox]="noError" class="form-control"
+        formControlName="consigneemobileno" id="txtMobile">
+      <div class="error" *ngIf="noError">The property 'Mobile Number' is not valid.</div>
     </div>
   </div>
 

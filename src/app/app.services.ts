@@ -16,10 +16,10 @@ import {
 import * as auth from "./auth-config.json";
 @Injectable()
 export class ShareServices {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   //private hostUrl = "https://cargo-xpert.com";
   private hostUrl = auth.resources.todoListApi.resourceUri;
-  private stateUrl: string = this.hostUrl + "/webapi/Territory/Statess";
+  private stateUrl: string = this.hostUrl + "/webapi/Territory/States";
   private cityUrl = this.hostUrl + "/webapi/territory/cities/all";
   private modeUrl: string = this.hostUrl + "/webapi/Consignment/Modes";
   private submitUrl: string = this.hostUrl + "/webapi/Consignment";
@@ -53,8 +53,6 @@ export class ShareServices {
   getConsignmentList(): Observable<IConsignmentList> {
     return this.http.get<IConsignmentList>(this.consignmentListUrl);
   }
-
- 
 
   uploadDocument(fileObject): Observable<any> {
     let formData = new FormData();
@@ -108,16 +106,17 @@ export class ShareServices {
   }
   submitInquiry(data: any) {
     return fetch(this.Inquiry_url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
   }
 
   getTrackingList(trackingId) {
-    const _trackUrl=this.hostUrl + "/webapi/Consignment/" + trackingId + "/track/latest";
+    const _trackUrl =
+      this.hostUrl + "/webapi/Consignment/" + trackingId + "/track/latest";
     return fetch(_trackUrl);
   }
 }

@@ -7,7 +7,12 @@ import {
   Output,
   SimpleChanges,
 } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 import { EventEmitter } from "@angular/core";
 import { ShareServices } from "src/app/app.services";
 import { IEmployee, IStateDetail, ICity, ICityDetail } from "../../app.model";
@@ -21,11 +26,15 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   emailError: boolean;
   pincodeError: boolean;
   noError: boolean;
+  nameError: boolean;
+  cityError: boolean;
+  addError: boolean;
   constructor(private fb: FormBuilder, private sharedService: ShareServices) {}
   @Input() initialFormDetails: any;
   @Output() consignerDetails: EventEmitter<FormGroup> = new EventEmitter<
     FormGroup
   >();
+  @Output() disableNext: EventEmitter<any> = new EventEmitter<any>();
   @Input() stateLists: EventEmitter<IStateDetail> = new EventEmitter<
     IStateDetail
   >();
@@ -36,6 +45,11 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   generalForm: FormGroup;
   ngOnInit(): void {
     this.generateForms();
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.sharedService.getCity().subscribe((item) => {
@@ -53,21 +67,40 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
   generateForms() {
     const group = {
       state: [this.initialFormDetails.controls.state.value],
-      city: [this.initialFormDetails.controls.city.value],
-      name: [this.initialFormDetails.controls.name.value],
-      add: [this.initialFormDetails.controls.add.value],
-      pincode: [
-        this.initialFormDetails.controls.pincode.value,
-        Validators.pattern("[0-9 ]*"),
-      ],
-      emailadd: [
+
+      name: new FormControl(this.initialFormDetails.controls.name.value, [
+        Validators.required,
+        Validators.pattern("^[a-zA-Z ]+$"),
+        Validators.maxLength(68),
+      ]),
+      add: new FormControl(this.initialFormDetails.controls.add.value, [
+        Validators.required,
+        Validators.pattern("^[#.0-9a-zA-Zs,-]+$"),
+        Validators.maxLength(256),
+      ]),
+
+      pincode: new FormControl(this.initialFormDetails.controls.pincode.value, [
+        Validators.required,
+        Validators.pattern("^[1-9]{1}[0-9]{5}$"),
+        Validators.maxLength(6),
+      ]),
+      city: new FormControl(this.initialFormDetails.controls.city.value, [
+        //Validators.required,
+        Validators.pattern("[a-zA-Z ]+$"),
+        Validators.maxLength(64),
+      ]),
+      emailadd: new FormControl(
         this.initialFormDetails.controls.emailadd.value,
-        Validators.email,
-      ],
-      mobileno: [
+        [Validators.required, Validators.email, Validators.maxLength(128)]
+      ),
+      mobileno: new FormControl(
         this.initialFormDetails.controls.mobileno.value,
-        Validators.pattern("[0-9 ]*"),
-      ],
+        [
+          Validators.required,
+          Validators.pattern("[0-9 ]*"),
+          Validators.maxLength(16),
+        ]
+      ),
     };
     if (this.cityAll) {
       this.onStateChange();
@@ -80,12 +113,34 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
     } else {
       this.emailError = true;
     }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
   }
   checkPincode() {
     if (this.generalForm.controls.pincode.valid) {
       this.pincodeError = false;
     } else {
       this.pincodeError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
+  }
+  checkName() {
+    if (this.generalForm.controls.name.valid) {
+      this.nameError = false;
+    } else {
+      this.nameError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
     }
   }
   checkNo() {
@@ -94,9 +149,43 @@ export class ConsignerComponent implements OnInit, OnDestroy, OnChanges {
     } else {
       this.noError = true;
     }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
+  }
+  checkCity() {
+    if (this.generalForm.controls.city.valid) {
+      this.cityError = false;
+    } else {
+      this.cityError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
+  }
+  checkAdd() {
+    if (this.generalForm.controls.add.valid) {
+      this.addError = false;
+    } else {
+      this.addError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext.emit(false);
+    } else {
+      this.disableNext.emit(true);
+    }
   }
   // tslint:disable-next-line:typedef
   ngOnDestroy() {
+    if (this.generalForm.valid !== true) {
+      this.disableNext.emit(true);
+    } else {
+      this.disableNext.emit(false);
+    }
     this.consignerDetails.emit(this.generalForm.value);
   }
 }

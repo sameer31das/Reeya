@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from "@angular/forms";
 
 @Component({
   selector: "app-payment",
@@ -9,8 +14,11 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 export class PaymentComponent implements OnInit {
   @Output() Payment: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Input() tab = 1;
+
   showSeconRadioset: boolean;
   showRemark: boolean;
+  commentError: boolean;
+  disableNext: boolean;
   constructor(private fb: FormBuilder) {}
   generalForm: FormGroup;
   ngOnInit(): void {
@@ -21,7 +29,12 @@ export class PaymentComponent implements OnInit {
     const group = {
       radioset1: [""],
       radioset2: [""],
-      comments: [""],
+
+      comments: new FormControl("", [
+        Validators.required,
+        Validators.pattern("^[a-zA-Z ]+$"),
+        Validators.maxLength(68),
+      ]),
     };
     this.generalForm = this.fb.group(group);
   }
@@ -41,9 +54,20 @@ export class PaymentComponent implements OnInit {
       this.showRemark = false;
     }
   }
+  checkComment() {
+    if (this.generalForm.controls.comments.valid) {
+      this.commentError = false;
+    } else {
+      this.commentError = true;
+    }
+    if (this.generalForm.valid) {
+      this.disableNext = false;
+    } else {
+      this.disableNext = true;
+    }
+  }
 
   submit() {
     this.Payment.emit(this.generalForm.value);
   }
-
 }

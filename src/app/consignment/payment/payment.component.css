@@ -23,3 +23,12 @@
     margin-left: 30%;
     padding-top: 51px;
 }
+
+.error {
+    font-size: smaller;
+    color: red;
+}
+
+.errorBox {
+    border: 1px solid red;
+}

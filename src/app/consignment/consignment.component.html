@@ -98,33 +98,35 @@
                 style="text-align: left; border: 1px solid #ccc; padding:10px; border-top: none; margin-top: -50px;">
                 <div class="tab-panel" id="tabPanel1" *ngIf="tab==1">
                   <app-consigner [initialFormDetails]="this.generalForm" [stateLists]="this.stateLists"
-                    (consignerDetails)="consignerDetails($event)">
+                    (consignerDetails)="consignerDetails($event)" (disableNext)="disableNext($event)">
                   </app-consigner>
                 </div>
                 <div class="tab-panel" id="tabPanel2" *ngIf="tab==2">
                   <app-consignmentdetail [initialFormDetails]="this.generalForm" (Detail)="Detail($event)"
                     (Schedules)="Schedules($event)" (Remarks)="remarks($event)" (Items)="items($event)"
-                    (Invoices)="invoices($event)" (Attachment)="attachments($event)">
+                    (Invoices)="invoices($event)" (Attachment)="attachments($event)"
+                    (disableNext)="disableNext($event)">
                   </app-consignmentdetail>
                 </div>
                 <div class="tab-panel" id="tabPanel3" *ngIf="tab==3">
                   <app-consignee [initialFormDetails]="this.generalForm" [stateLists]="this.stateLists" [tab]="this.tab"
-                    (consigneeDetails)="consigneeDetails($event)"></app-consignee>
+                    (consigneeDetails)="consigneeDetails($event)" (disableNext)="disableNext($event)"></app-consignee>
                 </div>
                 <div class="tab-panel" id="tabPanel4" *ngIf="tab==4">
                   <app-payment [initialFormDetails]="this.generalForm" [tab]="this.tab" (Payment)="Payments($event)">
                   </app-payment>
-                  <div *ngIf="isMsgActive">{{successMsg}}   <button (click)="redirectPage()" class="btn btn-link">click here to see the consignment</button>
-                    </div>
+                  <div *ngIf="isMsgActive">{{successMsg}} <button (click)="redirectPage()" class="btn btn-link">click
+                      here to see the consignment</button>
+                  </div>
                 </div>
               </div>
               <div class="next form-group row" *ngIf="tab <=3" style="text-align: left;">
                 <div class="col-sm-10">
-                  <button (click)="next()" class="btn btn-primary">Next</button>
-                  
+                  <button (click)="next()" [disabled]="isNextDisabled" class="btn btn-primary">Next</button>
+
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -142,7 +144,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
+  </script>
   <script>
     window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
   </script>

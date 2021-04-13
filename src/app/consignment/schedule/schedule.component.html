@@ -4,7 +4,8 @@
     <label for="datePickUp" class="col-sm-2 col-form-label">Pick Up:</label>
     <div class="col-sm-8">
       <input placeholder="Date Time:" class="form-control" formControlName="pickup" [owlDateTime]="dt"
-        [owlDateTimeTrigger]="dt" id="datePickUp" (blur)="checkDate()"> <i class="fa fa-envelope icon"></i>
+        [owlDateTimeTrigger]="dt" id="datePickUp" [class.errorBox]="dateError" (blur)="checkDate()"> <i
+        class="fa fa-envelope icon"></i>
       <owl-date-time #dt></owl-date-time>
     </div>
   </div>
@@ -12,7 +13,7 @@
     <label for="dateDelivery" class="col-sm-2 col-form-label">Delivery:</label>
     <div class="col-sm-8">
       <input placeholder="Date Time:" class="form-control" formControlName="delivery" [owlDateTime]="dt1"
-        [owlDateTimeTrigger]="dt1" id="dateDelivery" (blur)="checkDate()">
+        [owlDateTimeTrigger]="dt1" id="dateDelivery" [class.errorBox]="dateError" (blur)="checkDate()">
       <owl-date-time #dt1></owl-date-time>
       <div class="error" *ngIf="dateError">Delivery date must be after pick-up date </div>
     </div>
@@ -23,22 +24,28 @@
   <div class="form-group row">
     <label for="drpMode" class="col-sm-2 col-form-label">Mode:</label>
     <div class="col-sm-8">
-      <select id="drpMode" formControlName="mode" class="form-control">
+      <select (blur)="checkMode()" [class.errorBox]="modeError" id="drpMode" formControlName="mode"
+        class="form-control">
 
         <option *ngFor="let item of Mode" [value]="item[0]">{{ item[1] }} </option>
       </select>
+      <div class="error" *ngIf="modeError">Mode is required</div>
     </div>
   </div>
   <div class="form-group row">
     <label for="txtVechicle" class="col-sm-2 col-form-label">Vehicle / Carrier:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" formControlName="vehicle" id="txtVechicle">
+      <input type="text" (blur)="checkVehicle()" [class.errorBox]="vehicleError" class="form-control"
+        formControlName="vehicle" id="txtVechicle">
+      <div class="error" *ngIf="vehicleError">field "vehicle/Carrier" is invalid</div>
     </div>
   </div>
   <div class="form-group row">
     <label for="txtVechicle" class="col-sm-2 col-form-label">Eway Bill No:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" formControlName="billno" id="txtBillno">
+      <input type="text" (blur)="checkBill()" [class.errorBox]="billError" class="form-control" formControlName="billno"
+        id="txtBillno">
+      <div class="error" *ngIf="billError">Delivery date must be after pick-up date </div>
     </div>
   </div>
 

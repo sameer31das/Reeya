@@ -17,25 +17,27 @@ export class ConsignmentComponent implements OnInit {
   latitude: any;
   longitude: any;
   date: Date = new Date();
+  isNextDisabled = false;
 
   constructor(
     private fb: FormBuilder,
     private sharedService: ShareServices,
     private router: Router
-  ) { }
+  ) {}
   tab = 1;
   generalForm: FormGroup;
   invoiceList = [];
   itemsList = [];
   ngOnInit(): void {
     this.generateForms();
-    this.sharedService.getState().subscribe((data) => {
-      this.stateLists = data.result;
-    },
+    this.sharedService.getState().subscribe(
+      (data) => {
+        this.stateLists = data.result;
+      },
       (err) => {
         console.log("state error" + err);
-      });
-
+      }
+    );
 
     this.sharedService.getPosition().then((pos) => {
       this.latitude = pos.lat;
@@ -43,6 +45,9 @@ export class ConsignmentComponent implements OnInit {
 
       console.log(`Positon: ${pos.lng} ${pos.lat}`);
     });
+  }
+  disableNext(event) {
+    this.isNextDisabled = event;
   }
   // tslint:disable-next-line:typedef
   generateForms() {
@@ -153,7 +158,6 @@ export class ConsignmentComponent implements OnInit {
   }
 
   submitData() {
-
     this.newConsignment = {
       id: 0,
       createdOn: new Date(this.date).toISOString(),
@@ -185,7 +189,7 @@ export class ConsignmentComponent implements OnInit {
         reason: "",
         ewayBillUrl: this.generalForm.controls.bill.value,
         carrier: this.generalForm.controls.vehicle.value,
-        updatedOn: new Date().toISOString()
+        updatedOn: new Date().toISOString(),
       },
       schedule: {
         pickupDate: new Date(
@@ -199,7 +203,7 @@ export class ConsignmentComponent implements OnInit {
         ).toISOString(),
         deliveredOn: null,
         mode: 4,
-        ewaybillNumber: this.generalForm.controls.billno.value
+        ewaybillNumber: this.generalForm.controls.billno.value,
       },
       billAmount: 0,
       content: {
@@ -208,15 +212,15 @@ export class ConsignmentComponent implements OnInit {
         declaredWeight: this.generalForm.controls.declaredweight.value,
         actualWeight: this.generalForm.controls.actualWeight.value,
         category: this.generalForm.controls.category.value,
-        consignmentNote: this.generalForm.controls.consignmentnote.value
+        consignmentNote: this.generalForm.controls.consignmentnote.value,
       },
       invoices: this.invoiceList,
       items: this.itemsList,
       payment: {
         paymentMode: Number(this.generalForm.controls.radioset1.value),
-        billingParty: this.generalForm.controls.comments.value
+        billingParty: this.generalForm.controls.comments.value,
       },
-      remarks: this.generalForm.controls.remarks.value
+      remarks: this.generalForm.controls.remarks.value,
     };
 
     console.log(this.newConsignment);
@@ -226,9 +230,7 @@ export class ConsignmentComponent implements OnInit {
         console.log("Consignment created" + submitData);
         this.isMsgActive = true;
         this.successMsg = submitData["message"];
-
       });
-
   }
   redirectPage() {
     this.router.navigateByUrl("/dashboard");
