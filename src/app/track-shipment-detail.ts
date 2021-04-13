@@ -3,7 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { ShareServices } from "./app.services";
 import { DialogPopupComponent } from "./dialogpopup/dialogpopup.component";
 import { ActivatedRoute } from "@angular/router";
-import { ITrackingDetail } from "./app.model";
+import { ITracking, ITrackingDetail } from "./app.model";
 
 @Component({
   selector: "app-track-shipment-detail",
@@ -15,8 +15,8 @@ export class TrackShipmentDetailComponent implements OnInit {
     private _sharedService: ShareServices,
     public dialog: MatDialog,
     private route: ActivatedRoute
-  ) {}
-  trackingLists: any;
+  ) { }
+  trackingLists: ITrackingDetail;
   trackingId: string;
   status: string;
   pickUp: string;
@@ -40,12 +40,14 @@ export class TrackShipmentDetailComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.trackingId = params.id;
     });
-    this._sharedService.getTrackingList(this.trackingId).subscribe((data) => {
-      this.trackingLists = data.result;
-      this.pickUp = (this.trackingLists.actualPickup).replace(/T/, ' ').replace(/\..+/, '');
-      this.delivery = (this.trackingLists.scheduledDelivery).replace(/T/, ' ').replace(/\..+/, '');
 
-      switch (this.trackingLists.status.status) {
+    this._sharedService.getTrackingList(this.trackingId).then(response => response.json())
+    .then(data => {
+      this.trackingLists = data["result"];
+      this.pickUp = (this.trackingLists["actualPickup"]).replace(/T/, ' ').replace(/\..+/, '');
+      this.delivery = (this.trackingLists["scheduledDelivery"]).replace(/T/, ' ').replace(/\..+/, '');
+
+      switch (this.trackingLists.status["status"]) {
         case 1:
           this.width = 20;
           this.status = "Booked";

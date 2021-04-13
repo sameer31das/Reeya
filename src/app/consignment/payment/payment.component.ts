@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit {
   }
   onChange(event) {
     this.generalForm.controls.radioset1.setValue(event.value);
-    if (event.value === "To be Billed") {
+    if (event.value === "3") {
       this.showSeconRadioset = true;
     } else {
       this.showSeconRadioset = false;
@@ -45,7 +45,5 @@ export class PaymentComponent implements OnInit {
   submit() {
     this.Payment.emit(this.generalForm.value);
   }
-  ngOnDestroy(): void {
-    this.Payment.emit(this.generalForm.value);
-  }
+
 }

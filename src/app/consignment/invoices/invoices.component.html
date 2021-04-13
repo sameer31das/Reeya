@@ -13,22 +13,21 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
 
-                  <input type="text" [owlDateTime]="dtInv" [owlDateTimeTrigger]="dtInv"
-                   placeholder="Invoice Date" formControlName="invoiceDate" class="form-control"
-                    id="txtinvoicedate" name="search">
-                    <owl-date-time #dtInv></owl-date-time>
+                  <input type="text" [owlDateTime]="dtInv" [owlDateTimeTrigger]="dtInv" placeholder="Invoice Date"
+                    formControlName="invoiceDate" class="form-control" id="txtinvoicedate" name="search">
+                  <owl-date-time #dtInv></owl-date-time>
 
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
 
                   <input type="text" placeholder="Total Value" formControlName="totalValue" class="form-control"
-                    id="txttotalvalue" >
+                    id="txttotalvalue">
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                <div class="col-lg-2 col-md-3 col-sm-12 p-0">
 
                   <input type="text" placeholder="Description" formControlName="description" class="form-control"
-                    id="txtdescription" >
+                    id="txtdescription">
 
                 </div>
 
@@ -38,13 +37,12 @@
                     name="search">
 
                 </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                  <label for="file-upload-Invoice" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> Add with document
-                  </label>
-                  <input id="file-upload-Invoice" (change)="selectInvoice($event)" type="file" />
-                  <!-- <div class="textInput1"> sss</div> -->
+                <div class="col-lg-2 col-md-1 col-sm-12 p-0">
+                  <label for="file-upload-Invoice" class="custom-file-upload btn btn-success">
+                    <i class="fa fa-cloud-upload "></i> Add with document
 
+                    <input id="file-upload-Invoice" (change)="selectInvoice($event)" type="file" />
+                  </label>
                 </div>
               </div>
             </div>
@@ -63,141 +61,45 @@
         <div class="card-body p-0">
           <form id="search-form-details">
 
-            <div class="col-12" style="background-color: #343a40; color: white; padding: 5px;">
-              <div class="row no-gutters">
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  Invoice Number
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
 
-                  Invoice Date
+            <div class="row">
+              <div class="col-md-4" *ngFor="let item of invoiceArrayForDisplay;let i = index">
+                <div class="card mb-4 shadow-sm">
+                  <div class="row g-0">
+                    <div class="col-md-12">
+                      <button type="button" (click)="delete(i)" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text" style="color: red; ">&times;</span>
+                      </button>
+                      <div class="card-body">
+                        <div>
+                          <label>Inv. Number:</label>
+                          <span>{{item.invoices}}</span>
+                        </div>
+                        <div>
+                          <label>Inv. Date:</label>
+                          <span>{{item.invoiceDate | date:'shortDate'}}</span>
+                        </div>
 
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                        <div>
+                          <label>Tot. Value:</label>
+                          <span> {{item.totalValue}}</span>
+                        </div>
 
-                  Total Value
+                        <div>
+                          <label>Quantity:</label>
+                          <span> {{item.quantity}}</span>
+                        </div>
 
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-
-                  Description
-
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  Quantity
-
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-
-                </div>
-              </div>
-            </div>
-            <div class="col-12" *ngFor="let item of invoiceArrayForDisplay;let i = index"
-              style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-              <div class="row no-gutters">
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  {{item.invoices}}
-
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  {{item.invoiceData}}
-
-
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  {{item.totalValue}}
-
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                  {{item.description}}
-
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  {{item.quantity}}
-
-
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                  <button type="button" class="btn btn-danger" (click)="delete(i)"
-                    style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
+                        <div>
+                          <label>Desc.</label>
+                          <span>{{item.description}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- <div class="col-12"
-              style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-              <div class="row no-gutters">
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  RT19233839
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  13-5-2020
-
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  4
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                  Work in progress
-
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  20
-
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                  <button type="button" class="btn btn-danger"
-                    style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
-                </div>
-              </div>
-            </div> -->
-            <!-- <div class="col-12"
-              style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-              <div class="row no-gutters">
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                  RT19233839
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  13-5-2020
-
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  4
-
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                  Work in progress
-
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                  20
-
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                  <button type="button" class="btn btn-danger"
-                    style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
-                </div>
-              </div>
-            </div> -->
-
-
-
-
           </form>
         </div>
       </div>

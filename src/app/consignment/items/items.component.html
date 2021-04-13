@@ -13,8 +13,8 @@
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
 
-                                    <input type="text" placeholder="width" formControlName="widthInch" class="form-control"
-                                        id="txtwidth" name="search">
+                                    <input type="text" placeholder="width" formControlName="widthInch"
+                                        class="form-control" id="txtwidth" name="search">
 
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-12 p-0">
@@ -26,13 +26,7 @@
 
 
                                 <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                                    <button (click)="selectInvoice($event)">Add Item</button>
-                                    <!-- <label for="file-upload-Invoice" class="custom-file-upload">
-                                        <i class="fa fa-cloud-upload"></i> Add
-                                    </label>
-                                    <input id="file-upload-Invoice" (change)="selectInvoice($event)" type="button" />
-                                    <div class="textInput1"> {{this.lblInvoice}}</div> -->
-
+                                    <button (click)="selectInvoice($event)" class="btn btn-success">Add Item</button>
                                 </div>
                             </div>
                         </div>
@@ -49,58 +43,40 @@
         <div class="col-lg-12 card-margin">
             <div class="card search-form">
                 <div class="card-body p-0">
-                    <form id="search-form">
 
-                        <div class="col-12" style="background-color: #343a40; color: white; padding: 5px;">
-                            <div class="row no-gutters">
-                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                    length
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
+                        <div class="row">
+                            <div class="col-md-4" *ngFor="let item of invoiceArray;let i = index">
+                                <div class="card mb-4 shadow-sm">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <button type="button" (click)="delete(i)" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true" class="white-text"
+                                                    style="color: red; ">&times;</span>
+                                            </button>
+                                            <div class="card-body">
+                                                <div>
+                                                    <label>Length:</label>
+                                                    <span>{{item.lengthInch}}</span>
+                                                </div>
+                                                <div>
+                                                    <label>Width:</label>
+                                                    <span>{{item.widthInch}}</span>
+                                                </div>
 
-                                    width
+                                                <div>
+                                                    <label>Height:</label>
+                                                    <span> {{item.heightInch}}</span>
+                                                </div>
 
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-
-                                    height
-
-                                </div>
-
-
-
-                                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12" *ngFor="let item of invoiceArray;let i = index"
-                            style="border:1px solid  #ccc; color: black; padding: 5px; border-left: none; border-right: none; border-top: none;">
-                            <div class="row no-gutters">
-                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                    {{item.length}}
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                    {{item.width}}
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 p-0">
-                                    {{item.height}}
-                                </div>
-
-
-
-                                <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                                    <button type="button" class="btn btn-danger" (click)="delete(i)"
-                                        style="letter-spacing: 0px; font-size: 12px; text-transform: capitalize;">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
 
-
-
-
-
-                    </form>
                 </div>
             </div>
         </div>

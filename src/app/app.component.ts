@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  {
-  title = 'azure-ad-client';
   isIframe = false;
 
   public subscription: Subscription;
@@ -54,8 +53,7 @@ export class AppComponent  {
     if (isIE) {
       this.authService.loginRedirect({ extraScopesToConsent: ['user.read', 'openid', 'profile'] });
     } else {
-      this.authService.loginPopup({ extraScopesToConsent: ['user.read', 'openid', 'profile'] });
+      this.authService.loginRedirect({ extraScopesToConsent: ['user.read', 'openid', 'profile'] });
     }
   }
-
 }

@@ -74,6 +74,10 @@ button.btn.btn-primary {
   background: #4d7aab;
   letter-spacing: 2px;
 }
+.btn {
+  letter-spacing: 0;
+  text-transform: capitalize;
+}
 
 .active-tab {
   background-color: #4d7aab;

@@ -11,7 +11,8 @@ import { ShareServices } from "../app.services";
 })
 export class ConsignmentComponent implements OnInit {
   stateLists: IStateDetail[];
-  submitResponse: any;
+  successMsg: string;
+  isMsgActive = false;
   newConsignment: any;
   latitude: any;
   longitude: any;
@@ -21,7 +22,7 @@ export class ConsignmentComponent implements OnInit {
     private fb: FormBuilder,
     private sharedService: ShareServices,
     private router: Router
-  ) {}
+  ) { }
   tab = 1;
   generalForm: FormGroup;
   invoiceList = [];
@@ -30,7 +31,12 @@ export class ConsignmentComponent implements OnInit {
     this.generateForms();
     this.sharedService.getState().subscribe((data) => {
       this.stateLists = data.result;
-    });
+    },
+      (err) => {
+        console.log("state error" + err);
+      });
+
+
     this.sharedService.getPosition().then((pos) => {
       this.latitude = pos.lat;
       this.longitude = pos.lng;
@@ -57,8 +63,8 @@ export class ConsignmentComponent implements OnInit {
       consigneeemailadd: [""],
       consigneemobileno: [""],
       totalprice: [""],
-      declaredmaterial: [""],
-      value: [""],
+      category: [""],
+      consignmentnote: [""],
       declaredweight: [""],
       pickup: [""],
       delivery: [""],
@@ -108,8 +114,8 @@ export class ConsignmentComponent implements OnInit {
   }
   Detail(data) {
     this.generalForm.controls.totalprice.setValue(data.totalprice);
-    this.generalForm.controls.declaredmaterial.setValue(data.declaredmaterial);
-    this.generalForm.controls.value.setValue(data.value);
+    this.generalForm.controls.category.setValue(data.category);
+    this.generalForm.controls.consignmentnote.setValue(data.consignmentnote);
     this.generalForm.controls.declaredweight.setValue(data.declaredweight);
     this.generalForm.controls.actualWeight.setValue(data.actualWeight);
     this.generalForm.controls.photo.setValue(data.photo);
@@ -146,8 +152,8 @@ export class ConsignmentComponent implements OnInit {
     }
   }
 
-  submitData(){
-    
+  submitData() {
+
     this.newConsignment = {
       id: 0,
       createdOn: new Date(this.date).toISOString(),
@@ -179,6 +185,7 @@ export class ConsignmentComponent implements OnInit {
         reason: "",
         ewayBillUrl: this.generalForm.controls.bill.value,
         carrier: this.generalForm.controls.vehicle.value,
+        updatedOn: new Date().toISOString()
       },
       schedule: {
         pickupDate: new Date(
@@ -192,34 +199,38 @@ export class ConsignmentComponent implements OnInit {
         ).toISOString(),
         deliveredOn: null,
         mode: 4,
+        ewaybillNumber: this.generalForm.controls.billno.value
       },
       billAmount: 0,
       content: {
         photoUrl: this.generalForm.controls.photo.value,
-        invoiceUrl: this.generalForm.controls.invoice.value,
-        value: this.generalForm.controls.value.value,
         itemsCount: 3,
         declaredWeight: this.generalForm.controls.declaredweight.value,
         actualWeight: this.generalForm.controls.actualWeight.value,
-        declaredMaterial: this.generalForm.controls.declaredmaterial.value,
+        category: this.generalForm.controls.category.value,
+        consignmentNote: this.generalForm.controls.consignmentnote.value
       },
       invoices: this.invoiceList,
       items: this.itemsList,
-      payment:{
-        paymentMode:Number(this.generalForm.controls.radioset1.value),
-        billingParty:this.generalForm.controls.comments.value
+      payment: {
+        paymentMode: Number(this.generalForm.controls.radioset1.value),
+        billingParty: this.generalForm.controls.comments.value
       },
-      remarks:this.generalForm.controls.remarks.value
+      remarks: this.generalForm.controls.remarks.value
     };
 
     console.log(this.newConsignment);
     this.sharedService
       .submitData(this.newConsignment)
       .subscribe((submitData) => {
-        console.log("submitData" + submitData);
-        this.submitResponse = submitData;
-        this.router.navigateByUrl("/dashboard");
+        console.log("Consignment created" + submitData);
+        this.isMsgActive = true;
+        this.successMsg = submitData["message"];
+
       });
 
+  }
+  redirectPage() {
+    this.router.navigateByUrl("/dashboard");
   }
 }

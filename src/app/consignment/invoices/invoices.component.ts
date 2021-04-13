@@ -8,6 +8,7 @@ import { ShareServices } from "../../app.services";
   templateUrl: "./invoices.component.html",
   styleUrls: ["./invoices.component.css"],
 })
+
 export class InvoicesComponent implements OnInit {
   constructor(private fb: FormBuilder, private sharedService: ShareServices) { }
   fileInvoice: any;
@@ -34,8 +35,6 @@ export class InvoicesComponent implements OnInit {
 
   selectInvoice(file: FileList) {
     this.fileInvoice = file["target"].files[0];
-    // this.invoiceArray.push(this.fileInvoice);
-
     this.invoiceSubscription = this.sharedService
       .uploadDocument(this.fileInvoice)
       .subscribe((invoice) => {
@@ -43,7 +42,7 @@ export class InvoicesComponent implements OnInit {
 
         const newData = {
           invoices: this.generalForm.controls.invoiceNo.value,
-          invoiceDate: new Date(this.generalForm.controls.invoiceDate.value).toDateString(),
+          invoiceDate: this.generalForm.controls.invoiceDate.value,
           totalValue: this.generalForm.controls.totalValue.value,
           description: this.generalForm.controls.description.value,
           quantity: this.generalForm.controls.quantity.value,

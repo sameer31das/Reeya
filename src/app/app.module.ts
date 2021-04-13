@@ -83,6 +83,7 @@ const isIE =
           clientId: environment.clientId,
           authority: environment.authority,
           redirectUri: environment.redirectUrl,
+          validateAuthority: true,
           postLogoutRedirectUri: environment.postLogoutRedirectUri,
           navigateToLoginRequestUrl: true,
         },
@@ -90,12 +91,18 @@ const isIE =
           cacheLocation: "localStorage",
           storeAuthStateInCookie: isIE, // set to true for IE 11
         },
+        framework: {
+          unprotectedResources: ['https://www.microsoft.com/en-us/', 'https://cargo-xpert.com/track', 'https://cargo-xpert.com/home'],
+        }
       },
       {
-        popUp: !isIE,
+        popUp: false,
         consentScopes: ["user.read", "openid", "profile"],
         protectedResourceMap: [
-          ["https://graph.microsoft.com/v1.0/me", ["user.read"]],
+          ["https://graph.microsoft.com", ['user.read', 'openid', 'profile', 'email', 'offline_access']],
+          ["https://cargo-xpert.com/dashboard", ["api://e9d85866-3c3d-4ccd-a9f6-949f6342b959/User.Access"]],
+          ["https://cargo-xpert.com/home/*", null],
+          ["https://cargo-xpert.com/track/*", null]
         ],
       }
     ),

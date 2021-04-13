@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(public dialog: MatDialog, private sharedService: ShareServices,   private authService: MsalService) { }
 
   ngOnInit(): void {
-    console.log("dssd"+localStorage.getItem('msal.idtoken'));
     this.subscription = this.sharedService.getConsignmentList().subscribe((data) => {
       this.consignmentList = data.result;
     });
@@ -47,9 +46,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe((result) => {
       // load the consiment
-      // this.sharedService.getConsignmentList().subscribe((data) => {
-      //   this.consignmentList = data.result;
-      // });
+      this.sharedService.getConsignmentList().subscribe((data) => {
+        this.consignmentList = data.result;
+      });
     });
   }
 

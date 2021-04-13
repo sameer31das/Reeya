@@ -34,11 +34,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   generateForms() {
     const group = {
       totalprice: [this.initialFormDetail.controls.totalprice.value],
-      declaredmaterial: [
-        this.initialFormDetail.controls.declaredmaterial.value,
+      category: [
+        this.initialFormDetail.controls.category.value,
       ],
-      value: [
-        this.initialFormDetail.controls.value.value,
+      consignmentnote: [
+        this.initialFormDetail.controls.consignmentnote.value,
         Validators.pattern("[0-9 ]*"),
       ],
       declaredweight: [
@@ -54,13 +54,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.generalForm = this.fb.group(group);
   }
 
-  checkValue() {
-    if (this.generalForm.controls.value.valid) {
-      this.valueError = false;
-    } else {
-      this.valueError = true;
-    }
-  }
+  
   checkDeclared() {
     if (this.generalForm.controls.declaredweight.valid) {
       this.declaredWeightError = false;

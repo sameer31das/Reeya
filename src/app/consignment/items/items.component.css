@@ -156,11 +156,6 @@ body {
     border: 0;
 }
 
-.search-form button {
-    height: 100%;
-    width: 100%;
-    font-size: 1rem;
-}
 
 .search-form button svg {
     width: 24px;
@@ -287,3 +282,8 @@ input[type="file"] {
     /* width: 71.344px; */
     margin-top: 8px;
 }
+.btn-success{ letter-spacing: 0px !important;
+    text-transform: capitalize !important ;
+    width: 74px !important;
+    font-size: 12px !important;}
+    .card-body label{width:50%}

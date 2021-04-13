@@ -114,28 +114,21 @@
                 <div class="tab-panel" id="tabPanel4" *ngIf="tab==4">
                   <app-payment [initialFormDetails]="this.generalForm" [tab]="this.tab" (Payment)="Payments($event)">
                   </app-payment>
+                  <div *ngIf="isMsgActive">{{successMsg}}   <button (click)="redirectPage()" class="btn btn-link">click here to see the consignment</button>
+                    </div>
                 </div>
               </div>
               <div class="next form-group row" *ngIf="tab <=3" style="text-align: left;">
                 <div class="col-sm-10">
                   <button (click)="next()" class="btn btn-primary">Next</button>
+                  
                 </div>
               </div>
+              
             </div>
-            
-
-
-
           </div>
-
-
-
-
         </div>
-
       </main>
-
-
     </div>
 
     <div class="row">
@@ -149,7 +142,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-  </script>
+    </script>
   <script>
     window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
   </script>
@@ -162,37 +155,6 @@
     feather.replace()
   </script>
 
-  <!-- Graphs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-  <script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        datasets: [{
-          data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#007bff',
-          borderWidth: 4,
-          pointBackgroundColor: '#007bff'
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: false
-            }
-          }]
-        },
-        legend: {
-          display: false,
-        }
-      }
-    });
-  </script>
 </body>
 
 </html>

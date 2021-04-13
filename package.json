@@ -27,7 +27,7 @@
     "@azure/msal-angular": "^1.1.1",
     "@ngmodule/material-carousel": "^0.6.0",
     "angular2-jwt": "^0.2.3",
-    "msal": "^1.4.0",
+    "msal": "^1.4.3",
     "ng-pick-datetime": "^7.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

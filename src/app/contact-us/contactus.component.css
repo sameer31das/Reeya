@@ -6,3 +6,8 @@
 .whtsapp{
     font-size: x-small;
 }
+.msg{
+    font-size: small;
+    color: green;
+    margin-left: 10px;
+}

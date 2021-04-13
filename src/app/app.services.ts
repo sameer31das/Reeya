@@ -16,10 +16,10 @@ import {
 import * as auth from "./auth-config.json";
 @Injectable()
 export class ShareServices {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   //private hostUrl = "https://cargo-xpert.com";
   private hostUrl = auth.resources.todoListApi.resourceUri;
-  private stateUrl: string = this.hostUrl + "/webapi/Territory/States";
+  private stateUrl: string = this.hostUrl + "/webapi/Territory/Statess";
   private cityUrl = this.hostUrl + "/webapi/territory/cities/all";
   private modeUrl: string = this.hostUrl + "/webapi/Consignment/Modes";
   private submitUrl: string = this.hostUrl + "/webapi/Consignment";
@@ -34,7 +34,7 @@ export class ShareServices {
     this.hostUrl + "/webapi/Consignment/Employees";
   private employeeAssign_url: string =
     this.hostUrl + "/webapi/Consignment/Assign";
-private Inquiry_url:string=this.hostUrl + "/webapi/Inquiry";
+  private Inquiry_url: string = this.hostUrl + "/webapi/Inquiry";
   getState(): Observable<IState> {
     return this.http.get<IState>(this.stateUrl);
   }
@@ -54,15 +54,12 @@ private Inquiry_url:string=this.hostUrl + "/webapi/Inquiry";
     return this.http.get<IConsignmentList>(this.consignmentListUrl);
   }
 
-  getTrackingList(trackingId): Observable<ITracking> {
-    return this.http.get<ITracking>(
-      this.hostUrl + "/webapi/Consignment/" + trackingId + "/track/latest"
-    );
-  }
+ 
 
   uploadDocument(fileObject): Observable<any> {
-    const formData = new FormData();
+    let formData = new FormData();
     formData.append("file", fileObject);
+
     return this.http.post<any>(this.document_url, formData);
   }
   getPosition(): Promise<any> {
@@ -109,7 +106,18 @@ private Inquiry_url:string=this.hostUrl + "/webapi/Inquiry";
   assignEmployee(jsonItem: IAssignEmployeeParams) {
     return this.http.patch<any>(this.employeeAssign_url, jsonItem);
   }
-  submitInquiry(item: any): Observable<any> {
-    return this.http.post<any>(this.Inquiry_url, item);
+  submitInquiry(data: any) {
+    return fetch(this.Inquiry_url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+  }
+
+  getTrackingList(trackingId) {
+    const _trackUrl=this.hostUrl + "/webapi/Consignment/" + trackingId + "/track/latest";
+    return fetch(_trackUrl);
   }
 }
